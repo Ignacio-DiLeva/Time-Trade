@@ -7,8 +7,7 @@ using System.Threading; //For background tasks
 using System.Security.Cryptography; //For encryption and decryption
 using System.Net; //For IP
 using System.Net.Sockets; //For connections
-using System.Data.OleDb; //For database
-using System.Data; //For DataTable
+using System.IO;
 using MaterialSkin.Controls; //For Form
 using System.Windows.Forms; //For controls
 
@@ -105,56 +104,23 @@ namespace mainSample
                 }
                 getServerIP.Start();
             }
-            
-            OleDbConnection con = new OleDbConnection //Connection
-            (@" 
-                Provider= Microsoft.ACE.OLEDB.12.0;
-                Data Source= COMPANIES.accdb;
-                Persist Security Info = False;
-            ");
-            DataTable dt = new DataTable(); //The data from database is saved here
-            DataTable dt2 = new DataTable(); //Stocks information
-            try //We will try to connect to database and download the whole data
-            {
-                con.Open(); //Opens connection
-                DateTimePicker dtp = new DateTimePicker() //For ording by date
-                {
-                    CustomFormat = "dd/mm/yyyy", //Format
-                    Format = DateTimePickerFormat.Custom //Set the use of custom
-                };
-                OleDbCommand cmd = con.CreateCommand(); //New command
-                cmd.CommandType = CommandType.Text; //Command is text
-                cmd.CommandText = "Select * From [COMPANIES] ORDER BY [COMPANY], [OPENDATE]"; //All information, ordered
-                cmd.ExecuteNonQuery(); //Executes the command
 
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd); //We adapt the information
-                da.Fill(dt); //We insert the information in the table
-
-                OleDbCommand cmd2 = con.CreateCommand();
-                cmd2.CommandType = CommandType.Text;
-                cmd2.CommandText = "Select * From [STOCK INFO]"; //Stock info, ordered
-                cmd2.ExecuteNonQuery();
-                OleDbDataAdapter da2 = new OleDbDataAdapter(cmd2);
-                da2.Fill(dt2);
-                con.Close(); //If we complete the process, all data is saved in dt, and we can safely close the connection
-            }
-            catch (Exception ex) //If we fail we exit the whole application
-            {
-                MessageBox.Show("Could not connect to database :" + ex.Message); Application.Exit();
-            }
+            string nums = File.ReadAllText("..\\..\\numbers.txt");
+            string[] numbers = nums.Split(new char[] { ' ' });
+            string com = File.ReadAllText("..\\..\\companies.txt");
+            string[] companies = com.Split(new char[] { '\n' });
             for(int i = 0; i <21920; i++) //For all the rows
             {
                 for(int k = 0; k < 5; k++) //For all the data in the i-th line
                 {
-                    Globals.values[i / 1096, i % 1096, k] = Math.Round(Convert.ToDouble(dt.Rows[i][k+2]),2); //We add it to the 3d Array
-                } 
+                    Globals.values[i / 1096, i % 1096, k] = Math.Round(Convert.ToDouble(numbers[i*5+k]),2); //We add it to the 3d Array
+                }
             }
-            for(int i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
-                Globals.stockInfo[i, 0] = dt2.Rows[i][0].ToString();
-                Globals.stockInfo[i, 1] = dt2.Rows[i][1].ToString();
+                Globals.stockInfo[i, 0] = companies[i * 2];
+                Globals.stockInfo[i, 1] = companies[i * 2 + 1];
             }
-            myProcess.PriorityClass = ProcessPriorityClass.High;
         }
 
         private void Connection(object sender, EventArgs e)
