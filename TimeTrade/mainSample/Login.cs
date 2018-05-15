@@ -10,6 +10,7 @@ using System.Net.Sockets; //For connections
 using System.IO;
 using MaterialSkin.Controls; //For Form
 using System.Windows.Forms; //For controls
+using System.Globalization;
 
 namespace mainSample
 {
@@ -75,9 +76,10 @@ namespace mainSample
                     return; //Scope out
                 }
                 //Unexpected socket exception
-                MessageBox.Show("Unable to retrieve server IP, restarting..."); Application.Restart();
+                MessageBox.Show("Unable to retrieve server IP, exiting..."); Application.Exit();
             }
-            catch (Exception) { MessageBox.Show("Unable to retrieve server IP, restarting..."); Application.Restart(); }
+            catch (ThreadAbortException) { }
+            catch (Exception) { MessageBox.Show("Unable to retrieve server IP, exiting..."); Application.Exit(); }
             //Unexpected exception
         }
 
@@ -109,11 +111,13 @@ namespace mainSample
             string[] numbers = nums.Split(new char[] { ' ' });
             string com = File.ReadAllText("..\\..\\companies.txt");
             string[] companies = com.Split(new char[] { '\n' });
-            for(int i = 0; i <21920; i++) //For all the rows
+            NumberFormatInfo provider = new NumberFormatInfo();
+            provider.NumberDecimalSeparator = ",";
+            for (int i = 0; i <21920; i++) //For all the rows
             {
                 for(int k = 0; k < 5; k++) //For all the data in the i-th line
                 {
-                    Globals.values[i / 1096, i % 1096, k] = Math.Round(Convert.ToDouble(numbers[i*5+k]),2); //We add it to the 3d Array
+                    Globals.values[i / 1096, i % 1096, k] = Math.Round(Convert.ToDouble(numbers[i*5+k],provider),2); //We add it to the 3d Array
                 }
             }
             for (int i = 0; i < 20; i++)
