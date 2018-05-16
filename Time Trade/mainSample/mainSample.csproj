@@ -69,6 +69,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
     <Compile Include="Watchlist.cs">
       <SubType>Form</SubType>
     </Compile>

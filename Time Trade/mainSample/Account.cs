@@ -49,7 +49,7 @@ namespace mainSample
             double stocks_balanceValue = 0;
             foreach(Companies c in Globals.portfolio_companies)
             {
-                stocks_balanceValue += Globals.ReadInfo(c.Name, Globals.d) * c.Holdings;
+                stocks_balanceValue += Utilities.ReadInfo(c.Name, Globals.d) * c.Holdings;
             }
             
             stocks_balance.Text = "Stocks: $" + Math.Round(stocks_balanceValue, 2);
@@ -282,7 +282,7 @@ namespace mainSample
 
                 foreach (Companies cm in Globals.portfolio_companies)
                 {
-                    string close_Value = Globals.ReadInfo(cm.Name, dates).ToString();
+                    string close_Value = Utilities.ReadInfo(cm.Name, dates).ToString();
 
                     foreach (Control ctl in panel_portfolio.Controls)
                     {
