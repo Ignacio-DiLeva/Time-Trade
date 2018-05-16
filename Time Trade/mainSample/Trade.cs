@@ -120,17 +120,7 @@ namespace mainSample
         {
             for (int i = 0; i < Globals.sellOrders.Count; i++) //loop through all the sell orders
             {
-                double currentValue = Globals.ReadInfo(Globals.sellOrders[i].Name, date); //the current value using the date time and company name
-                if (currentValue >= Globals.sellOrders[i].Price) //checks if the current value is higher than what you set the limit at
-                {
-                    Globals.moneyBalance += Math.Round(currentValue * Globals.sellOrders[i].Holdings, 2); //adds the money you got to your balance multiplying the amount and the current value
 
-                    Globals.sellOrders.RemoveAt(i); //removes the order
-                    label_balance.Text = Globals.moneyBalance.ToString(); //changes the money balance
-                    Invoke((MethodInvoker)delegate { Globals.account.Reload_sell(); }); //invokes another thread to reload the form
-                    i--; //deleted the order, so we have to go back a index
-                    continue;
-                }
                 int indice = -1; //default index
 
                 for (int a = 0; a < Globals.portfolio_companies.Count; a++) //loops through companies
@@ -141,7 +131,7 @@ namespace mainSample
                     }
                 }
 
-                if (Globals.sellOrders[i].ExpiredDate.AddDays(28) == date) //if the company's order is already expired
+                if (Globals.sellOrders[i].ExpiredDate.AddDays(28) <= date) //if the company's order is already expired
                 {
 
                     if (indice != -1) //if the company is already in the portfolio 
@@ -158,36 +148,60 @@ namespace mainSample
                     Invoke((MethodInvoker)delegate { Globals.account.Reload_sell(); }); //reloads the form
                 }
 
+                try
+                {
+                    double currentValue = Globals.ReadInfo(Globals.sellOrders[i].Name, date); //the current value using the date time and company name
+                    if (currentValue >= Globals.sellOrders[i].Price) //checks if the current value is higher than what you set the limit at
+                    {
+                        Globals.moneyBalance += Math.Round(currentValue * Globals.sellOrders[i].Holdings, 2); //adds the money you got to your balance multiplying the amount and the current value
+
+                        Globals.sellOrders.RemoveAt(i); //removes the order
+                        label_balance.Text = Globals.moneyBalance.ToString(); //changes the money balance
+                        Invoke((MethodInvoker)delegate { Globals.account.Reload_sell(); }); //invokes another thread to reload the form
+                        i--; //deleted the order, so we have to go back a index
+                        continue;
+                    }
+                }
+                catch (Exception)
+                {
+                    i--;
+                }
             }
             for (int i = 0; i < Globals.buyOrders.Count; i++) //loops through the buy Orders
             {
-                double currentValue = Globals.ReadInfo(Globals.buyOrders[i].Name, date);//value of that company
-
-                if (currentValue <= Globals.buyOrders[i].Price && Globals.moneyBalance - currentValue * Globals.buyOrders[i].Holdings >= 0) // checks if the price is below of the price you set and checks if you have enough money to buy
+                if (Globals.buyOrders[i].ExpiredDate.AddDays(28) <= date) //checks if the order is expired
                 {
-                    Globals.moneyBalance -= Math.Round(currentValue * Globals.buyOrders[i].Holdings); //subtracts the order from the balance
-
-                    if (CheckIndex(Globals.buyOrders[i].Name, Globals.portfolio_companies) == -1) //checks if the company is already in portfolio
-                    {
-                        //if it's not in portfolio
-                        Globals.portfolio_companies.Add(new Companies(Globals.buyOrders[i].Name, Globals.buyOrders[i].Holdings, currentValue)); //adds the company with its name, the holdings and its current value
-                    }
-                    else //if it is in the portfolio
-                    {
-                        Globals.portfolio_companies[i].Holdings += Globals.buyOrders[i].Holdings; //adds the order holdings to  the portfolio in that index
-                        Globals.portfolio_companies[i].addValues(Globals.buyOrders[i].Holdings, currentValue); //updates values
-                    }
-
                     Globals.buyOrders.RemoveAt(i); //removes the order
-                    Invoke((MethodInvoker)delegate { Globals.account.Reload_buy(); }); //updates form
 
+                    Invoke((MethodInvoker)delegate { Globals.account.Reload_buy(); }); //updates form
                 }
-
-                if (Globals.buyOrders[i].ExpiredDate.AddDays(28) == date) //checks if the order is expired
+                try
                 {
-                    Globals.buyOrders.RemoveAt(i); //removes the order
+                    double currentValue = Globals.ReadInfo(Globals.buyOrders[i].Name, date);//value of that company
 
-                    Invoke((MethodInvoker)delegate { Globals.account.Reload_buy(); }); //updates form
+                    if (currentValue <= Globals.buyOrders[i].Price && Globals.moneyBalance - currentValue * Globals.buyOrders[i].Holdings >= 0) // checks if the price is below of the price you set and checks if you have enough money to buy
+                    {
+                        Globals.moneyBalance -= Math.Round(currentValue * Globals.buyOrders[i].Holdings); //subtracts the order from the balance
+
+                        if (CheckIndex(Globals.buyOrders[i].Name, Globals.portfolio_companies) == -1) //checks if the company is already in portfolio
+                        {
+                            //if it's not in portfolio
+                            Globals.portfolio_companies.Add(new Companies(Globals.buyOrders[i].Name, Globals.buyOrders[i].Holdings, currentValue)); //adds the company with its name, the holdings and its current value
+                        }
+                        else //if it is in the portfolio
+                        {
+                            Globals.portfolio_companies[i].Holdings += Globals.buyOrders[i].Holdings; //adds the order holdings to  the portfolio in that index
+                            Globals.portfolio_companies[i].addValues(Globals.buyOrders[i].Holdings, currentValue); //updates values
+                        }
+
+                        Globals.buyOrders.RemoveAt(i); //removes the order
+                        Invoke((MethodInvoker)delegate { Globals.account.Reload_buy(); }); //updates form
+
+                    }
+                }
+                catch (Exception) //if it already expired
+                {
+                    i--; //go back a index because its deleted
                 }
             }
         }
