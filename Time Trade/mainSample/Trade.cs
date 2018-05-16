@@ -26,12 +26,12 @@ namespace mainSample
 
         private void OnLoad(object sender, EventArgs e)
         {
-            for(int i=0;i<Globals.companies.Count;i++)
+            for(int i=0;i< Constants.companies.Count;i++)
             {
-                Searcher.Items.Add(Globals.companies[i]+" ("+Globals.stockInfo[i,0]+")");
+                Searcher.Items.Add(Constants.companies[i]+" ("+ Constants.stockInfo[i,0]+")");
             }
             displayedCompany.Text = Globals.displayedCompany;
-            Searcher.Text = Globals.displayedCompany + " ("+Globals.stockInfo[Globals.GetIndexOfCompany(Globals.displayedCompany),0]+")";
+            Searcher.Text = Globals.displayedCompany + " ("+ Constants.stockInfo[Globals.GetIndexOfCompany(Globals.displayedCompany),0]+")";
             label_balance.Text = Globals.moneyBalance.ToString();
         }
 
@@ -131,13 +131,13 @@ namespace mainSample
                     }
                 }
 
-                if (Globals.sellOrders[i].ExpiredDate.AddDays(28) <= date) //if the company's order is already expired
+                if (Globals.sellOrders[i].Date.AddDays(28) <= date) //if the company's order is already expired
                 {
 
                     if (indice != -1) //if the company is already in the portfolio 
                     {
                         Globals.portfolio_companies[indice].Holdings += Globals.sellOrders[i].Holdings; //adds holdings
-                        Globals.portfolio_companies[indice].addValues(Globals.sellOrders[i].Holdings, Globals.sellOrders[i].OriginalPrice); //updates value of your holdings
+                        Globals.portfolio_companies[indice].AddValues(Globals.sellOrders[i].Holdings, Globals.sellOrders[i].OriginalPrice); //updates value of your holdings
                     }
                     else
                     {
@@ -169,7 +169,7 @@ namespace mainSample
             }
             for (int i = 0; i < Globals.buyOrders.Count; i++) //loops through the buy Orders
             {
-                if (Globals.buyOrders[i].ExpiredDate.AddDays(28) <= date) //checks if the order is expired
+                if (Globals.buyOrders[i].Date.AddDays(28) <= date) //checks if the order is expired
                 {
                     Globals.buyOrders.RemoveAt(i); //removes the order
 
@@ -191,7 +191,7 @@ namespace mainSample
                         else //if it is in the portfolio
                         {
                             Globals.portfolio_companies[i].Holdings += Globals.buyOrders[i].Holdings; //adds the order holdings to  the portfolio in that index
-                            Globals.portfolio_companies[i].addValues(Globals.buyOrders[i].Holdings, currentValue); //updates values
+                            Globals.portfolio_companies[i].AddValues(Globals.buyOrders[i].Holdings, currentValue); //updates values
                         }
 
                         Globals.buyOrders.RemoveAt(i); //removes the order
@@ -276,10 +276,10 @@ namespace mainSample
                 Pen pen = new Pen(Color.Black, 1);
                 //START MATH FOR GRAPH
 
-                double[] getValues = new double[Globals.displayedDays];
+                double[] getValues = new double[Constants.displayedDays];
                 for (int i = 0; i < getValues.Length; i++)
                 {
-                    getValues[i] = Globals.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-Globals.displayedDays + 1 + i));
+                    getValues[i] = Globals.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-Constants.displayedDays + 1 + i));
                 }
                 double tempMin = 400, tempMax = 0;
                 for (int i = 0; i < getValues.Length; i++)
@@ -324,7 +324,7 @@ namespace mainSample
                 }
                 for (int i = 0; i < getValues.Length - 1; i++) //Foreach value within 60 days
                 { //We connect it with the next one
-                    e.Graphics.DrawLine(pen, 75 + i * (900 / Globals.displayedDays), rendered[i], 75 + (i + 1) * (900 / Globals.displayedDays), rendered[i + 1]);
+                    e.Graphics.DrawLine(pen, 75 + i * (900 / Constants.displayedDays), rendered[i], 75 + (i + 1) * (900 / Constants.displayedDays), rendered[i + 1]);
                 }
                 int max = 0;
                 for(int i = 0; i < 60; i++)
@@ -336,7 +336,7 @@ namespace mainSample
                 }
                 for(int i = 0; i < getValues.Length; i++) //Foreach day
                 {
-                    e.Graphics.FillRectangle(new SolidBrush(Color.Gray), new Rectangle(new Point(70 + i * (900 / Globals.displayedDays), //We fill a rectangle
+                    e.Graphics.FillRectangle(new SolidBrush(Color.Gray), new Rectangle(new Point(70 + i * (900 / Constants.displayedDays), //We fill a rectangle
 
                     400-Convert.ToInt32(Math.Floor(Globals.ReadInfo(displayedCompany.Text,Globals.d.AddDays(-60+i+1),"VOLUME"))) //Location.Y
                     /(max/60)),
@@ -421,7 +421,7 @@ namespace mainSample
                             Globals.portfolio_companies[Index_Stocks].Holdings += Convert.ToInt32(orderCount.Value);
 
                             //updates value of holdings
-                            Globals.portfolio_companies[Index_Stocks].addValues(Convert.ToInt32(orderCount.Value), currentValue);
+                            Globals.portfolio_companies[Index_Stocks].AddValues(Convert.ToInt32(orderCount.Value), currentValue);
                         }
                         //subtract from balance
                         Globals.moneyBalance -= Convert.ToInt32(orderCount.Value) * currentValue; 
@@ -484,7 +484,7 @@ namespace mainSample
                             Globals.buyOrders[Index_BuyOrders].Price = Convert.ToInt32(orderLimit.Value);
 
                             //updates date of order
-                            Globals.buyOrders[Index_BuyOrders].ExpiredDate = Globals.d;
+                            Globals.buyOrders[Index_BuyOrders].Date = Globals.d;
                         }
                         else //if the company isn't inside of the limit orders
                         {
@@ -519,7 +519,7 @@ namespace mainSample
                                 if (difference + Globals.sellOrders[IndexSell_Orders].Holdings >= 0) 
                                 {
                                     //updates value of holdings
-                                    Globals.sellOrders[Index_Stocks].addValues(Globals.sellOrders[IndexSell_Orders].Holdings,Globals.portfolio_companies[Index_Stocks].Values);
+                                    Globals.sellOrders[Index_Stocks].AddValues(Globals.sellOrders[IndexSell_Orders].Holdings,Globals.portfolio_companies[Index_Stocks].Values);
                                     
                                     //adds the original holdings back to your amount of holdings and reserves some of them to limit
                                     Globals.portfolio_companies[Index_Stocks].Holdings += Globals.sellOrders[IndexSell_Orders].Holdings - Convert.ToInt32(orderCount.Value);
@@ -531,7 +531,7 @@ namespace mainSample
                                     Globals.sellOrders[IndexSell_Orders].Price = Convert.ToInt32(orderLimit.Value);
 
                                     //updates expiring date
-                                    Globals.sellOrders[IndexSell_Orders].ExpiredDate = Globals.d; 
+                                    Globals.sellOrders[IndexSell_Orders].Date = Globals.d; 
 
                                     //removes index if holdings is 0
                                     Delete_index(Index_Stocks);

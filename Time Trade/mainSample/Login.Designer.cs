@@ -140,6 +140,7 @@
             this.Text = "Time Trade";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnClosing);
             this.Load += new System.EventHandler(this.OnLoad);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AllowMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 

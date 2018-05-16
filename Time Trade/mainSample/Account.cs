@@ -286,59 +286,52 @@ namespace mainSample
 
                     foreach (Control ctl in panel_portfolio.Controls)
                     {
-                        try
+                        if (ctl.Tag.ToString() == y.ToString())
                         {
-                            if (ctl.Tag.ToString() == y.ToString())
+                            string name = "";
+                            foreach (char c in ctl.Name)
                             {
-                                string name = "";
-                                foreach (char c in ctl.Name)
+                                if (!Char.IsDigit(c))
                                 {
-                                    try
-                                    {
-                                        Int32.Parse(c.ToString());
-                                    }
-                                    catch (Exception)
-                                    {
-                                        name += c.ToString();
-                                    }
-                                }
+                                    name += c;
+                                }   
+                            }
 
-                                double total_Cost = cm.Values * cm.Holdings;
-                                double gainloss_Cost = Convert.ToDouble(close_Value) - cm.Values;
-                                switch (name)
-                                {
-                                    case "name":
-                                        Invoke((MethodInvoker)delegate { ctl.Text = cm.Name; });
-                                        break;
-                                    case "shares":
-                                        Invoke((MethodInvoker)delegate { ctl.Text = cm.Holdings.ToString(); });
-                                        break;
+                            double total_Cost = cm.Values * cm.Holdings;
+                            double gainloss_Cost = Convert.ToDouble(close_Value) - cm.Values;
+                            switch (name)
+                            {
+                                case "name":
+                                    Invoke((MethodInvoker)delegate { ctl.Text = cm.Name; });
+                                    break;
+                                case "shares":
+                                    Invoke((MethodInvoker)delegate { ctl.Text = cm.Holdings.ToString(); });
+                                    break;
 
-                                    case "current":
-                                        Invoke((MethodInvoker)delegate { ctl.Text = close_Value; });
-                                        break;
+                                case "current":
+                                    Invoke((MethodInvoker)delegate { ctl.Text = close_Value; });
+                                    break;
 
-                                    case "cost":
-                                        Invoke((MethodInvoker)delegate { ctl.Text = "$" + Math.Round(total_Cost, 2).ToString(); });
-                                        break;
+                                case "cost":
+                                    Invoke((MethodInvoker)delegate { ctl.Text = "$" + Math.Round(total_Cost, 2).ToString(); });
+                                    break;
 
-                                    case "bp":
-                                        Invoke((MethodInvoker)delegate { ctl.Text = "$" + Math.Round(cm.Values, 2).ToString(); });
-                                        break;
+                                case "bp":
+                                    Invoke((MethodInvoker)delegate { ctl.Text = "$" + Math.Round(cm.Values, 2).ToString(); });
+                                    break;
 
-                                    case "glone":
-                                        Invoke((MethodInvoker)delegate {
-                                            
-                                            ctl.Text = ((gainloss_Cost * cm.Holdings)<0 ? "-1":"") + "$" + Math.Round(Math.Abs((gainloss_Cost)*cm.Holdings), 2).ToString(); });
-                                        break;
+                                case "glone":
+                                    Invoke((MethodInvoker)delegate {
 
-                                    case "gltwo":
-                                        Invoke((MethodInvoker)delegate { ctl.Text = Math.Round((gainloss_Cost) / cm.Values * 100, 2).ToString() + "%"; });
-                                        break;
-                                }
+                                        ctl.Text = ((gainloss_Cost * cm.Holdings) < 0 ? "-1" : "") + "$" + Math.Round(Math.Abs((gainloss_Cost) * cm.Holdings), 2).ToString();
+                                    });
+                                    break;
+
+                                case "gltwo":
+                                    Invoke((MethodInvoker)delegate { ctl.Text = Math.Round((gainloss_Cost) / cm.Values * 100, 2).ToString() + "%"; });
+                                    break;
                             }
                         }
-                        catch (Exception) { }
                     }
                     y++;
                 }
@@ -482,7 +475,7 @@ namespace mainSample
                 if (index != -1)
                 {
                     Globals.portfolio_companies[index].Holdings += Globals.sellOrders[a].Holdings;
-                    Globals.portfolio_companies[index].addValues(Globals.sellOrders[a].Holdings, Globals.sellOrders[a].OriginalPrice); 
+                    Globals.portfolio_companies[index].AddValues(Globals.sellOrders[a].Holdings, Globals.sellOrders[a].OriginalPrice); 
                 }
                 else
                 {

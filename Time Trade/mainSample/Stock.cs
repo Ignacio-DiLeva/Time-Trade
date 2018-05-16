@@ -26,9 +26,9 @@ namespace mainSample
 
         private void OnLoad(object sender, EventArgs e)
         {
-            for (int i = 0; i < Globals.companies.Count; i++)
+            for (int i = 0; i < Constants.companies.Count; i++)
             {
-                Searcher.Items.Add(Globals.companies[i] + " (" + Globals.stockInfo[i, 0] + ")");
+                Searcher.Items.Add(Constants.companies[i] + " (" + Constants.stockInfo[i, 0] + ")");
             }
             Searcher.SelectedItem = 0;
             companyData.Tag = "AAPL";
@@ -42,8 +42,8 @@ namespace mainSample
                 + Globals.ReadInfo(company, Globals.d).ToString() +"  HIGH: "
                 +Globals.ReadInfo(company,Globals.d,"HIGH").ToString() 
                 +"  LOW: "+Globals.ReadInfo(company,Globals.d,"LOW").ToString();
-            companyCompleteName.Text= Globals.stockInfo[Globals.GetIndexOfCompany(company),0];
-            stockInfoDisplayer.Text = Globals.stockInfo[Globals.GetIndexOfCompany(company),1];
+            companyCompleteName.Text= Constants.stockInfo[Globals.GetIndexOfCompany(company),0];
+            stockInfoDisplayer.Text = Constants.stockInfo[Globals.GetIndexOfCompany(company),1];
         }
 
         private void ExternalRefreshCompanyData(object sender, EventArgs e)

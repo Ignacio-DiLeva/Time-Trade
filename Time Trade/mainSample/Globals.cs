@@ -40,13 +40,7 @@ namespace mainSample
         public static List<string> wlAvailableCompanies = new List<string>(); //Available companies for watchlist
 
         //DATA
-        public static readonly int displayedDays = 60; //Days to be displayed
-        public static readonly List<string> companies = new List<string>() //All companies
-        { "AAPL","AMZN","BA","BBI","BBY","BP","C","CAT","DDAIF","F","INTC","JPM","KO","LEHMQ","MOT","MTLQQ.PK","S","SBUX",
-          "T","TRMP"
-        }; //Company SYMBOLS
-        public static readonly double[,,] values = new double[20, 1096, 5];      //Values obtained from database
-        public static readonly string[,] stockInfo = new string[20, 2]; //Information of the companies
+        
 
         //METHODS
         public static double ReadInfo(string getCompany, DateTime getDate, string getQuery = "CLOSE") //Adapter for 3d array
@@ -56,13 +50,13 @@ namespace mainSample
             int index0 = GetIndexOfCompany(getCompany); //We obtain the index
             int index1 = GetIndexOfDay(getDate); //We obtain the index
             int index2 = GetIndexOfQuery(getQuery); //We obtain the index
-            return values[index0, index1, index2]; //We return the value in the specific index
+            return Constants.values[index0, index1, index2]; //We return the value in the specific index
         }
         public static int GetIndexOfCompany(string company)
         {
             for (int i = 0; i < 20; i++) //For each company
             {
-                if (companies[i] == company) //If it is the company we want
+                if (Constants.companies[i] == company) //If it is the company we want
                 {
                     return i; //We return index
                 }

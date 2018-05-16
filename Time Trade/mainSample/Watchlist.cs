@@ -32,11 +32,11 @@ namespace mainSample
 
         private void OnLoad(object sender, EventArgs e)
         {
-            for (int i = 0; i < Globals.companies.Count; i++)
+            for (int i = 0; i < Constants.companies.Count; i++)
             {
-                Watchlist1.Items.Add(Globals.companies[i] + " (" + Globals.stockInfo[i, 0] + ")");
-                Watchlist2.Items.Add(Globals.companies[i] + " (" + Globals.stockInfo[i, 0] + ")");
-                Watchlist3.Items.Add(Globals.companies[i] + " (" + Globals.stockInfo[i, 0] + ")");
+                Watchlist1.Items.Add(Constants.companies[i] + " (" + Constants.stockInfo[i, 0] + ")");
+                Watchlist2.Items.Add(Constants.companies[i] + " (" + Constants.stockInfo[i, 0] + ")");
+                Watchlist3.Items.Add(Constants.companies[i] + " (" + Constants.stockInfo[i, 0] + ")");
             }
             Watchlist1.SelectedIndex = Globals.GetIndexOfCompany(Globals.watchlistData[10, 0]);
             Watchlist2.SelectedIndex = Globals.GetIndexOfCompany(Globals.watchlistData[11, 0]);
@@ -142,7 +142,7 @@ namespace mainSample
             Pen pen = new Pen(Color.Black, 1);
             //START MATH FOR GRAPH
 
-            double[] getValues = new double[Globals.displayedDays];
+            double[] getValues = new double[Constants.displayedDays];
             int omit = 0;
             string company = "AAPL";
             int self = Int32.Parse(((Control)sender).Name[6].ToString());
@@ -151,7 +151,7 @@ namespace mainSample
             if (self == 3) { company = Watchlist3.SelectedItem.ToString().Split(' ')[0]; }
             for (int i = 0; i < getValues.Length; i++)
             {
-                getValues[i] = Globals.ReadInfo(company, Globals.d.AddDays(-Globals.displayedDays + 1 + i + omit));
+                getValues[i] = Globals.ReadInfo(company, Globals.d.AddDays(-Constants.displayedDays + 1 + i + omit));
             }
             double tempMin = 100, tempMax = 0;
             for (int i = 0; i < getValues.Length; i++)
@@ -197,7 +197,7 @@ namespace mainSample
             }
             for (int i = 0; i < getValues.Length - 1; i++)
             {
-                e.Graphics.DrawLine(pen, 135 + i * (840 / Globals.displayedDays), rendered[i], 135 + (i + 1) * (840 / Globals.displayedDays), rendered[i + 1]);
+                e.Graphics.DrawLine(pen, 135 + i * (840 / Constants.displayedDays), rendered[i], 135 + (i + 1) * (840 / Constants.displayedDays), rendered[i + 1]);
             }
         }
 

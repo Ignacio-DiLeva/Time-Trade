@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mainSample
 {
@@ -46,9 +42,9 @@ namespace mainSample
         }
 
         //makes an weighted mean between the previous value and the inserted value to make a correct aproximated value
-        public void addValues(int holdingsAdd, double valuesAdd)
+        public void AddValues(int holdingsAdd, double valuesAdd)
         {
-            values = Math.Round(((holdings * values) + (holdingsAdd * valuesAdd)) / (holdings + holdingsAdd),2);
+            Values = Math.Round(((Holdings * Values) + (holdingsAdd * valuesAdd)) / (Holdings + holdingsAdd),2);
         }
     }
 
@@ -67,7 +63,7 @@ namespace mainSample
         private double originalPrice = 0;
 
         //remembers its date to set an expired date
-        private DateTime expiredDate;
+        private DateTime date;
 
         //for instantation
         public Orders(string GetName, int GetHoldings, double GetPrice, DateTime GetDate, double GetOriginalPrice = 0)
@@ -76,7 +72,7 @@ namespace mainSample
             holdings = GetHoldings;
             price = GetPrice;
             originalPrice = GetOriginalPrice;
-            expiredDate = GetDate;
+            date = GetDate;
         }
 
         //read and write
@@ -108,14 +104,14 @@ namespace mainSample
         }
 
         //read and write
-        public DateTime ExpiredDate
+        public DateTime Date
         {
-            get { return expiredDate; }
-            set { expiredDate = value; }
+            get { return date; }
+            set { date = value; }
         }
 
         //set a average value
-        public void addValues(int holdingsAdd, double valuesAdd)
+        public void AddValues(int holdingsAdd, double valuesAdd)
         {
             Price = Math.Round(((holdings * Price) + (holdingsAdd * valuesAdd)) / (holdings + holdingsAdd), 2);
         }

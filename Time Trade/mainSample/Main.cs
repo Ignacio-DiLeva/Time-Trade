@@ -13,16 +13,6 @@ namespace mainSample //Namespace
 {
     public partial class Main : Form //This form inherits from MaterialForm rather than a Windows Form
     {
-        //BEGIN HOOKS CODE
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        //END HOOKS CODE
 
         private void AllowMove(object sender, MouseEventArgs e)
         {
@@ -30,8 +20,8 @@ namespace mainSample //Namespace
             {
                 //We capture the mouse movement and send it to the OS
                 //Windows itself will handle the location of the form
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                Constants.ReleaseCapture();
+                Constants.SendMessage(Handle, Constants.WM_NCLBUTTONDOWN, Constants.HT_CAPTION, 0);
             }
         }
 
@@ -238,7 +228,7 @@ namespace mainSample //Namespace
             }
         }
 
-        string savedata = null;
+        //string savedata = null;
         private void OnClosing(object sender, FormClosingEventArgs e)
         {
             /*
@@ -614,7 +604,14 @@ namespace mainSample //Namespace
 
         private void TemporalClose(object sender, EventArgs e)
         {
-            Close();
+            try
+            {
+                Environment.Exit(0);
+            }
+            catch (Exception)
+            {
+                Environment.FailFast(null);
+            }
         }
     }
 }

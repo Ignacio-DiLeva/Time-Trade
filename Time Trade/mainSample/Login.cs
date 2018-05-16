@@ -10,29 +10,22 @@ using System.Net.Sockets; //For connections
 using System.IO;
 using MaterialSkin.Controls; //For Form
 using System.Windows.Forms; //For controls
-using System.Globalization;
+using System.Globalization; //For number provider
 
 namespace mainSample
 {
     public partial class Login : MaterialForm
     {
-        //START NATIVE CODE
-        protected override void WndProc(ref Message message) //Unables the form to move
+        private void AllowMove(object sender, MouseEventArgs e)
         {
-            const int WM_SYSCOMMAND = 0x0112; //System command tag
-            const int SC_MOVE = 0xF010; //Moving form message
-
-            switch (message.Msg) //Checks for handlings
+            if (e.Button == MouseButtons.Left)
             {
-                case WM_SYSCOMMAND: //If it is a system command
-                    int command = message.WParam.ToInt32() & 0xFFF0; //Gets the command message
-                    if (command == SC_MOVE) //If it is the moving form message
-                        return; //We close the moving
-                    break; //So one message does not trigger other cases
+                //We capture the mouse movement and send it to the OS
+                //Windows itself will handle the location of the form
+                Constants.ReleaseCapture();
+                Constants.SendMessage(Handle, Constants.WM_NCLBUTTONDOWN, Constants.HT_CAPTION, 0);
             }
-            base.WndProc(ref message); //We finish the process
         }
-        //END NATIVE CODE
 
         public Login()
         {
@@ -42,13 +35,11 @@ namespace mainSample
             }
         }
         readonly string serverPublicKey; //SERVER PUBLIC KEY
-        string newPlay = "AAPL:10000:1:6:2007#Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:AAPL:AMZN:BA#AAPL:AMZN:BA:BBI:BBY:BP:C:CAT:DDAIF:F:INTC:JPM:KO:LEHMQ:MOT:MTLQQ.PK:S:SBUX:T:TRMP#############";
         string ip; //OWN IP
         string serverIP=null; //SERVER IP
         string username=null;
         string sessid=null;
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048); //WILL GENERATE A PAIR OF KEYS
-        const bool stableBuild = true;
         Socket recv = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private void GetServerIP()
         {
@@ -87,7 +78,7 @@ namespace mainSample
         private void OnLoad(object sender, EventArgs e)
         {
             Process myProcess = Process.GetCurrentProcess();
-            if (stableBuild)
+            if (Constants.stableBuild)
             {
                 btnLogin.Enabled = false;
                 btnRegister.Enabled = false;
@@ -111,19 +102,21 @@ namespace mainSample
             string[] numbers = nums.Split(new char[] { ' ' });
             string com = File.ReadAllText("..\\..\\companies.txt");
             string[] companies = com.Split(new char[] { '\n' });
-            NumberFormatInfo provider = new NumberFormatInfo();
-            provider.NumberDecimalSeparator = ",";
+            NumberFormatInfo provider = new NumberFormatInfo
+            {
+                NumberDecimalSeparator = "."
+            };
             for (int i = 0; i <21920; i++) //For all the rows
             {
                 for(int k = 0; k < 5; k++) //For all the data in the i-th line
                 {
-                    Globals.values[i / 1096, i % 1096, k] = Math.Round(Convert.ToDouble(numbers[i*5+k],provider),2); //We add it to the 3d Array
+                    Constants.values[i / 1096, i % 1096, k] = Math.Round(Convert.ToDouble(numbers[i*5+k],provider),2); //We add it to the 3d Array
                 }
             }
             for (int i = 0; i < 20; i++)
             {
-                Globals.stockInfo[i, 0] = companies[i * 2];
-                Globals.stockInfo[i, 1] = companies[i * 2 + 1];
+                Constants.stockInfo[i, 0] = companies[i * 2];
+                Constants.stockInfo[i, 1] = companies[i * 2 + 1];
             }
         }
 
@@ -376,7 +369,7 @@ namespace mainSample
         private void BtnLaunchMain(object sender, EventArgs e)
         {
             btnMain.Enabled = false;
-            if (!stableBuild)
+            if (!Constants.stableBuild)
             {
                 if (getServerIP.IsAlive) { recv.Close(); } //We need to kill the thread so the app terminates properly
             }
@@ -388,7 +381,7 @@ namespace mainSample
             }
             else
             {
-                Globals.LoadData(newPlay);
+                Globals.LoadData(Constants.newPlay);
             }
             if (Globals.wlAvailableCompanies.Count != 0)
             {

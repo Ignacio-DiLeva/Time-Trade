@@ -54,6 +54,7 @@
     <Compile Include="Account.Designer.cs">
       <DependentUpon>Account.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constants.cs" />
     <Compile Include="DataTypes.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Login.cs">
