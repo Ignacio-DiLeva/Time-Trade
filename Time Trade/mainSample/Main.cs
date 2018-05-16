@@ -20,8 +20,8 @@ namespace mainSample //Namespace
             {
                 //We capture the mouse movement and send it to the OS
                 //Windows itself will handle the location of the form
-                Constants.ReleaseCapture();
-                Constants.SendMessage(Handle, Constants.WM_NCLBUTTONDOWN, Constants.HT_CAPTION, 0);
+                Utilities.ReleaseCapture();
+                Utilities.SendMessage(Handle, Utilities.WM_NCLBUTTONDOWN, Utilities.HT_CAPTION, 0);
             }
         }
 
@@ -43,24 +43,6 @@ namespace mainSample //Namespace
         string serverIP;
         public string currentForm; //Saves the secondary form displayed
         string ownIP;
-
-        /*
-        protected override void WndProc(ref Message message) //Unables the form to move, therefore other forms are secured
-        {
-            const int WM_SYSCOMMAND = 0x0112; //System command tag
-            const int SC_MOVE = 0xF010; //Moving form message
-
-            switch (message.Msg) //Checks for handlings
-            {
-                case WM_SYSCOMMAND: //If it is a system command
-                    int command = message.WParam.ToInt32() & 0xFFF0; //Gets the command message
-                    if (command == SC_MOVE) //If it is the moving form message
-                        return; //We close the moving
-                    break; //So one message does not trigger other cases
-            }
-            base.WndProc(ref message); //We finish the process
-        }
-        */
 
         public void OnLoad(object sender, EventArgs e) //Main form loading
         {
@@ -228,166 +210,10 @@ namespace mainSample //Namespace
             }
         }
 
-        //string savedata = null;
+        
         private void OnClosing(object sender, FormClosingEventArgs e)
         {
-            /*
-            if (username!=null)
-            {
-                savedata += Globals.displayedCompany + ":" + Globals.moneyBalance + ":" + Globals.d.Day + ":" + Globals.d.Month + ":" + Globals.d.Year + "#";
-                for (int i = 0; i < 12; i++)
-                {
-                    savedata += Globals.watchlistData[i, 0] + ":";
-                }
-                savedata += Globals.watchlistData[12, 0] + "#";
-                if (Globals.wlAvailableCompanies.Count > 0)
-                {
-                    savedata += Globals.wlAvailableCompanies[0];
-                    for (int i = 1; i < Globals.wlAvailableCompanies.Count; i++)
-                    {
-                        savedata += ":" + Globals.wlAvailableCompanies[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.company_name.Count > 0)
-                {
-                    savedata += Globals.company_name[0];
-                    for (int i = 1; i < Globals.company_name.Count; i++)
-                    {
-                        savedata += ":" + Globals.company_name[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.holdings.Count > 0) //If there are holdings
-                {
-                    savedata += Globals.holdings[0]; //We add first
-                    //Foreach holdings (except first one)
-                    for (int i = 1; i < Globals.holdings.Count; i++)
-                    {
-                        //We add the separator and the holding
-                        savedata += ":" + Globals.holdings[i];
-                    }
-                }
-                savedata += "#"; //End of list
-                if (Globals.money_investedtotal.Count > 0)
-                {
-                    savedata += Globals.money_investedtotal[0];
-                    for (int i = 1; i < Globals.money_investedtotal.Count; i++)
-                    {
-                        savedata += ":" + Globals.money_investedtotal[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.buy_company.Count > 0)
-                {
-                    savedata += Globals.buy_company[0];
-                    for (int i = 1; i < Globals.buy_company.Count; i++)
-                    {
-                        savedata += ":" + Globals.buy_company[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.buy_holdings.Count > 0)
-                {
-                    savedata += Globals.buy_holdings[0];
-                    for (int i = 1; i < Globals.buy_holdings.Count; i++)
-                    {
-                        savedata += ":" + Globals.buy_holdings[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.buy_price.Count > 0)
-                {
-                    savedata += Globals.buy_price[0];
-                    for (int i = 1; i < Globals.buy_price.Count; i++)
-                    {
-                        savedata += ":" + Globals.buy_price[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.sell_company.Count > 0)
-                {
-                    savedata += Globals.sell_company[0];
-                    for (int i = 1; i < Globals.sell_company.Count; i++)
-                    {
-                        savedata += ":" + Globals.sell_company[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.sell_holdings.Count > 0)
-                {
-                    savedata += Globals.sell_holdings[0];
-                    for (int i = 1; i < Globals.sell_holdings.Count; i++)
-                    {
-                        savedata += ":" + Globals.sell_holdings[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.sell_price.Count > 0)
-                {
-                    savedata += Globals.sell_price[0];
-                    for (int i = 1; i < Globals.sell_price.Count; i++)
-                    {
-                        savedata += ":" + Globals.sell_price[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.original_price.Count > 0)
-                {
-                    savedata += Globals.original_price[0];
-                    for (int i = 1; i < Globals.original_price.Count; i++)
-                    {
-                        savedata += ":" + Globals.original_price[i];
-                    }
-                }
-                savedata += "#";
-                if (Globals.ExpireDateBuy.Count > 0)
-                {
-                    savedata += Globals.ExpireDateBuy[0].ToShortDateString();
-                    for (int i = 1; i < Globals.ExpireDateBuy.Count; i++)
-                    {
-                        savedata += ":" + Globals.ExpireDateBuy[i].ToShortDateString();
-                    }
-                }
-                savedata += "#";
-                if (Globals.ExpireDateSell.Count > 0)
-                {
-                    savedata += Globals.ExpireDateSell[0].ToShortDateString();
-                    for (int i = 1; i < Globals.ExpireDateSell.Count; i++)
-                    {
-                        savedata += ":" + Globals.ExpireDateSell[i].ToShortDateString();
-                    }
-                }
-                savedata += "#";
-                Invoke((MethodInvoker)delegate
-                {
-                    Globals.trade.Visible = false;
-                    Globals.stock.Visible = false;
-                    Globals.account.Visible = false;
-                    Globals.watchlist.Visible = false;
-                    Globals.sideWatchlist.Visible = false;
-                    Visible = false;
-                });
-                Thread connect = new Thread(() => SendSavedata(savedata)); connect.Start();
-            }
-            else
-            {
-                Invoke((MethodInvoker)delegate
-                {
-                    Globals.trade.Visible = false;
-                    Globals.stock.Visible = false;
-                    Globals.account.Visible = false;
-                    Globals.watchlist.Visible = false;
-                    Globals.sideWatchlist.Visible = false;
-                    Visible = false;
-                });
-                try
-                {
-                    Application.Exit();
-                }
-                catch (Exception) { }
-            }
-            */
+            Utilities.SaveData(Globals.main,null);
         }
 
         public void SendSavedata(string savedata)

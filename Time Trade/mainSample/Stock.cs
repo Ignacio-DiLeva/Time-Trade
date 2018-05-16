@@ -39,11 +39,11 @@ namespace mainSample
         {
             string company = companyData.Tag.ToString();
             companyData.Text ="$ "
-                + Globals.ReadInfo(company, Globals.d).ToString() +"  HIGH: "
-                +Globals.ReadInfo(company,Globals.d,"HIGH").ToString() 
-                +"  LOW: "+Globals.ReadInfo(company,Globals.d,"LOW").ToString();
-            companyCompleteName.Text= Constants.stockInfo[Globals.GetIndexOfCompany(company),0];
-            stockInfoDisplayer.Text = Constants.stockInfo[Globals.GetIndexOfCompany(company),1];
+                + Utilities.ReadInfo(company, Globals.d).ToString() +"  HIGH: "
+                + Utilities.ReadInfo(company,Globals.d,"HIGH").ToString() 
+                +"  LOW: "+ Utilities.ReadInfo(company,Globals.d,"LOW").ToString();
+            companyCompleteName.Text= Constants.stockInfo[Utilities.GetIndexOfCompany(company),0];
+            stockInfoDisplayer.Text = Constants.stockInfo[Utilities.GetIndexOfCompany(company),1];
         }
 
         private void ExternalRefreshCompanyData(object sender, EventArgs e)

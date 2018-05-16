@@ -31,7 +31,7 @@ namespace mainSample
                 Searcher.Items.Add(Constants.companies[i]+" ("+ Constants.stockInfo[i,0]+")");
             }
             displayedCompany.Text = Globals.displayedCompany;
-            Searcher.Text = Globals.displayedCompany + " ("+ Constants.stockInfo[Globals.GetIndexOfCompany(Globals.displayedCompany),0]+")";
+            Searcher.Text = Globals.displayedCompany + " ("+ Constants.stockInfo[Utilities.GetIndexOfCompany(Globals.displayedCompany),0]+")";
             label_balance.Text = Globals.moneyBalance.ToString();
         }
 
@@ -101,12 +101,12 @@ namespace mainSample
             double SumOfTotal = Globals.moneyBalance;
             for (int i = 0; i < Globals.portfolio_companies.Count; i++)
             {
-                SumOfTotal += Globals.portfolio_companies[i].Holdings * Globals.ReadInfo(Globals.portfolio_companies[i].Name, Globals.d);
+                SumOfTotal += Globals.portfolio_companies[i].Holdings * Utilities.ReadInfo(Globals.portfolio_companies[i].Name, Globals.d);
             }
 
             for (int i = 0; i < Globals.sellOrders.Count; i++)
             {
-                SumOfTotal += Globals.sellOrders[i].Holdings * Globals.ReadInfo(Globals.sellOrders[i].Name, Globals.d);
+                SumOfTotal += Globals.sellOrders[i].Holdings * Utilities.ReadInfo(Globals.sellOrders[i].Name, Globals.d);
             }
             MessageBox.Show("Your final Balance is " + SumOfTotal);
             Thread sendEndMoney = new Thread(() => Globals.main.SendEndGame(Globals.main.username, Globals.main.sessid,SumOfTotal));
@@ -150,7 +150,7 @@ namespace mainSample
 
                 try
                 {
-                    double currentValue = Globals.ReadInfo(Globals.sellOrders[i].Name, date); //the current value using the date time and company name
+                    double currentValue = Utilities.ReadInfo(Globals.sellOrders[i].Name, date); //the current value using the date time and company name
                     if (currentValue >= Globals.sellOrders[i].Price) //checks if the current value is higher than what you set the limit at
                     {
                         Globals.moneyBalance += Math.Round(currentValue * Globals.sellOrders[i].Holdings, 2); //adds the money you got to your balance multiplying the amount and the current value
@@ -177,7 +177,7 @@ namespace mainSample
                 }
                 try
                 {
-                    double currentValue = Globals.ReadInfo(Globals.buyOrders[i].Name, date);//value of that company
+                    double currentValue = Utilities.ReadInfo(Globals.buyOrders[i].Name, date);//value of that company
 
                     if (currentValue <= Globals.buyOrders[i].Price && Globals.moneyBalance - currentValue * Globals.buyOrders[i].Holdings >= 0) // checks if the price is below of the price you set and checks if you have enough money to buy
                     {
@@ -222,9 +222,9 @@ namespace mainSample
             Invoke((MethodInvoker)delegate 
             {
                 companyPrices.Text = "$" 
-                + Globals.ReadInfo(displayedCompany.Text, Globals.d) 
-                + "     HIGH: $" + Globals.ReadInfo(displayedCompany.Text, Globals.d, "HIGH") 
-                + "     LOW: $" + Globals.ReadInfo(displayedCompany.Text, Globals.d, "LOW");
+                + Utilities.ReadInfo(displayedCompany.Text, Globals.d) 
+                + "     HIGH: $" + Utilities.ReadInfo(displayedCompany.Text, Globals.d, "HIGH") 
+                + "     LOW: $" + Utilities.ReadInfo(displayedCompany.Text, Globals.d, "LOW");
             });
             renderingLabels = true;
             Invoke((MethodInvoker)delegate { canvas.Controls.Clear(); });
@@ -279,7 +279,7 @@ namespace mainSample
                 double[] getValues = new double[Constants.displayedDays];
                 for (int i = 0; i < getValues.Length; i++)
                 {
-                    getValues[i] = Globals.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-Constants.displayedDays + 1 + i));
+                    getValues[i] = Utilities.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-Constants.displayedDays + 1 + i));
                 }
                 double tempMin = 400, tempMax = 0;
                 for (int i = 0; i < getValues.Length; i++)
@@ -329,19 +329,19 @@ namespace mainSample
                 int max = 0;
                 for(int i = 0; i < 60; i++)
                 {
-                    if (Globals.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60 + i + 1), "VOLUME") > max) 
+                    if (Utilities.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60 + i + 1), "VOLUME") > max) 
                     {
-                        max = Convert.ToInt32(Math.Floor(Globals.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60 + i + 1), "VOLUME"))); //We get the volume maximum
+                        max = Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60 + i + 1), "VOLUME"))); //We get the volume maximum
                     }
                 }
                 for(int i = 0; i < getValues.Length; i++) //Foreach day
                 {
                     e.Graphics.FillRectangle(new SolidBrush(Color.Gray), new Rectangle(new Point(70 + i * (900 / Constants.displayedDays), //We fill a rectangle
 
-                    400-Convert.ToInt32(Math.Floor(Globals.ReadInfo(displayedCompany.Text,Globals.d.AddDays(-60+i+1),"VOLUME"))) //Location.Y
+                    400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text,Globals.d.AddDays(-60+i+1),"VOLUME"))) //Location.Y
                     /(max/60)),
 
-                    new Size(10, 400-Convert.ToInt32(Math.Floor(Globals.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60+i+1), "VOLUME"))) //Size
+                    new Size(10, 400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60+i+1), "VOLUME"))) //Size
                     / (max / 60))));
                 }
             }
@@ -351,7 +351,7 @@ namespace mainSample
         private void CheckChangeOnSearcher(object sender, EventArgs e)
         {
             displayedCompany.Text = ((Control)sender).Text.Split(' ')[0];
-            displayedCompany.Tag = Globals.GetIndexOfCompany(displayedCompany.Text);
+            displayedCompany.Tag = Utilities.GetIndexOfCompany(displayedCompany.Text);
         }
 
         private void OrderSelection(object sender, EventArgs e)
@@ -403,7 +403,7 @@ namespace mainSample
             int Index_Stocks = CheckIndex(displayedCompany.Text, Globals.portfolio_companies); //returns the index of the company selected in portfolio
             if (btnMarketSelected.Enabled == false && CheckConditions())  //Check if you want to do market or place limit
             {
-                double currentValue = Globals.ReadInfo(displayedCompany.Text, Globals.d);
+                double currentValue = Utilities.ReadInfo(displayedCompany.Text, Globals.d);
                 if (btnBuySelected.Enabled == false) //check if you want to buy or sell
                 {
                     if (Globals.moneyBalance - Convert.ToInt32(orderCount.Value) * currentValue >= 0) //check if you have the money to buy the amount of holdings

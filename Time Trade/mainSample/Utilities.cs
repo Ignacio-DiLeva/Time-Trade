@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
+using System.Threading;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -365,6 +366,180 @@ namespace mainSample
             }
 
 
+        }
+
+        public static void SaveData(object sender, FormClosingEventArgs e)
+        {
+            List<string> company_name = new List<string>(); //Name of the respective company
+            List<int> holdings = new List<int>();                  //Amount of holdings
+            List<double> money_investedtotal = new List<double>(); //Total money invested
+            //Orders
+            List<string> buy_company = new List<string>(); //Company ordered
+            List<int> buy_holdings = new List<int>();      //Amount of holdings in order
+            List<int> buy_price = new List<int>();         //Price of holdings in order
+
+            List<string> sell_company = new List<string>();
+            List<int> sell_holdings = new List<int>();
+            List<int> sell_price = new List<int>(); //Price of holdings in order
+
+            List<double> original_price = new List<double>(); //original price of each order
+            List<DateTime> ExpireDateBuy = new List<DateTime>();
+            List<DateTime> ExpireDateSell = new List<DateTime>();
+            if (Globals.main.username !=null)
+            {
+                Globals.savedata += Globals.displayedCompany + ":" + Globals.moneyBalance + ":" + Globals.d.Day + ":" + Globals.d.Month + ":" + Globals.d.Year + "#";
+                for (int i = 0; i < 12; i++)
+                {
+                    Globals.savedata += Globals.watchlistData[i, 0] + ":";
+                }
+                Globals.savedata += Globals.watchlistData[12, 0] + "#";
+                if (Globals.wlAvailableCompanies.Count > 0)
+                {
+                    Globals.savedata += Globals.wlAvailableCompanies[0];
+                    for (int i = 1; i < Globals.wlAvailableCompanies.Count; i++)
+                    {
+                        Globals.savedata += ":" + Globals.wlAvailableCompanies[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (company_name.Count > 0)
+                {
+                    Globals.savedata += company_name[0];
+                    for (int i = 1; i < company_name.Count; i++)
+                    {
+                        Globals.savedata += ":" + company_name[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (holdings.Count > 0) //If there are holdings
+                {
+                    Globals.savedata += holdings[0]; //We add first
+                    //Foreach holdings (except first one)
+                    for (int i = 1; i < holdings.Count; i++)
+                    {
+                        //We add the separator and the holding
+                        Globals.savedata += ":" + holdings[i];
+                    }
+                }
+                Globals.savedata += "#"; //End of list
+                if (money_investedtotal.Count > 0)
+                {
+                    Globals.savedata += money_investedtotal[0];
+                    for (int i = 1; i < money_investedtotal.Count; i++)
+                    {
+                        Globals.savedata += ":" + money_investedtotal[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (buy_company.Count > 0)
+                {
+                    Globals.savedata += buy_company[0];
+                    for (int i = 1; i < buy_company.Count; i++)
+                    {
+                        Globals.savedata += ":" + buy_company[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (buy_holdings.Count > 0)
+                {
+                    Globals.savedata += buy_holdings[0];
+                    for (int i = 1; i < buy_holdings.Count; i++)
+                    {
+                        Globals.savedata += ":" + buy_holdings[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (buy_price.Count > 0)
+                {
+                    Globals.savedata += buy_price[0];
+                    for (int i = 1; i < buy_price.Count; i++)
+                    {
+                        Globals.savedata += ":" + buy_price[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (sell_company.Count > 0)
+                {
+                    Globals.savedata += sell_company[0];
+                    for (int i = 1; i < sell_company.Count; i++)
+                    {
+                        Globals.savedata += ":" + sell_company[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (sell_holdings.Count > 0)
+                {
+                    Globals.savedata += sell_holdings[0];
+                    for (int i = 1; i < sell_holdings.Count; i++)
+                    {
+                        Globals.savedata += ":" + sell_holdings[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (sell_price.Count > 0)
+                {
+                    Globals.savedata += sell_price[0];
+                    for (int i = 1; i < sell_price.Count; i++)
+                    {
+                        Globals.savedata += ":" + sell_price[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (original_price.Count > 0)
+                {
+                    Globals.savedata += original_price[0];
+                    for (int i = 1; i < original_price.Count; i++)
+                    {
+                        Globals.savedata += ":" + original_price[i];
+                    }
+                }
+                Globals.savedata += "#";
+                if (ExpireDateBuy.Count > 0)
+                {
+                    Globals.savedata += ExpireDateBuy[0].ToShortDateString();
+                    for (int i = 1; i < ExpireDateBuy.Count; i++)
+                    {
+                        Globals.savedata += ":" + ExpireDateBuy[i].ToShortDateString();
+                    }
+                }
+                Globals.savedata += "#";
+                if (ExpireDateSell.Count > 0)
+                {
+                    Globals.savedata += ExpireDateSell[0].ToShortDateString();
+                    for (int i = 1; i < ExpireDateSell.Count; i++)
+                    {
+                        Globals.savedata += ":" + ExpireDateSell[i].ToShortDateString();
+                    }
+                }
+                Globals.savedata += "#";
+                Globals.main.Invoke((MethodInvoker)delegate
+                {
+                    Globals.trade.Visible = false;
+                    Globals.stock.Visible = false;
+                    Globals.account.Visible = false;
+                    Globals.watchlist.Visible = false;
+                    Globals.sideWatchlist.Visible = false;
+                    Globals.main.Visible = false;
+                });
+                Thread connect = new Thread(() => Globals.main.SendSavedata(Globals.savedata)); connect.Start();
+            }
+            else
+            {
+                Globals.main.Invoke((MethodInvoker)delegate
+                {
+                    Globals.trade.Visible = false;
+                    Globals.stock.Visible = false;
+                    Globals.account.Visible = false;
+                    Globals.watchlist.Visible = false;
+                    Globals.sideWatchlist.Visible = false;
+                    Globals.main.Visible = false;
+                });
+                try
+                {
+                    Application.Exit();
+                }
+                catch (Exception) { }
+            }
         }
     }
 }

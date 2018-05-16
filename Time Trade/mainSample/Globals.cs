@@ -38,7 +38,7 @@ namespace mainSample
         public static DateTime d; //Current day
         public static string[,] watchlistData = new string[13, 2]; //Watchlist
         public static List<string> wlAvailableCompanies = new List<string>(); //Available companies for watchlist
-
+        public static string savedata = null;
         //FORM REFERENCE
         public static Trade trade;     //We still do not initialize, we still need the mainForm Location to give as parameter (OnLoad)
         public static Stock stock;     //We still do not initialize, we still need the mainForm Location to give as parameter (OnLoad)

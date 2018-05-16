@@ -22,8 +22,8 @@ namespace mainSample
             {
                 //We capture the mouse movement and send it to the OS
                 //Windows itself will handle the location of the form
-                Constants.ReleaseCapture();
-                Constants.SendMessage(Handle, Constants.WM_NCLBUTTONDOWN, Constants.HT_CAPTION, 0);
+                Utilities.ReleaseCapture();
+                Utilities.SendMessage(Handle, Utilities.WM_NCLBUTTONDOWN, Utilities.HT_CAPTION, 0);
             }
         }
 
@@ -299,7 +299,7 @@ namespace mainSample
                     string[] sessidAndSavedata = data.Split(new string[] { "<SAVEDATA>" }, StringSplitOptions.RemoveEmptyEntries);
                     sessid = sessidAndSavedata[0]; //We get the SESSID
                     string savedata = sessidAndSavedata[1]; //We generate the savedata generator
-                    Globals.LoadData(savedata); //We generate the context, and launch the application
+                    Utilities.LoadData(savedata); //We generate the context, and launch the application
                     Invoke((MethodInvoker)delegate
                     {
                         Hide();
@@ -377,11 +377,11 @@ namespace mainSample
             btnRegister.Enabled = false;
             if (!(string.IsNullOrEmpty(SeedField.Text)))
             {
-                Globals.LoadData(SeedField.Text);
+                Utilities.LoadData(SeedField.Text);
             }
             else
             {
-                Globals.LoadData(Constants.newPlay);
+                Utilities.LoadData(Constants.newPlay);
             }
             if (Globals.wlAvailableCompanies.Count != 0)
             {
