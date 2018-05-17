@@ -57,7 +57,7 @@ namespace mainSample
                 byte[] buffer = new byte[4096];
                 int rec = acc.Receive(buffer, 0, buffer.Length, 0);
                 Array.Resize(ref buffer, rec);
-                serverIP = DecryptString(Encoding.ASCII.GetString(buffer), 2048, rsa.ToXmlString(true));
+                serverIP = Utilities.DecryptString(Encoding.ASCII.GetString(buffer), 2048, rsa.ToXmlString(true));
             }
             catch (SocketException) //Socket exception
             {
@@ -135,7 +135,7 @@ namespace mainSample
             string magicHeader = "8D2BC2FBE298146F51C4A1F00B9DE57A"; //32 bytes of EE
             byte[] data = Encoding.Default.GetBytes(magicHeader + ";" + "SALT" + ";" + username + ";" + ip);
             byte[] key = Encoding.Default.GetBytes(rsa.ToXmlString(false));
-            byte[] sendData = Combine(key, data);
+            byte[] sendData = Utilities.Combine(key, data);
             string rawData = Encoding.ASCII.GetString(sendData);
             List<string> blocks = new List<string>();
             int k = 0;
@@ -151,7 +151,7 @@ namespace mainSample
             string encryptedFinal = null;
             for (int i = 0; i < blocks.Count; i++)
             {
-                encryptedFinal += EncryptString(blocks[i], 2048, serverPublicKey) + "<DATA>";
+                encryptedFinal += Utilities.EncryptString(blocks[i], 2048, serverPublicKey) + "<DATA>";
             }
             encryptedFinal = encryptedFinal.Substring(0, encryptedFinal.Length - 6);
             sendData = Encoding.Default.GetBytes(encryptedFinal);
@@ -164,7 +164,7 @@ namespace mainSample
             int rec = acc.Receive(buffer, 0, buffer.Length, 0);
             Array.Resize(ref buffer, rec);
             string rData = Encoding.ASCII.GetString(buffer);
-            rData = DecryptString(rData, 2048, rsa.ToXmlString(true)); //We know its max length is 32 bytes, so is only 1 block
+            rData = Utilities.DecryptString(rData, 2048, rsa.ToXmlString(true)); //We know its max length is 32 bytes, so is only 1 block
             return rData;
         }
 
@@ -206,8 +206,8 @@ namespace mainSample
                     var hash = SHA512.Create(); //We create the hash gegerator
                     byte[] salt1 = Encoding.Default.GetBytes(salt.Substring(0, 16)); //First part of salt
                     byte[] salt2 = Encoding.Default.GetBytes(salt.Substring(16, 16)); //Second part of salt
-                    byte[] combined = Combine(salt1, Encoding.Default.GetBytes(password)); //We join the salt
-                    combined = Combine(combined, salt2); //We join the salt
+                    byte[] combined = Utilities.Combine(salt1, Encoding.Default.GetBytes(password)); //We join the salt
+                    combined = Utilities.Combine(combined, salt2); //We join the salt
                     hash.ComputeHash(combined); //We compute the hash
                     string delimitedHexHash = BitConverter.ToString(hash.Hash); //We get the hash in HEX
                     string completedHash = delimitedHexHash.Replace("-", ""); //We delete the '-' generated
@@ -215,7 +215,7 @@ namespace mainSample
                     byte[] data = Encoding.Default.GetBytes(magicHeader + ";" + order + ";" + username + ";" 
                                                                 + completedHash + ";" + salt + ";" + ip);
                     byte[] key = Encoding.Default.GetBytes(rsa.ToXmlString(false)); //RSA public key
-                    byte[] sendData = Combine(key, data); //We combine the data and the key
+                    byte[] sendData = Utilities.Combine(key, data); //We combine the data and the key
                     string rawData = Encoding.ASCII.GetString(sendData); //Concateneted non-encrypted string
                     List<string> blocks = new List<string>(); //We will divide the message into 256 bytes blocks 
                     int k = 0;
@@ -231,7 +231,7 @@ namespace mainSample
                     string encryptedFinal = null; //Final string
                     for (int i = 0; i < blocks.Count; i++) //For all blocks we add them encrypted with a separator
                     {
-                        encryptedFinal += EncryptString(blocks[i], 2048, serverPublicKey)+"<DATA>";
+                        encryptedFinal += Utilities.EncryptString(blocks[i], 2048, serverPublicKey)+"<DATA>";
                     }
                     encryptedFinal = encryptedFinal.Substring(0, encryptedFinal.Length - 6); //We cut last <DATA>
                     sendData = Encoding.Default.GetBytes(encryptedFinal); //We encode the data into ASCII
@@ -288,7 +288,7 @@ namespace mainSample
                 data = null; //Formated message is stored here
                 for (int i = 0; i < blocks.Length; i++) //Foreach blcok
                 {
-                    data += DecryptString(blocks[i], 2048, rsa.ToXmlString(true)); //We add the decrypted block into the data
+                    data += Utilities.DecryptString(blocks[i], 2048, rsa.ToXmlString(true)); //We add the decrypted block into the data
                 }
                 if (NotAnErrorCode(data)) //If it is not an error code
                 {
@@ -397,61 +397,6 @@ namespace mainSample
                     btnMain.Enabled = true;
                 });
             }
-        }
-
-        public byte[] Combine(byte[] first, byte[] second)
-        {
-            byte[] ret = new byte[first.Length + second.Length];
-            Buffer.BlockCopy(first, 0, ret, 0, first.Length);
-            Buffer.BlockCopy(second, 0, ret, first.Length, second.Length);
-            return ret;
-        }
-
-        public string EncryptString(string inputString, int dwKeySize, string xmlString)
-        {
-            RSACryptoServiceProvider rsaCryptoServiceProvider =
-            new RSACryptoServiceProvider(dwKeySize);
-            rsaCryptoServiceProvider.FromXmlString(xmlString);
-            int keySize = dwKeySize / 8;
-            byte[] bytes = Encoding.UTF32.GetBytes(inputString);
-            int maxLength = keySize - 42;
-            int dataLength = bytes.Length;
-            int iterations = dataLength / maxLength;
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i <= iterations; i++)
-            {
-                byte[] tempBytes = new byte[
-                        (dataLength - maxLength * i > maxLength) ? maxLength :
-                                                      dataLength - maxLength * i];
-                Buffer.BlockCopy(bytes, maxLength * i, tempBytes, 0,
-                                  tempBytes.Length);
-                byte[] encryptedBytes = rsaCryptoServiceProvider.Encrypt(tempBytes,
-                                                                          true);
-                Array.Reverse(encryptedBytes);
-                stringBuilder.Append(Convert.ToBase64String(encryptedBytes));
-            }
-            return stringBuilder.ToString();
-        }
-
-        public string DecryptString(string inputString, int dwKeySize, string xmlString)
-        {
-            RSACryptoServiceProvider rsaCryptoServiceProvider= 
-            new RSACryptoServiceProvider(dwKeySize);
-            rsaCryptoServiceProvider.FromXmlString(xmlString);
-            int base64BlockSize = ((dwKeySize / 8) % 3 != 0) ?
-              (((dwKeySize / 8) / 3) * 4) + 4 : ((dwKeySize / 8) / 3) * 4;
-            int iterations = inputString.Length / base64BlockSize;
-            ArrayList arrayList = new ArrayList();
-            for (int i = 0; i < iterations; i++)
-            {
-                byte[] encryptedBytes = Convert.FromBase64String(
-                     inputString.Substring(base64BlockSize * i, base64BlockSize));
-                Array.Reverse(encryptedBytes);
-                arrayList.AddRange(rsaCryptoServiceProvider.Decrypt(
-                                    encryptedBytes, true));
-            }
-            return Encoding.UTF32.GetString(arrayList.ToArray
-                (Type.GetType("System.Byte")) as byte[]);
         }
     }
 }

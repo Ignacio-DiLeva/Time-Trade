@@ -124,7 +124,7 @@ namespace mainSample //Namespace
             RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048);
             byte[] data = Encoding.Default.GetBytes(magicHeader + ";" +"ENDGAME"+";"+ getUsername + ";" + sessid+";"+sumOfTotal);
             byte[] key = Encoding.Default.GetBytes(rsa.ToXmlString(false));
-            byte[] sendData = Combine(key, data);
+            byte[] sendData = Utilities.Combine(key, data);
             string rawData = Encoding.ASCII.GetString(sendData);
             List<string> blocks = new List<string>();
             int k = 0;
@@ -140,7 +140,7 @@ namespace mainSample //Namespace
             string encryptedFinal = null;
             for (int i = 0; i < blocks.Count; i++)
             {
-                encryptedFinal += EncryptString(blocks[i], 2048, serverPublicKey) + "<DATA>";
+                encryptedFinal += Utilities.EncryptString(blocks[i], 2048, serverPublicKey) + "<DATA>";
             }
             encryptedFinal = encryptedFinal.Substring(0, encryptedFinal.Length - 6);
             sendData = Encoding.Default.GetBytes(encryptedFinal);
@@ -226,7 +226,7 @@ namespace mainSample //Namespace
                 string keyP = rsa.ToXmlString(false);
                 byte[] data = Encoding.Default.GetBytes(magicHeader+";"+order+";"+username+";"+sessid+";"+savedata);
                 byte[] key = Encoding.Default.GetBytes(keyP);
-                byte[] sendData = Combine(key, data);
+                byte[] sendData = Utilities.Combine(key, data);
                 string rawData = Encoding.ASCII.GetString(sendData);
                 List<string> blocks = new List<string>();
                 int k = 0;
@@ -246,7 +246,7 @@ namespace mainSample //Namespace
                 }
                 for (int i = 0; i < blocks.Count; i++)
                 {
-                    encryptedFinal += EncryptString(blocks[i], 2048, serverPublicKey) + "<DATA>";
+                    encryptedFinal += Utilities.EncryptString(blocks[i], 2048, serverPublicKey) + "<DATA>";
                 }
 
                 encryptedFinal = encryptedFinal.Substring(0, encryptedFinal.Length - 6);
@@ -260,100 +260,11 @@ namespace mainSample //Namespace
                 catch (Exception) { }
                 sck.Close();
             }
-            
             try
             {
-                Invoke((MethodInvoker)delegate
-                {
-                    Globals.trade.Visible = false;
-                    Globals.stock.Visible = false;
-                    Globals.account.Visible = false;
-                    Globals.watchlist.Visible = false;
-                    Globals.sideWatchlist.Visible = false;
-                    Visible = false;
-                });
+                Invoke((MethodInvoker)delegate { Environment.Exit(0); });
             }
-            catch (InvalidOperationException) { }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-            try
-            {
-                Invoke((MethodInvoker)delegate { Application.Exit(); });
-            }
-            catch (Exception) { Environment.Exit(0); }
-        }
-
-        public byte[] Combine(byte[] first, byte[] second)
-        {
-            byte[] ret = new byte[first.Length + second.Length];
-            Buffer.BlockCopy(first, 0, ret, 0, first.Length);
-            Buffer.BlockCopy(second, 0, ret, first.Length, second.Length);
-            return ret;
-        }
-
-        public string EncryptString(string inputString, int dwKeySize, string xmlString)
-        {
-            // TODO: Add Proper Exception Handlers
-            RSACryptoServiceProvider rsaCryptoServiceProvider =
-                                          new RSACryptoServiceProvider(dwKeySize);
-            rsaCryptoServiceProvider.FromXmlString(xmlString);
-            int keySize = dwKeySize / 8;
-            byte[] bytes = Encoding.UTF32.GetBytes(inputString);
-            // The hash function in use by the .NET RSACryptoServiceProvider here 
-            // is SHA1
-            // int maxLength = ( keySize ) - 2 - 
-            //              ( 2 * SHA1.Create().ComputeHash( rawBytes ).Length );
-            int maxLength = keySize - 42;
-            int dataLength = bytes.Length;
-            int iterations = dataLength / maxLength;
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i <= iterations; i++)
-            {
-                byte[] tempBytes = new byte[
-                        (dataLength - maxLength * i > maxLength) ? maxLength :
-                                                      dataLength - maxLength * i];
-                Buffer.BlockCopy(bytes, maxLength * i, tempBytes, 0,
-                                  tempBytes.Length);
-                byte[] encryptedBytes = rsaCryptoServiceProvider.Encrypt(tempBytes,
-                                                                          true);
-                // Be aware the RSACryptoServiceProvider reverses the order of 
-                // encrypted bytes. It does this after encryption and before 
-                // decryption. If you do not require compatibility with Microsoft 
-                // Cryptographic API (CAPI) and/or other vendors. Comment out the 
-                // next line and the corresponding one in the DecryptString function.
-                Array.Reverse(encryptedBytes);
-                // Why convert to base 64?
-                // Because it is the largest power-of-two base printable using only 
-                // ASCII characters
-                stringBuilder.Append(Convert.ToBase64String(encryptedBytes));
-            }
-            return stringBuilder.ToString();
-        }
-
-        public string DecryptString(string inputString, int dwKeySize, string xmlString)
-        {
-            // TODO: Add Proper Exception Handlers
-            RSACryptoServiceProvider rsaCryptoServiceProvider
-                                     = new RSACryptoServiceProvider(dwKeySize);
-            rsaCryptoServiceProvider.FromXmlString(xmlString);
-            int base64BlockSize = ((dwKeySize / 8) % 3 != 0) ?
-              (((dwKeySize / 8) / 3) * 4) + 4 : ((dwKeySize / 8) / 3) * 4;
-            int iterations = inputString.Length / base64BlockSize;
-            ArrayList arrayList = new ArrayList();
-            for (int i = 0; i < iterations; i++)
-            {
-                byte[] encryptedBytes = Convert.FromBase64String(
-                     inputString.Substring(base64BlockSize * i, base64BlockSize));
-                // Be aware the RSACryptoServiceProvider reverses the order of 
-                // encrypted bytes after encryption and before decryption.
-                // If you do not require compatibility with Microsoft Cryptographic 
-                // API (CAPI) and/or other vendors.
-                // Comment out the next line and the corresponding one in the 
-                // EncryptString function.
-                Array.Reverse(encryptedBytes);
-                arrayList.AddRange(rsaCryptoServiceProvider.Decrypt(
-                                    encryptedBytes, true));
-            }
-            return Encoding.UTF32.GetString(arrayList.ToArray(Type.GetType("System.Byte")) as byte[]);
+            catch (Exception) { Environment.FailFast("TIME TRADE ABORT"); }
         }
 
         public void AllowInput(bool status)
@@ -378,7 +289,7 @@ namespace mainSample //Namespace
                 RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048);
                 byte[] data = Encoding.Default.GetBytes(magicHeader + ";" + "LEADERBOARD" + ";" + ownIP);
                 byte[] key = Encoding.Default.GetBytes(rsa.ToXmlString(false));
-                byte[] sendData = Combine(key, data);
+                byte[] sendData = Utilities.Combine(key, data);
                 string rawData = Encoding.ASCII.GetString(sendData);
                 List<string> blocks = new List<string>();
                 int k = 0;
@@ -394,7 +305,7 @@ namespace mainSample //Namespace
                 string encryptedFinal = null;
                 for (int i = 0; i < blocks.Count; i++)
                 {
-                    encryptedFinal += EncryptString(blocks[i], 2048, serverPublicKey) + "<DATA>";
+                    encryptedFinal += Utilities.EncryptString(blocks[i], 2048, serverPublicKey) + "<DATA>";
                 }
                 encryptedFinal = encryptedFinal.Substring(0, encryptedFinal.Length - 6);
                 sendData = Encoding.Default.GetBytes(encryptedFinal);
@@ -411,7 +322,7 @@ namespace mainSample //Namespace
                 string dataR = null;
                 for (int i = 0; i < blocksR.Length; i++) //Foreach block
                 {
-                    dataR += DecryptString(blocksR[i], 2048, rsa.ToXmlString(true)); //We add the decrypted block into the data
+                    dataR += Utilities.DecryptString(blocksR[i], 2048, rsa.ToXmlString(true)); //We add the decrypted block into the data
                 }
                 dataR = dataR.Replace(";", "\r\n");
                 MessageBox.Show(dataR);
