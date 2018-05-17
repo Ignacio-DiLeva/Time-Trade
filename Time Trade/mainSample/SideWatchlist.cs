@@ -73,7 +73,7 @@ namespace mainSample
                 {
                     //We read the data
                     Globals.watchlistData[i, 1] = Globals.watchlistData[i,0]+" $"+
-                    Globals.ReadInfo(Globals.watchlistData[i,0],Globals.d);
+                    Utilities.ReadInfo(Globals.watchlistData[i,0],Globals.today);
                 }
             }
             //Foreach label

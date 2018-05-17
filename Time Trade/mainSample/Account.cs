@@ -32,38 +32,56 @@ namespace mainSample
         List<Label> company_buy = new List<Label>();
         List<Label> price_buy = new List<Label>();
         List<Label> amount_buy = new List<Label>();
-        List<Control> buy_labels = new List<Control>();
+        List<string> buy_labels = new List<string>();
 
         List<PictureBox> cancel_sell = new List<PictureBox>();
         List<Label> company_sell = new List<Label>();
         List<Label> price_sell = new List<Label>();
         List<Label> amount_sell = new List<Label>();
-        List<Control> sell_labels = new List<Control>();
+        List<string> sell_labels = new List<string>();
 
         public void Reload_panel()
-        {            
-            account_money.Text = "Money: $" + Math.Round(Globals.moneyBalance, 2).ToString(); //label showing balance
+        {
+            //label showing balance
+            account_money.Text = "Money: $" + Math.Round(Globals.moneyBalance, 2).ToString(); 
+            //font of the money label
             account_money.Font = balance_font;
+            //font backcolor of the money label
             account_money.BackColor = backcolor;
 
+            //Adds the balance value of both stocks and money
             double stocks_balanceValue = 0;
-            foreach(Companies c in Globals.portfolio_companies)
+
+            //loops through all the stocks and adds the value
+            foreach(Company c in Globals.portfolio_companies)
             {
-                stocks_balanceValue += Globals.ReadInfo(c.Name, Globals.d) * c.Holdings;
+                stocks_balanceValue += Utilities.ReadInfo(c.Name, Globals.today) * c.Holdings;
             }
             
+            //loops through all the orders and adds the value (these are your holdings put on sell)
+            foreach(Order o in Globals.sellOrders)
+            {
+                stocks_balanceValue += Utilities.ReadInfo(o.Name, Globals.today) * o.Holdings;
+            }
+
+            //updates the label of your stock values
             stocks_balance.Text = "Stocks: $" + Math.Round(stocks_balanceValue, 2);
             stocks_balance.Font = balance_font;
             stocks_balance.BackColor = backcolor;
 
+            //adds the total value of your money and your stocks
             double totalvalue = Math.Round(Globals.moneyBalance, 2) + stocks_balanceValue;
 
+            //updates the label
             total_balance.Text = "Total: $" + totalvalue;
             total_balance.Font = balance_font;
             total_balance.BackColor = backcolor;
 
-            Thread addHoldings = new Thread(Add_holdings); addHoldings.Start(); //puts the label text changing as secondary task and changes
+            //puts the portfolio label text changing as secondary task and changes 
+            Thread addHoldings = new Thread(Add_holdings); addHoldings.Start(); 
         }
+
+        //when you click the label, you are redirected to trade
         private void RedirectToTrade(object sender, EventArgs e)
         {
             Globals.trade.Searcher.Text = ((Control)sender).Text;
@@ -75,24 +93,27 @@ namespace mainSample
 
         public void Reload_sell()
         {
+            //clears all the labels
             panel_sellOrders.Controls.Clear();
-            cancel_sell.Clear(); //clears to reload
+            cancel_sell.Clear(); 
             company_sell.Clear();
             price_sell.Clear();
             amount_sell.Clear();
             sell_labels.Clear();
 
-            PictureBox cancel; //declares cancel picturebox
+            //declares cancel picturebox
+            PictureBox cancel; 
 
             int i = 0;
-            foreach (Orders o in Globals.sellOrders) //loop to show all the orders you have
+            //loop to show all the orders you have
+            foreach (Order o in Globals.sellOrders) 
             {
                 //creates a label with the order company name
                 company_sell.Add(Return_label(0, i + 1, o.Name, "label_company"));
                 //adds name to panel
                 panel_sellOrders.Controls.Add(company_sell[i]);
                 //this helps to cancel order
-                sell_labels.Add(company_sell[i]); 
+                sell_labels.Add(company_sell[i].Tag.ToString()); 
 
                 //creates a label with the holdings of that order
                 amount_sell.Add(Return_label(60, i + 1, Convert.ToString(o.Holdings), "label_amount"));
@@ -138,10 +159,12 @@ namespace mainSample
             amount_buy.Clear();
             buy_labels.Clear();
 
-            PictureBox cancel; //declares cancel picturebox
+            //declares cancel picturebox
+            PictureBox cancel; 
 
             int i = 0;
-            foreach (Orders o in Globals.buyOrders) //loop to show all the orders you have
+            //loop to show all the orders you have
+            foreach (Order o in Globals.buyOrders) 
             {
                 //creates a label and adds to a list
                 company_buy.Add(Return_label(0, i + 1, Globals.buyOrders[i].Name, "label_company"));
@@ -150,7 +173,7 @@ namespace mainSample
                 panel_buyOrders.Controls.Add(company_buy[i]);
 
                 //this helps to cancel order
-                buy_labels.Add(company_buy[i]); 
+                buy_labels.Add(company_buy[i].ToString()); 
 
                 //adds the holdings label to the amount buy list
                 amount_buy.Add(Return_label(60, i + 1, Convert.ToString(o.Holdings), "label_amount"));
@@ -261,7 +284,7 @@ namespace mainSample
         }
         private void Add_holdings()
         {
-            DateTime dates = Globals.d; 
+            DateTime dates = Globals.today; 
             Font fonts = portfolio_fonts;
 
             foreach (Control ctl in panel_portfolio.Controls)
@@ -280,9 +303,9 @@ namespace mainSample
             {
                 int y = 0;
 
-                foreach (Companies cm in Globals.portfolio_companies)
+                foreach (Company cm in Globals.portfolio_companies)
                 {
-                    string close_Value = Globals.ReadInfo(cm.Name, dates).ToString();
+                    string close_Value = Utilities.ReadInfo(cm.Name, dates).ToString();
 
                     foreach (Control ctl in panel_portfolio.Controls)
                     {
@@ -446,7 +469,7 @@ namespace mainSample
 
             for (int i = 0; i < sell_labels.Count; i++)
             {
-                if (sell_labels[i].Tag.ToString() == company)
+                if (sell_labels[i].ToString() == company)
                 {
                     a = i;
                 }
@@ -480,7 +503,7 @@ namespace mainSample
                 else
                 {
                     Globals.portfolio_companies.Add(
-                        new Companies(Globals.sellOrders[a].Name, Globals.sellOrders[a].Holdings,Globals.sellOrders[a].OriginalPrice));
+                        new Company(Globals.sellOrders[a].Name, Globals.sellOrders[a].Holdings,Globals.sellOrders[a].OriginalPrice));
                 }
 
                 Globals.sellOrders.RemoveAt(a);
@@ -493,7 +516,7 @@ namespace mainSample
 
             for (int i = 0; i < buy_labels.Count; i++)
             {
-                if (buy_labels[i].Tag.ToString() == company)
+                if (buy_labels[i].ToString() == company)
                 {
                     a = i;
 
