@@ -54,16 +54,16 @@ namespace mainSample
         {
             if (!IsDisposed)
             {
-                Invoke((MethodInvoker)delegate { EffectivizeOrders(Globals.d); }); //We check the orders
+                Invoke((MethodInvoker)delegate { EffectivizeOrders(Globals.today); }); //We check the orders
                 for (int i = 0; i < days; i++) //For each day
                 {
-                    Globals.d = Globals.d.AddDays(1); //We add the day
+                    Globals.today = Globals.today.AddDays(1); //We add the day
                     Invoke((MethodInvoker)delegate //We invoke UI commands
                     {
-                        Globals.sideWatchlist.UpdateCalendar(Globals.d); //We update the calendar
+                        Globals.sideWatchlist.UpdateCalendar(Globals.today); //We update the calendar
                         canvas.Refresh(); //We refresh the graphics
                     });
-                    if (Globals.d == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day we scope out
+                    if (Globals.today == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day we scope out
                     {
                         break;
                     }
@@ -75,7 +75,7 @@ namespace mainSample
                 makingTransition = false; //We end the transition
                 Invoke((MethodInvoker)delegate { canvas.Refresh(); });
                 
-                if (Globals.d == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day
+                if (Globals.today == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day
                 {
                     EndGame(); //We end the game, server receives savedata as a newPlay
                     return;
@@ -101,12 +101,12 @@ namespace mainSample
             double SumOfTotal = Globals.moneyBalance;
             for (int i = 0; i < Globals.portfolio_companies.Count; i++)
             {
-                SumOfTotal += Globals.portfolio_companies[i].Holdings * Utilities.ReadInfo(Globals.portfolio_companies[i].Name, Globals.d);
+                SumOfTotal += Globals.portfolio_companies[i].Holdings * Utilities.ReadInfo(Globals.portfolio_companies[i].Name, Globals.today);
             }
 
             for (int i = 0; i < Globals.sellOrders.Count; i++)
             {
-                SumOfTotal += Globals.sellOrders[i].Holdings * Utilities.ReadInfo(Globals.sellOrders[i].Name, Globals.d);
+                SumOfTotal += Globals.sellOrders[i].Holdings * Utilities.ReadInfo(Globals.sellOrders[i].Name, Globals.today);
             }
             MessageBox.Show("Your final Balance is " + SumOfTotal);
             Thread sendEndMoney = new Thread(() => Globals.main.SendEndGame(Globals.main.username, Globals.main.sessid,SumOfTotal));
@@ -141,7 +141,7 @@ namespace mainSample
                     }
                     else
                     {
-                        Companies cm = new Companies(Globals.sellOrders[i].Name, Globals.sellOrders[i].Holdings, Globals.sellOrders[i].OriginalPrice); //creates a new company with the order's characteristics
+                        Company cm = new Company(Globals.sellOrders[i].Name, Globals.sellOrders[i].Holdings, Globals.sellOrders[i].OriginalPrice); //creates a new company with the order's characteristics
                         Globals.portfolio_companies.Add(cm); //adds the company
                     }
                     Globals.sellOrders.RemoveAt(i); // removes the order
@@ -186,7 +186,7 @@ namespace mainSample
                         if (CheckIndex(Globals.buyOrders[i].Name, Globals.portfolio_companies) == -1) //checks if the company is already in portfolio
                         {
                             //if it's not in portfolio
-                            Globals.portfolio_companies.Add(new Companies(Globals.buyOrders[i].Name, Globals.buyOrders[i].Holdings, currentValue)); //adds the company with its name, the holdings and its current value
+                            Globals.portfolio_companies.Add(new Company(Globals.buyOrders[i].Name, Globals.buyOrders[i].Holdings, currentValue)); //adds the company with its name, the holdings and its current value
                         }
                         else //if it is in the portfolio
                         {
@@ -222,9 +222,9 @@ namespace mainSample
             Invoke((MethodInvoker)delegate 
             {
                 companyPrices.Text = "$" 
-                + Utilities.ReadInfo(displayedCompany.Text, Globals.d) 
-                + "     HIGH: $" + Utilities.ReadInfo(displayedCompany.Text, Globals.d, "HIGH") 
-                + "     LOW: $" + Utilities.ReadInfo(displayedCompany.Text, Globals.d, "LOW");
+                + Utilities.ReadInfo(displayedCompany.Text, Globals.today) 
+                + "     HIGH: $" + Utilities.ReadInfo(displayedCompany.Text, Globals.today, "HIGH") 
+                + "     LOW: $" + Utilities.ReadInfo(displayedCompany.Text, Globals.today, "LOW");
             });
             renderingLabels = true;
             Invoke((MethodInvoker)delegate { canvas.Controls.Clear(); });
@@ -279,7 +279,7 @@ namespace mainSample
                 double[] getValues = new double[Constants.displayedDays];
                 for (int i = 0; i < getValues.Length; i++)
                 {
-                    getValues[i] = Utilities.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-Constants.displayedDays + 1 + i));
+                    getValues[i] = Utilities.ReadInfo(displayedCompany.Text, Globals.today.AddDays(-Constants.displayedDays + 1 + i));
                 }
                 double tempMin = 400, tempMax = 0;
                 for (int i = 0; i < getValues.Length; i++)
@@ -329,19 +329,19 @@ namespace mainSample
                 int max = 0;
                 for(int i = 0; i < 60; i++)
                 {
-                    if (Utilities.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60 + i + 1), "VOLUME") > max) 
+                    if (Utilities.ReadInfo(displayedCompany.Text, Globals.today.AddDays(-60 + i + 1), "VOLUME") > max) 
                     {
-                        max = Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60 + i + 1), "VOLUME"))); //We get the volume maximum
+                        max = Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text, Globals.today.AddDays(-60 + i + 1), "VOLUME"))); //We get the volume maximum
                     }
                 }
                 for(int i = 0; i < getValues.Length; i++) //Foreach day
                 {
                     e.Graphics.FillRectangle(new SolidBrush(Color.Gray), new Rectangle(new Point(70 + i * (900 / Constants.displayedDays), //We fill a rectangle
 
-                    400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text,Globals.d.AddDays(-60+i+1),"VOLUME"))) //Location.Y
+                    400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text,Globals.today.AddDays(-60+i+1),"VOLUME"))) //Location.Y
                     /(max/60)),
 
-                    new Size(10, 400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text, Globals.d.AddDays(-60+i+1), "VOLUME"))) //Size
+                    new Size(10, 400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text, Globals.today.AddDays(-60+i+1), "VOLUME"))) //Size
                     / (max / 60))));
                 }
             }
@@ -403,7 +403,7 @@ namespace mainSample
             int Index_Stocks = CheckIndex(displayedCompany.Text, Globals.portfolio_companies); //returns the index of the company selected in portfolio
             if (btnMarketSelected.Enabled == false && CheckConditions())  //Check if you want to do market or place limit
             {
-                double currentValue = Utilities.ReadInfo(displayedCompany.Text, Globals.d);
+                double currentValue = Utilities.ReadInfo(displayedCompany.Text, Globals.today);
                 if (btnBuySelected.Enabled == false) //check if you want to buy or sell
                 {
                     if (Globals.moneyBalance - Convert.ToInt32(orderCount.Value) * currentValue >= 0) //check if you have the money to buy the amount of holdings
@@ -411,7 +411,7 @@ namespace mainSample
                         if (Index_Stocks == -1) //check if you have stocks of the company you want to buy
                         {
                             //adds a new company since you don't have stocks in it
-                            Globals.portfolio_companies.Add(new Companies(displayedCompany.Text, Convert.ToInt32(orderCount.Value), currentValue));
+                            Globals.portfolio_companies.Add(new Company(displayedCompany.Text, Convert.ToInt32(orderCount.Value), currentValue));
                         }
 
                         else if (Index_Stocks != -1)
@@ -484,12 +484,12 @@ namespace mainSample
                             Globals.buyOrders[Index_BuyOrders].Price = Convert.ToInt32(orderLimit.Value);
 
                             //updates date of order
-                            Globals.buyOrders[Index_BuyOrders].Date = Globals.d;
+                            Globals.buyOrders[Index_BuyOrders].Date = Globals.today;
                         }
                         else //if the company isn't inside of the limit orders
                         {
                             //adds a new company order
-                            Globals.buyOrders.Add(new Orders(displayedCompany.Text, Convert.ToInt32(orderCount.Value), Convert.ToInt32(orderLimit.Value), Globals.d));
+                            Globals.buyOrders.Add(new Order(displayedCompany.Text, Convert.ToInt32(orderCount.Value), Convert.ToInt32(orderLimit.Value), Globals.today));
                         }
                         MessageBox.Show("Order placed");
                         Globals.account.Reload_buy();
@@ -531,7 +531,7 @@ namespace mainSample
                                     Globals.sellOrders[IndexSell_Orders].Price = Convert.ToInt32(orderLimit.Value);
 
                                     //updates expiring date
-                                    Globals.sellOrders[IndexSell_Orders].Date = Globals.d; 
+                                    Globals.sellOrders[IndexSell_Orders].Date = Globals.today; 
 
                                     //removes index if holdings is 0
                                     Delete_index(Index_Stocks);
@@ -560,11 +560,11 @@ namespace mainSample
                                     //adds the name, the amount of holdings to sell, the price of each holding, the date it was bought,
                                     // and the original value it had.
                                     Globals.sellOrders.Add(
-                                        new Orders(
+                                        new Order(
                                             displayedCompany.Text, 
                                             Convert.ToInt32(orderCount.Value), 
                                             Convert.ToInt32(orderLimit.Value),
-                                            Globals.d, 
+                                            Globals.today, 
                                             Globals.portfolio_companies[Index_Stocks].Values)
                                             );
                                     
@@ -597,7 +597,7 @@ namespace mainSample
             }
         }
 
-        int CheckIndex(string company, List<Companies> list) //Returns position of company in the list
+        int CheckIndex(string company, List<Company> list) //Returns position of company in the list
         {
             if (list.Count != 0)
             {
@@ -612,7 +612,7 @@ namespace mainSample
             return -1;
         }
 
-        int CheckIndex(string company, List<Orders> list) //Returns position of company in the list
+        int CheckIndex(string company, List<Order> list) //Returns position of company in the list
         {
             if (list.Count != 0)
             {

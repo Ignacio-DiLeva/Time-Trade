@@ -53,9 +53,9 @@ namespace mainSample
 
         private void UpdateLabels()
         {
-            company1.Text = Watchlist1.SelectedItem.ToString().Split(' ')[0] + " $" + Utilities.ReadInfo(Watchlist1.SelectedItem.ToString().Split(' ')[0], Globals.d);
-            company2.Text = Watchlist2.SelectedItem.ToString().Split(' ')[0] + " $" + Utilities.ReadInfo(Watchlist2.SelectedItem.ToString().Split(' ')[0], Globals.d);
-            company3.Text = Watchlist3.SelectedItem.ToString().Split(' ')[0] + " $" + Utilities.ReadInfo(Watchlist3.SelectedItem.ToString().Split(' ')[0], Globals.d);
+            company1.Text = Watchlist1.SelectedItem.ToString().Split(' ')[0] + " $" + Utilities.ReadInfo(Watchlist1.SelectedItem.ToString().Split(' ')[0], Globals.today);
+            company2.Text = Watchlist2.SelectedItem.ToString().Split(' ')[0] + " $" + Utilities.ReadInfo(Watchlist2.SelectedItem.ToString().Split(' ')[0], Globals.today);
+            company3.Text = Watchlist3.SelectedItem.ToString().Split(' ')[0] + " $" + Utilities.ReadInfo(Watchlist3.SelectedItem.ToString().Split(' ')[0], Globals.today);
             Globals.watchlistData[10, 0] = Watchlist1.SelectedItem.ToString().Split(' ')[0];
             Globals.watchlistData[11, 0] = Watchlist2.SelectedItem.ToString().Split(' ')[0];
             Globals.watchlistData[12, 0] = Watchlist3.SelectedItem.ToString().Split(' ')[0];
@@ -151,7 +151,7 @@ namespace mainSample
             if (self == 3) { company = Watchlist3.SelectedItem.ToString().Split(' ')[0]; }
             for (int i = 0; i < getValues.Length; i++)
             {
-                getValues[i] = Utilities.ReadInfo(company, Globals.d.AddDays(-Constants.displayedDays + 1 + i + omit));
+                getValues[i] = Utilities.ReadInfo(company, Globals.today.AddDays(-Constants.displayedDays + 1 + i + omit));
             }
             double tempMin = 100, tempMax = 0;
             for (int i = 0; i < getValues.Length; i++)

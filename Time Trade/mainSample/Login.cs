@@ -10,7 +10,6 @@ using System.Net.Sockets; //For connections
 using System.IO;
 using MaterialSkin.Controls; //For Form
 using System.Windows.Forms; //For controls
-using System.Globalization; //For number provider
 
 namespace mainSample
 {
@@ -102,15 +101,12 @@ namespace mainSample
             string[] numbers = nums.Split(new char[] { ' ' });
             string com = File.ReadAllText("..\\..\\companies.txt");
             string[] companies = com.Split(new char[] { '\n' });
-            NumberFormatInfo provider = new NumberFormatInfo
-            {
-                NumberDecimalSeparator = "."
-            };
+            
             for (int i = 0; i <21920; i++) //For all the rows
             {
                 for(int k = 0; k < 5; k++) //For all the data in the i-th line
                 {
-                    Constants.values[i / 1096, i % 1096, k] = Math.Round(Convert.ToDouble(numbers[i*5+k],provider),2); //We add it to the 3d Array
+                    Constants.values[i / 1096, i % 1096, k] = Math.Round(Convert.ToDouble(numbers[i*5+k],Constants.numberFormat),2); //We add it to the 3d Array
                 }
             }
             for (int i = 0; i < 20; i++)

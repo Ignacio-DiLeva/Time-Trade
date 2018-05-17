@@ -39,9 +39,9 @@ namespace mainSample
         {
             string company = companyData.Tag.ToString();
             companyData.Text ="$ "
-                + Utilities.ReadInfo(company, Globals.d).ToString() +"  HIGH: "
-                + Utilities.ReadInfo(company,Globals.d,"HIGH").ToString() 
-                +"  LOW: "+ Utilities.ReadInfo(company,Globals.d,"LOW").ToString();
+                + Utilities.ReadInfo(company, Globals.today).ToString() +"  HIGH: "
+                + Utilities.ReadInfo(company,Globals.today,"HIGH").ToString() 
+                +"  LOW: "+ Utilities.ReadInfo(company,Globals.today,"LOW").ToString();
             companyCompleteName.Text= Constants.stockInfo[Utilities.GetIndexOfCompany(company),0];
             stockInfoDisplayer.Text = Constants.stockInfo[Utilities.GetIndexOfCompany(company),1];
         }

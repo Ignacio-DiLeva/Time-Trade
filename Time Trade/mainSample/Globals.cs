@@ -27,18 +27,18 @@ namespace mainSample
         public static List<DateTime> ExpireDateSell = new List<DateTime>();
         */
 
-        public static List<Companies> portfolio_companies = new List<Companies>(); //list of companies in portfolio
-        public static List<Orders> buyOrders = new List<Orders>(); //list of buy orders
-        public static List<Orders> sellOrders = new List<Orders>(); //list of sell orders
+        public static List<Company> portfolio_companies = new List<Company>(); //list of companies in portfolio
+        public static List<Order> buyOrders = new List<Order>(); //list of buy orders
+        public static List<Order> sellOrders = new List<Order>(); //list of sell orders
 
 
         //DI LEVA --- SAVEDATA
-        public static string displayedCompany; //Companie being shown on trade tab
+        public static string displayedCompany; //Company being shown on trade tab
         public static double moneyBalance;//Total balance
-        public static DateTime d; //Current day
+        public static DateTime today; //Current day
         public static string[,] watchlistData = new string[13, 2]; //Watchlist
         public static List<string> wlAvailableCompanies = new List<string>(); //Available companies for watchlist
-        public static string savedata = null;
+
         //FORM REFERENCE
         public static Trade trade;     //We still do not initialize, we still need the mainForm Location to give as parameter (OnLoad)
         public static Stock stock;     //We still do not initialize, we still need the mainForm Location to give as parameter (OnLoad)

@@ -71,474 +71,161 @@ namespace mainSample
             return 3; //If error, we return close value
         }
 
+        public static string ShortDateTimeString(DateTime date)
+        {
+            return date.Year.ToString() + '-' + date.Month.ToString() + '-' + date.Day.ToString();
+        }
+
+        public static DateTime ToDateTime(string date)
+        {
+            string[] data = date.Split(new char[] { '-' });
+            return new DateTime(year: Convert.ToInt32(data[0]), month: Convert.ToInt32(data[1]), day: Convert.ToInt32(data[2]));
+        }
+
         public static void LoadData(string str)
         {
-            List<string> company_name = new List<string>(); //Name of the respective company
-            List<int> holdings = new List<int>();                  //Amount of holdings
-            List<double> money_investedtotal = new List<double>(); //Total money invested
-            //Orders
-            List<string> buy_company = new List<string>(); //Company ordered
-            List<int> buy_holdings = new List<int>();      //Amount of holdings in order
-            List<int> buy_price = new List<int>();         //Price of holdings in order
-
-            List<string> sell_company = new List<string>();
-            List<int> sell_holdings = new List<int>();
-            List<int> sell_price = new List<int>(); //Price of holdings in order
-
-            List<double> original_price = new List<double>(); //original price of each order
-            List<DateTime> ExpireDateBuy = new List<DateTime>();
-            List<DateTime> ExpireDateSell = new List<DateTime>();
-            try
+            string[] lists = str.Split(new char[] { Constants.listSeparator },StringSplitOptions.None);
+            for(int i = 0; i < lists.Length; i++)
             {
-                int c = 0; //Char reader
-                string company = null;
-                while (str[c] != ':')
+                string[] variables = lists[i].Split(new char[] { Constants.variableSeparator }, StringSplitOptions.RemoveEmptyEntries);
+                if (i == 0)
                 {
-                    company += str[c];
-                    c++;
+                    Globals.displayedCompany = variables[0];
+                    Globals.moneyBalance = Convert.ToDouble(variables[1], Constants.numberFormat);
+                    Globals.today = Utilities.ToDateTime(variables[2]);
+                    continue;
                 }
-                c++;
-                Globals.displayedCompany = company;
-                string money = null;
-                while (str[c] != ':')
+                if (i == 1)
                 {
-                    money += str[c];
-                    c++;
-                }
-                c++;
-                Globals.moneyBalance = Convert.ToDouble(money);
-                string day = null, month = null, year = null;
-                while (str[c] != ':')
-                {
-                    day += str[c];
-                    c++;
-                }
-                c++;
-                while (str[c] != ':')
-                {
-                    month += str[c];
-                    c++;
-                }
-                c++;
-                while (str[c] != '#')
-                {
-                    year += str[c];
-                    c++;
-                }
-                c++;
-                Globals.d = new DateTime(day: Int32.Parse(day), month: Int32.Parse(month), year: Int32.Parse(year));
-                string wl = null;
-                while (str[c] != '#')
-                {
-                    wl += str[c];
-                    c++;
-                }
-                c++;
-                if (wl != null)
-                {
-                    string[] wlD = wl.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    for (int i = 0; i < wlD.Length; i++)
+                    foreach(string company in variables)
                     {
-                        Globals.watchlistData[i, 0] = wlD[i];
+                        Globals.portfolio_companies.Add(Company.FromString(company));
                     }
+                    continue;
                 }
-                string wlA = null;
-                while (str[c] != '#')
+                if (i == 2)
                 {
-                    wlA += str[c];
-                    c++;
-                }
-                c++;
-                if (wlA != null)
-                {
-                    string[] wlAD = wlA.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string strA in wlAD)
+                    foreach (string buyOrder in variables)
                     {
-                        Globals.wlAvailableCompanies.Add(strA);
+                        Globals.buyOrders.Add(Order.FromString(buyOrder));
                     }
+                    continue;
                 }
-                string CN = null;
-                while (str[c] != '#')
+                if (i == 3)
                 {
-                    CN += str[c];
-                    c++;
-                }
-                c++;
-
-                if (CN != null)
-                {
-                    string[] CNL = CN.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string cn in CNL)
+                    foreach (string sellOrder in variables)
                     {
-                        company_name.Add(cn);
+                        Globals.sellOrders.Add(Order.FromString(sellOrder));
                     }
+                    continue;
                 }
-                string H = null; //Holdings
-                while (str[c] != '#') //While it is not the end of list
+                if (i == 4)
                 {
-                    H += str[c]; //We add the character
-                    c++; //We add the character that will be read
-                }
-                c++; //We add again because we are on the '#'
-
-                if (H != null) //If there is at least one holding
-                {
-                    string[] HL = H.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    //We split the holdings
-                    foreach (string h in HL) //Foreach holding
+                    foreach (string company in variables)
                     {
-                        holdings.Add(Convert.ToInt32(h)); //We add it to the list (casting as int)
+                        Globals.wlAvailableCompanies.Add(company);
                     }
+                    continue;
                 }
-                string MI = null;
-                while (str[c] != '#')
+                if (i == 5)
                 {
-                    MI += str[c];
-                    c++;
-                }
-                c++;
-                if (MI != null)
-                {
-                    string[] MIL = MI.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string mi in MIL)
+                    for(int k=0;k<variables.Length;k++)
                     {
-                        money_investedtotal.Add(Convert.ToDouble(mi));
+                        Globals.watchlistData[k,0]=variables[k];
                     }
-                }
-                string BC = null;
-                while (str[c] != '#')
-                {
-                    BC += str[c];
-                    c++;
-                }
-                c++;
-                if (BC != null)
-                {
-                    string[] BCL = BC.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string bc in BCL)
-                    {
-                        buy_company.Add(bc);
-                    }
-
-                }
-                string BH = null;
-                while (str[c] != '#')
-                {
-                    BH += str[c];
-                    c++;
-                }
-                c++;
-                if (BH != null)
-                {
-                    string[] BHL = BH.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string bh in BHL)
-                    {
-                        buy_holdings.Add(Convert.ToInt32(bh));
-                    }
-                }
-                string BP = null;
-                while (str[c] != '#')
-                {
-                    BP += str[c];
-                    c++;
-                }
-                c++;
-                if (BP != null)
-                {
-                    string[] BPL = BP.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string bp in BPL)
-                    {
-                        buy_price.Add(Convert.ToInt32(bp));
-                    }
-                }
-                string SC = null;
-                while (str[c] != '#')
-                {
-                    SC += str[c];
-                    c++;
-                }
-                c++;
-                if (SC != null)
-                {
-                    string[] SCL = SC.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string sc in SCL)
-                    {
-                        sell_company.Add(sc);
-                    }
-                }
-                string SH = null;
-                while (str[c] != '#')
-                {
-                    SH += str[c];
-                    c++;
-                }
-                c++;
-                if (SH != null)
-                {
-                    string[] SHL = SH.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string sh in SHL)
-                    {
-                        sell_holdings.Add(Convert.ToInt32(sh));
-                    }
-                }
-                string SP = null;
-                while (str[c] != '#')
-                {
-                    SP += str[c];
-                    c++;
-                }
-                c++;
-                if (SP != null)
-                {
-                    string[] SPL = SP.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string sp in SPL)
-                    {
-                        sell_price.Add(Convert.ToInt32(sp));
-                    }
-                }
-                string OP = null;
-                while (str[c] != '#')
-                {
-                    OP += str[c];
-                    c++;
-                }
-                c++;
-                if (OP != null)
-                {
-                    string[] OPL = OP.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string op in OPL)
-                    {
-                        original_price.Add(Convert.ToDouble(op));
-                    }
-                }
-                string DB = null;
-                while (str[c] != '#')
-                {
-                    DB += str[c];
-                    c++;
-                }
-                c++;
-                if (DB != null)
-                {
-                    string[] DBL = DB.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string db in DBL)
-                    {
-                        ExpireDateBuy.Add(Convert.ToDateTime(db));
-                    }
-                }
-                string DS = null;
-                while (str[c] != '#')
-                {
-                    DS += str[c];
-                    c++;
-                }
-                c++;
-                if (DS != null)
-                {
-                    string[] DSL = DS.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string ds in DSL)
-                    {
-                        ExpireDateSell.Add(Convert.ToDateTime(ds));
-                    }
+                    continue;
                 }
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Invalid seed");
-
-                company_name = new List<string>();        //Name of the respective company
-                holdings = new List<int>();                  //Amount of holdings
-                money_investedtotal = new List<double>(); //Total money invested
-
-                buy_company = new List<string>(); //Company ordered
-                buy_holdings = new List<int>();      //Amount of holdings in order
-                buy_price = new List<int>();         //Price of holdings in orde
-
-                sell_company = new List<string>();
-                sell_holdings = new List<int>();
-                sell_price = new List<int>(); //Price of holdings in order
-                original_price = new List<double>(); //original price of each order
-
-                ExpireDateBuy = new List<DateTime>();
-                ExpireDateSell = new List<DateTime>();
-
-                Globals.wlAvailableCompanies = new List<string>(); //Available companies for watchlist 
-            }
-
-
         }
 
         public static void SaveData(object sender, FormClosingEventArgs e)
         {
-            List<string> company_name = new List<string>(); //Name of the respective company
-            List<int> holdings = new List<int>();                  //Amount of holdings
-            List<double> money_investedtotal = new List<double>(); //Total money invested
-            //Orders
-            List<string> buy_company = new List<string>(); //Company ordered
-            List<int> buy_holdings = new List<int>();      //Amount of holdings in order
-            List<int> buy_price = new List<int>();         //Price of holdings in order
+            /*
+            public static string displayedCompany; //Company being shown on trade tab
+            public static double moneyBalance;//Total balance
+            public static DateTime today; //Current day
 
-            List<string> sell_company = new List<string>();
-            List<int> sell_holdings = new List<int>();
-            List<int> sell_price = new List<int>(); //Price of holdings in order
+            public static List<Company> portfolio_companies = new List<Company>(); //list of companies in portfolio
 
-            List<double> original_price = new List<double>(); //original price of each order
-            List<DateTime> ExpireDateBuy = new List<DateTime>();
-            List<DateTime> ExpireDateSell = new List<DateTime>();
-            if (Globals.main.username !=null)
+            public static List<Order> buyOrders = new List<Order>(); //list of buy orders
+
+            public static List<Order> sellOrders = new List<Order>(); //list of sell orders
+
+            public static List<string> wlAvailableCompanies = new List<string>(); //Available companies for watchlist
+
+            public static string[,] watchlistData = new string[13, 2]; //Watchlist (Treated as list in savedata, only first)
+            */
+            Globals.main.Invoke((MethodInvoker)delegate
             {
-                Globals.savedata += Globals.displayedCompany + ":" + Globals.moneyBalance + ":" + Globals.d.Day + ":" + Globals.d.Month + ":" + Globals.d.Year + "#";
-                for (int i = 0; i < 12; i++)
+                Globals.main.Visible = false;
+            });
+            string savedata = "";
+            savedata += Globals.displayedCompany + Constants.variableSeparator;
+            savedata += Convert.ToString(Globals.moneyBalance, Constants.numberFormat) + Constants.variableSeparator;
+            savedata += ShortDateTimeString(Globals.today);
+            savedata += Constants.listSeparator;
+            for (int i = 0; i < Globals.portfolio_companies.Count; i++)
+            {
+                if (i > 0)
                 {
-                    Globals.savedata += Globals.watchlistData[i, 0] + ":";
+                    savedata += Constants.variableSeparator;
                 }
-                Globals.savedata += Globals.watchlistData[12, 0] + "#";
-                if (Globals.wlAvailableCompanies.Count > 0)
+                savedata += Globals.portfolio_companies[i].ToString();
+            }
+            savedata += Constants.listSeparator;
+            for (int i = 0; i < Globals.buyOrders.Count; i++)
+            {
+                if (i > 0)
                 {
-                    Globals.savedata += Globals.wlAvailableCompanies[0];
-                    for (int i = 1; i < Globals.wlAvailableCompanies.Count; i++)
-                    {
-                        Globals.savedata += ":" + Globals.wlAvailableCompanies[i];
-                    }
+                    savedata += Constants.variableSeparator;
                 }
-                Globals.savedata += "#";
-                if (company_name.Count > 0)
+                savedata += Globals.buyOrders[i].ToString();
+            }
+            savedata += Constants.listSeparator;
+            for (int i = 0; i < Globals.sellOrders.Count; i++)
+            {
+                if (i > 0)
                 {
-                    Globals.savedata += company_name[0];
-                    for (int i = 1; i < company_name.Count; i++)
-                    {
-                        Globals.savedata += ":" + company_name[i];
-                    }
+                    savedata += Constants.variableSeparator;
                 }
-                Globals.savedata += "#";
-                if (holdings.Count > 0) //If there are holdings
+                savedata += Globals.sellOrders[i].ToString();
+            }
+            savedata += Constants.listSeparator;
+            for (int i = 0; i < Globals.wlAvailableCompanies.Count; i++)
+            {
+                if (i > 0)
                 {
-                    Globals.savedata += holdings[0]; //We add first
-                    //Foreach holdings (except first one)
-                    for (int i = 1; i < holdings.Count; i++)
-                    {
-                        //We add the separator and the holding
-                        Globals.savedata += ":" + holdings[i];
-                    }
+                    savedata += Constants.variableSeparator;
                 }
-                Globals.savedata += "#"; //End of list
-                if (money_investedtotal.Count > 0)
+                savedata += Globals.wlAvailableCompanies[i].ToString();
+            }
+            savedata += Constants.listSeparator;
+            for (int i = 0; i < Globals.watchlistData.GetLength(0); i++)
+            {
+                if (i > 0)
                 {
-                    Globals.savedata += money_investedtotal[0];
-                    for (int i = 1; i < money_investedtotal.Count; i++)
-                    {
-                        Globals.savedata += ":" + money_investedtotal[i];
-                    }
+                    savedata += Constants.variableSeparator;
                 }
-                Globals.savedata += "#";
-                if (buy_company.Count > 0)
+                savedata += Globals.watchlistData[i, 0];
+            }
+            if (Globals.main.username ==null)
+            {
+                Clipboard.SetText(savedata);
+                try
                 {
-                    Globals.savedata += buy_company[0];
-                    for (int i = 1; i < buy_company.Count; i++)
-                    {
-                        Globals.savedata += ":" + buy_company[i];
-                    }
+                    Environment.Exit(0);
                 }
-                Globals.savedata += "#";
-                if (buy_holdings.Count > 0)
-                {
-                    Globals.savedata += buy_holdings[0];
-                    for (int i = 1; i < buy_holdings.Count; i++)
-                    {
-                        Globals.savedata += ":" + buy_holdings[i];
-                    }
-                }
-                Globals.savedata += "#";
-                if (buy_price.Count > 0)
-                {
-                    Globals.savedata += buy_price[0];
-                    for (int i = 1; i < buy_price.Count; i++)
-                    {
-                        Globals.savedata += ":" + buy_price[i];
-                    }
-                }
-                Globals.savedata += "#";
-                if (sell_company.Count > 0)
-                {
-                    Globals.savedata += sell_company[0];
-                    for (int i = 1; i < sell_company.Count; i++)
-                    {
-                        Globals.savedata += ":" + sell_company[i];
-                    }
-                }
-                Globals.savedata += "#";
-                if (sell_holdings.Count > 0)
-                {
-                    Globals.savedata += sell_holdings[0];
-                    for (int i = 1; i < sell_holdings.Count; i++)
-                    {
-                        Globals.savedata += ":" + sell_holdings[i];
-                    }
-                }
-                Globals.savedata += "#";
-                if (sell_price.Count > 0)
-                {
-                    Globals.savedata += sell_price[0];
-                    for (int i = 1; i < sell_price.Count; i++)
-                    {
-                        Globals.savedata += ":" + sell_price[i];
-                    }
-                }
-                Globals.savedata += "#";
-                if (original_price.Count > 0)
-                {
-                    Globals.savedata += original_price[0];
-                    for (int i = 1; i < original_price.Count; i++)
-                    {
-                        Globals.savedata += ":" + original_price[i];
-                    }
-                }
-                Globals.savedata += "#";
-                if (ExpireDateBuy.Count > 0)
-                {
-                    Globals.savedata += ExpireDateBuy[0].ToShortDateString();
-                    for (int i = 1; i < ExpireDateBuy.Count; i++)
-                    {
-                        Globals.savedata += ":" + ExpireDateBuy[i].ToShortDateString();
-                    }
-                }
-                Globals.savedata += "#";
-                if (ExpireDateSell.Count > 0)
-                {
-                    Globals.savedata += ExpireDateSell[0].ToShortDateString();
-                    for (int i = 1; i < ExpireDateSell.Count; i++)
-                    {
-                        Globals.savedata += ":" + ExpireDateSell[i].ToShortDateString();
-                    }
-                }
-                Globals.savedata += "#";
-                Globals.main.Invoke((MethodInvoker)delegate
-                {
-                    Globals.trade.Visible = false;
-                    Globals.stock.Visible = false;
-                    Globals.account.Visible = false;
-                    Globals.watchlist.Visible = false;
-                    Globals.sideWatchlist.Visible = false;
-                    Globals.main.Visible = false;
-                });
-                Thread connect = new Thread(() => Globals.main.SendSavedata(Globals.savedata)); connect.Start();
+                catch (Exception) { Environment.FailFast("TIME TRADE ABORT"); }
+                
             }
             else
             {
-                Globals.main.Invoke((MethodInvoker)delegate
-                {
-                    Globals.trade.Visible = false;
-                    Globals.stock.Visible = false;
-                    Globals.account.Visible = false;
-                    Globals.watchlist.Visible = false;
-                    Globals.sideWatchlist.Visible = false;
-                    Globals.main.Visible = false;
-                });
+                Thread connect = new Thread(() => Globals.main.SendSavedata(savedata)); connect.Start();
                 try
                 {
-                    Application.Exit();
+                    Environment.Exit(0);
                 }
-                catch (Exception) { }
+                catch (Exception) { Environment.FailFast("TIME TRADE ABORT"); }
             }
         }
     }

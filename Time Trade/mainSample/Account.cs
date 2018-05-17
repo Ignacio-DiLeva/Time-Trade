@@ -53,15 +53,15 @@ namespace mainSample
             double stocks_balanceValue = 0;
 
             //loops through all the stocks and adds the value
-            foreach(Companies c in Globals.portfolio_companies)
+            foreach(Company c in Globals.portfolio_companies)
             {
-                stocks_balanceValue += Utilities.ReadInfo(c.Name, Globals.d) * c.Holdings;
+                stocks_balanceValue += Utilities.ReadInfo(c.Name, Globals.today) * c.Holdings;
             }
             
             //loops through all the orders and adds the value (these are your holdings put on sell)
-            foreach(Orders o in Globals.sellOrders)
+            foreach(Order o in Globals.sellOrders)
             {
-                stocks_balanceValue += Utilities.ReadInfo(o.Name, Globals.d) * o.Holdings;
+                stocks_balanceValue += Utilities.ReadInfo(o.Name, Globals.today) * o.Holdings;
             }
 
             //updates the label of your stock values
@@ -106,7 +106,7 @@ namespace mainSample
 
             int i = 0;
             //loop to show all the orders you have
-            foreach (Orders o in Globals.sellOrders) 
+            foreach (Order o in Globals.sellOrders) 
             {
                 //creates a label with the order company name
                 company_sell.Add(Return_label(0, i + 1, o.Name, "label_company"));
@@ -164,7 +164,7 @@ namespace mainSample
 
             int i = 0;
             //loop to show all the orders you have
-            foreach (Orders o in Globals.buyOrders) 
+            foreach (Order o in Globals.buyOrders) 
             {
                 //creates a label and adds to a list
                 company_buy.Add(Return_label(0, i + 1, Globals.buyOrders[i].Name, "label_company"));
@@ -284,7 +284,7 @@ namespace mainSample
         }
         private void Add_holdings()
         {
-            DateTime dates = Globals.d; 
+            DateTime dates = Globals.today; 
             Font fonts = portfolio_fonts;
 
             foreach (Control ctl in panel_portfolio.Controls)
@@ -303,7 +303,7 @@ namespace mainSample
             {
                 int y = 0;
 
-                foreach (Companies cm in Globals.portfolio_companies)
+                foreach (Company cm in Globals.portfolio_companies)
                 {
                     string close_Value = Utilities.ReadInfo(cm.Name, dates).ToString();
 
@@ -503,7 +503,7 @@ namespace mainSample
                 else
                 {
                     Globals.portfolio_companies.Add(
-                        new Companies(Globals.sellOrders[a].Name, Globals.sellOrders[a].Holdings,Globals.sellOrders[a].OriginalPrice));
+                        new Company(Globals.sellOrders[a].Name, Globals.sellOrders[a].Holdings,Globals.sellOrders[a].OriginalPrice));
                 }
 
                 Globals.sellOrders.RemoveAt(a);

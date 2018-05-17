@@ -83,7 +83,7 @@ namespace mainSample //Namespace
             Globals.account.Show(); Globals.account.Hide();
             Globals.watchlist.Show(); Globals.watchlist.Hide();
             Globals.trade.Show(); //Default secondary form, so we load
-            Globals.sideWatchlist.UpdateCalendar(Globals.d);
+            Globals.sideWatchlist.UpdateCalendar(Globals.today);
             Globals.sideWatchlist.Show(); //We show the secondary Watchlist
             Globals.trade.Focus(); //We focus this default secondary form
         }
@@ -430,14 +430,7 @@ namespace mainSample //Namespace
 
         private void TemporalClose(object sender, EventArgs e)
         {
-            try
-            {
-                Environment.Exit(0);
-            }
-            catch (Exception)
-            {
-                Environment.FailFast(null);
-            }
+            Close();
         }
     }
 }
