@@ -173,7 +173,7 @@ namespace mainSample
                 panel_buyOrders.Controls.Add(company_buy[i]);
 
                 //this helps to cancel order
-                buy_labels.Add(company_buy[i].ToString()); 
+                buy_labels.Add(company_buy[i].Tag.ToString()); 
 
                 //adds the holdings label to the amount buy list
                 amount_buy.Add(Return_label(60, i + 1, Convert.ToString(o.Holdings), "label_amount"));
