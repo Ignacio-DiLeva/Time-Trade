@@ -9,15 +9,19 @@ namespace mainSample
     public partial class Account : Form
     {
         Font balance_font = new Font("Lucida Calligraphy", 14);
-        Color backcolor = Color.FromArgb(0, 238, 255);
+        Color foreColor = Color.White;
+
+        Color backcolor = Color.FromArgb(79, 93, 117);
         Font general_balance = new Font("Garamond", 12);
         Font portfolio_fonts = new Font("Times New Roman", 9);
+        Color penColor = Color.White;
+
 
         PictureBox p = new PictureBox
         {
             Size = new Size(975, 600),
             Location = new Point(0, 0),
-            BackColor = Color.FromArgb(0, 238, 255)
+            BackColor = Color.FromArgb(79, 93, 117)
         };
         public Account()
         {
@@ -44,10 +48,6 @@ namespace mainSample
         {
             //label showing balance
             account_money.Text = "Money: $" + Math.Round(Globals.moneyBalance, 2).ToString(); 
-            //font of the money label
-            account_money.Font = balance_font;
-            //font backcolor of the money label
-            account_money.BackColor = backcolor;
 
             //Adds the balance value of both stocks and money
             double stocks_balanceValue = 0;
@@ -66,16 +66,12 @@ namespace mainSample
 
             //updates the label of your stock values
             stocks_balance.Text = "Stocks: $" + Math.Round(stocks_balanceValue, 2);
-            stocks_balance.Font = balance_font;
-            stocks_balance.BackColor = backcolor;
 
             //adds the total value of your money and your stocks
             double totalvalue = Math.Round(Globals.moneyBalance, 2) + stocks_balanceValue;
 
             //updates the label
             total_balance.Text = "Total: $" + totalvalue;
-            total_balance.Font = balance_font;
-            total_balance.BackColor = backcolor;
 
             //puts the portfolio label text changing as secondary task and changes 
             Thread addHoldings = new Thread(Add_holdings); addHoldings.Start(); 
@@ -213,21 +209,42 @@ namespace mainSample
 
         public void OnLoad(object sender, EventArgs e)
         {
-            Reload_panel();
+            //defines fonts for the balance labels
+            stocks_balance.Font = balance_font;
+            stocks_balance.BackColor = backcolor;
+            stocks_balance.ForeColor = foreColor;
+
+            total_balance.Font = balance_font;
+            total_balance.BackColor = backcolor;
+            total_balance.ForeColor = foreColor;
+
+            account_money.Font = balance_font;
+            account_money.BackColor = backcolor;
+            account_money.ForeColor = foreColor;
+
+            //reloads all panels to check changes
+            Reload_panel(); 
             Reload_buy();
             Reload_sell();
 
+            //update the balance label
             Balance_label.Text = "Balance";
             Balance_label.Font = general_balance;
             Balance_label.Location = new Point(68, 81-60);
             Balance_label.BackColor = backcolor;
+            Balance_label.ForeColor = foreColor;
 
+            //defines the font
             Font fonts = portfolio_fonts;
 
+            
             int x = 0;
             int y = 0;
+
+            //creates once all the labels of the portfolio
             for (int i = 0; i < 141; i++)
             {
+                //creates a sample label
                 Label label = new Label
                 {
                     Text = "",
@@ -237,56 +254,62 @@ namespace mainSample
                     AutoSize = true
                 };
 
-                switch (x)
+                switch (x) //depending on which label columnn you are, it creates a different type of label
                 {
-                    case 0:
+                    case 0: //name of the company
                         label.Location = new Point(symbol_label.Location.X - 3, (symbol_label.Location.Y + 40) + 22 * y);
                         label.Name = y + "name";
                         label.DoubleClick += RedirectToTrade;
                         break;
-                    case 1:
+                    case 1: //shares of that company
                         label.Location = new Point(Shares_label.Location.X, (Shares_label.Location.Y + 40) + 22 * y);
                         label.Name = y + "shares";
                         break;
-                    case 2:
+                    case 2: //current price of that company
                         label.Location = new Point(price_label.Location.X, (price_label.Location.Y + 40) + 22 * y);
                         label.Name = y + "current";
                         break;
-                    case 3:
+                    case 3: //the cost of each share
                         label.Location = new Point(Cost_label.Location.X, (Cost_label.Location.Y + 40) + 22 * y);
                         label.Name = y + "cost";
                         break;
-                    case 4:
+                    case 4: //how much you bought that share
                         label.Location = new Point(buyprice_label.Location.X, (buyprice_label.Location.Y + 40) + 22 * y);
                         label.Name = y + "bp";
                         break;
-                    case 5:
+                    case 5: //the gainloss in raw value
                         label.Location = new Point(gainloss1_label.Location.X, (gainloss1_label.Location.Y + 40) + 22 * y);
                         label.Name = y + "glone";
                         break;
-                    case 6:
+                    case 6: //gainloss in percentage
                         label.Location = new Point(gainloss2_label.Location.X, (gainloss2_label.Location.Y + 40) + 22 * y);
                         label.Name = y + "gltwo";
                         break;
                 }
 
-                label.Tag = y;
-                panel_portfolio.Controls.Add(label);
+                label.Tag = y; //define its tag depending on the line. It will be used later
+                panel_portfolio.Controls.Add(label); //adds the label
 
-                x++;
-                if (x == 7)
+                x++; //iterates through the 7 types of labels
+                if (x == 7) //when it creates a line, passes to the next line
                 {
                     x = 0;
                     y++;
                 }
             }
+            //updates the values of each label
             Add_holdings();
         }
+
+        //method that updates the information of the portfolio
         private void Add_holdings()
         {
+            //defines the current day
             DateTime dates = Globals.today; 
+            //defines fonts
             Font fonts = portfolio_fonts;
 
+            //clears all labels that are not the ones that are the title
             foreach (Control ctl in panel_portfolio.Controls)
             {
                 if (ctl.Tag.ToString() != "initial_label")
@@ -299,19 +322,27 @@ namespace mainSample
 
                 }
             }
+            //checks if you have any companies
             if (Globals.portfolio_companies.Count != 0)
             {
                 int y = 0;
 
+                //iterates through each company
                 foreach (Company cm in Globals.portfolio_companies)
                 {
+                    //defines the value in which the company closes
                     string close_Value = Utilities.ReadInfo(cm.Name, dates).ToString();
 
+                    //iterates through the controls in the panel, in other words, the labels
                     foreach (Control ctl in panel_portfolio.Controls)
                     {
+                        //the tag defines the column of the label. Checks if the control has the iteration of y
                         if (ctl.Tag.ToString() == y.ToString())
                         {
+
                             string name = "";
+
+                            //obtains the column of the label
                             foreach (char c in ctl.Name)
                             {
                                 if (!Char.IsDigit(c))
@@ -320,8 +351,13 @@ namespace mainSample
                                 }   
                             }
 
+                            //the cost of all the holdings
                             double total_Cost = cm.Values * cm.Holdings;
+
+                            //the raw gainloss
                             double gainloss_Cost = Convert.ToDouble(close_Value) - cm.Values;
+
+                            //depending of which column
                             switch (name)
                             {
                                 case "name":
@@ -362,6 +398,7 @@ namespace mainSample
             }
         }
 
+        //method to update the portfolio from another form
         public void Update_portfolio()
         {
             Reload_buy();
@@ -369,62 +406,73 @@ namespace mainSample
             Reload_panel();
         }
 
+        //draws the lines of the portfolio
         private void Paint_portfolio(object sender, PaintEventArgs e) //paints the portfolio chart
         {
+
+            Pen blackPen = new Pen(penColor, 1);
+            Point p1;
+            Point p2;
+
             foreach (Control ctl in panel_portfolio.Controls) //draws the vertical lines of the chart
             {
                 if (ctl.Tag.ToString() == "initial_label") //only draws on the initial labels
                 {
-                    Pen bp = new Pen(Color.Black, 1); //declares pen
-                    Point p1 = new Point(ctl.Location.X - 5, ctl.Location.Y); //declares point 1
-                    Point p2 = new Point(ctl.Location.X - 5, (gainloss2_label.Location.Y + 56) + 19 * 22); //declares point 2
-                    e.Graphics.DrawLine(bp, p1, p2); //draws line
+                    p1 = new Point(ctl.Location.X - 5, ctl.Location.Y); //declares point 1
+                    p2 = new Point(ctl.Location.X - 5, (gainloss2_label.Location.Y + 56) + 19 * 22); //declares point 2
+                    e.Graphics.DrawLine(blackPen, p1, p2);
                 }
 
             }
 
-            //draws the last line
-            Pen blackPen = new Pen(Color.Black, 1);
-            Point point1 = new Point(gainloss2_label.Location.X + 77, gainloss2_label.Location.Y);
-            Point point2 = new Point(gainloss2_label.Location.X + 77, (gainloss2_label.Location.Y + 56) + 19 * 22);
-            e.Graphics.DrawLine(blackPen, point1, point2);
+            //draws the second vertical line
+            p1 = new Point(gainloss2_label.Location.X + 77, gainloss2_label.Location.Y);
+            p2 = new Point(gainloss2_label.Location.X + 77, (gainloss2_label.Location.Y + 56) + 19 * 22);
+            e.Graphics.DrawLine(blackPen, p1, p2);
             //draws the first horizontal line
-            Pen blapckPen = new Pen(Color.Black, 1);
-            Point ppoint1 = new Point(gainloss2_label.Location.X + 77, gainloss2_label.Location.Y + 37);
-            Point ppoint2 = new Point(symbol_label.Location.X - 5, gainloss2_label.Location.Y + 37);
-            e.Graphics.DrawLine(blapckPen, ppoint1, ppoint2);
+            p1 = new Point(gainloss2_label.Location.X + 77, gainloss2_label.Location.Y + 37);
+            p2 = new Point(symbol_label.Location.X - 5, gainloss2_label.Location.Y + 37);
+            e.Graphics.DrawLine(blackPen, p1, p2);
+
+            p1 = new Point(gainloss2_label.Location.X + 77, gainloss2_label.Location.Y-2);
+            p2 = new Point(symbol_label.Location.X - 5, gainloss2_label.Location.Y-2);
+            e.Graphics.DrawLine(blackPen, p1, p2);
 
             for (int i = 0; i <= 21; i++) //draws the extra horizontal lines
             {
-                Pen bPen = new Pen(Color.Black, 1);
-                Point p1 = new Point(gainloss2_label.Location.X + 77, (gainloss2_label.Location.Y + 56) + i * 22);
-                Point p2 = new Point(symbol_label.Location.X - 5, (gainloss2_label.Location.Y + 56) + i * 22);
-                e.Graphics.DrawLine(bPen, p1, p2);
+                p1 = new Point(gainloss2_label.Location.X + 77, (gainloss2_label.Location.Y + 56) + i * 22);
+                p2 = new Point(symbol_label.Location.X - 5, (gainloss2_label.Location.Y + 56) + i * 22);
+                e.Graphics.DrawLine(blackPen, p1, p2);
             }
         }
 
+
+        //draw the lines of the orders panel
         private void Paint_table(object sender, PaintEventArgs e)
         {
+            Pen bp = new Pen(penColor, 1);
+            Point p1;
+            Point p2;
+
             for (int i = 0; i < 4; i++)
             {
-                Pen blackPen = new Pen(Color.Black, 1);
-                Point point1 = new Point(10 + 60 * i, 0);
-                Point point2 = new Point(10 + 60 * i, 25 * 6);
-                e.Graphics.DrawLine(blackPen, point1, point2);
-
+                p1= new Point(10 + 60 * i, 0);
+                p2 = new Point(10 + 60 * i, 25 * 6);
+                e.Graphics.DrawLine(bp,p1, p2);
             }
-            Pen blackPn = new Pen(Color.Black, 1);
-            Point poin1 = new Point(10 + 180 + 20, 0);
-            Point poit2 = new Point(10 + 180 + 20, 25 * 6);
-            e.Graphics.DrawLine(blackPn, poin1, poit2);
+
+            p1 = new Point(10 + 180 + 20, 0);
+            p2 = new Point(10 + 180 + 20, 25 * 6);
+            e.Graphics.DrawLine(bp, p1, p2);
 
             for (int i = 0; i < 6; i++)
             {
-                Pen bp = new Pen(Color.Black, 1);
-                Point p1 = new Point(10, 25 * (i + 1));
-                Point p2 = new Point(210, 25 * (i + 1));
+                p1 = new Point(10, 25 * (i + 1));
+                p2 = new Point(210, 25 * (i + 1));
                 e.Graphics.DrawLine(bp, p1, p2);
             }
+
+            //adds the lables to the panel
             panel_buyOrders.Controls.Add(Return_label(0, 0, "Symbol", "company_name")); //shows labels that
             panel_buyOrders.Controls.Add(Return_label(60, 0, "Shares", "company_name")); //form the chart
             panel_buyOrders.Controls.Add(Return_label(125, 0, "Price", "company_name"));
@@ -434,6 +482,7 @@ namespace mainSample
             panel_sellOrders.Controls.Add(Return_label(125, 0, "Price", "company_name"));
         }
 
+        //default label creating method
         Label Return_label(int locationx, int i, string text, string tag)
         {
             return new Label
@@ -443,10 +492,14 @@ namespace mainSample
                 Font = new Font("Times New Roman", 9),
                 Name = tag + i,
                 Tag = "object_" + i,
-                AutoSize = true
+                AutoSize = true,
+                ForeColor = foreColor,
+                BackColor = backcolor
+                
             };
         }
 
+        //when cancelling the buyorder
         private void CancelMethodBuy(object sender, EventArgs e)
         {
             RemoveOrderBuy(((Control)sender).Tag.ToString());
@@ -454,6 +507,7 @@ namespace mainSample
             Reload_buy();
         }
 
+        //when cancelling the sellorder
         private void CancelMethodSell(object sender, EventArgs e)
         {
             RemoveOrderSell(((Control)sender).Tag.ToString());
@@ -463,10 +517,12 @@ namespace mainSample
 
         }
 
+        //when removing the sell order
         void RemoveOrderSell(string company)
         {
             int a = -1;
 
+            //checks if the company in which you cancel the order is in your sell labels
             for (int i = 0; i < sell_labels.Count; i++)
             {
                 if (sell_labels[i].ToString() == company)
@@ -474,12 +530,16 @@ namespace mainSample
                     a = i;
                 }
             }
+            //if it is in your sell labels
             if (a != -1)
             {
+                //removes from controls all labels related to that oder
                 panel_sellOrders.Controls.Remove(amount_sell[a]);
                 panel_sellOrders.Controls.Remove(company_sell[a]);
                 panel_sellOrders.Controls.Remove(price_sell[a]);
                 panel_sellOrders.Controls.Remove(cancel_sell[a]);
+
+                //removes it from the lists
                 sell_labels.RemoveAt(a);
                 amount_sell.RemoveAt(a);
                 company_sell.RemoveAt(a);
@@ -487,33 +547,45 @@ namespace mainSample
                 cancel_sell.RemoveAt(a);
 
                 int index = -1;
+
+                //checks if the country is already in your portfolio. The shares you put to sell are actually your shares, so when you cancel it the shares go back to you
                 for (int i = 0; i < Globals.portfolio_companies.Count; i++)
                 {
                     if (Globals.portfolio_companies[i].Name == Globals.sellOrders[a].Name)
                     {
+                        //if the company whose order are cancelling already has shares in your portfolio
                         index = i;
                     }
 
                 }
+
+                //if it is in your portfolio
                 if (index != -1)
                 {
+                    //updates holdings
                     Globals.portfolio_companies[index].Holdings += Globals.sellOrders[a].Holdings;
+
+                    //updates values
                     Globals.portfolio_companies[index].AddValues(Globals.sellOrders[a].Holdings, Globals.sellOrders[a].OriginalPrice); 
                 }
                 else
                 {
+                    //creates a brand new portfolio company
                     Globals.portfolio_companies.Add(
                         new Company(Globals.sellOrders[a].Name, Globals.sellOrders[a].Holdings,Globals.sellOrders[a].OriginalPrice));
                 }
 
+                //removes the order from sell orders
                 Globals.sellOrders.RemoveAt(a);
             }
         }
 
+        //when removing the labels from buy orders
         void RemoveOrderBuy(string company)
         {
             int a = -1;
 
+            //checks the index of the buy order
             for (int i = 0; i < buy_labels.Count; i++)
             {
                 if (buy_labels[i].ToString() == company)
@@ -524,6 +596,8 @@ namespace mainSample
             }
             if (a != -1)
             {
+
+                //removes all orders whose index is the one above.
                 panel_buyOrders.Controls.Remove(amount_buy[a]);
                 panel_buyOrders.Controls.Remove(company_buy[a]);
                 panel_buyOrders.Controls.Remove(price_buy[a]);

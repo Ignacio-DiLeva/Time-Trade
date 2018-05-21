@@ -65,8 +65,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(64, 372);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(173, 33);
@@ -77,7 +78,7 @@
             // panel_sellOrders
             // 
             this.panel_sellOrders.AutoScroll = true;
-            this.panel_sellOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.panel_sellOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.panel_sellOrders.Location = new System.Drawing.Point(54, 408);
             this.panel_sellOrders.Name = "panel_sellOrders";
             this.panel_sellOrders.Size = new System.Drawing.Size(259, 186);
@@ -87,8 +88,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(64, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(173, 33);
@@ -99,8 +101,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(548, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(208, 55);
@@ -109,7 +112,7 @@
             // 
             // panel_portfolio
             // 
-            this.panel_portfolio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.panel_portfolio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.panel_portfolio.Controls.Add(this.gainloss2_label);
             this.panel_portfolio.Controls.Add(this.gainloss1_label);
             this.panel_portfolio.Controls.Add(this.buyprice_label);
@@ -117,6 +120,7 @@
             this.panel_portfolio.Controls.Add(this.price_label);
             this.panel_portfolio.Controls.Add(this.Shares_label);
             this.panel_portfolio.Controls.Add(this.symbol_label);
+            this.panel_portfolio.ForeColor = System.Drawing.Color.White;
             this.panel_portfolio.Location = new System.Drawing.Point(339, 71);
             this.panel_portfolio.Name = "panel_portfolio";
             this.panel_portfolio.Size = new System.Drawing.Size(598, 498);
@@ -126,10 +130,11 @@
             // gainloss2_label
             // 
             this.gainloss2_label.AutoSize = true;
-            this.gainloss2_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.gainloss2_label.Location = new System.Drawing.Point(512, 16);
+            this.gainloss2_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.gainloss2_label.ForeColor = System.Drawing.Color.White;
+            this.gainloss2_label.Location = new System.Drawing.Point(509, 21);
             this.gainloss2_label.Name = "gainloss2_label";
-            this.gainloss2_label.Size = new System.Drawing.Size(72, 34);
+            this.gainloss2_label.Size = new System.Drawing.Size(62, 30);
             this.gainloss2_label.TabIndex = 6;
             this.gainloss2_label.Tag = "initial_label";
             this.gainloss2_label.Text = "Gain/Loss\r\n      (%)";
@@ -137,10 +142,11 @@
             // gainloss1_label
             // 
             this.gainloss1_label.AutoSize = true;
-            this.gainloss1_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.gainloss1_label.Location = new System.Drawing.Point(424, 16);
+            this.gainloss1_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.gainloss1_label.ForeColor = System.Drawing.Color.White;
+            this.gainloss1_label.Location = new System.Drawing.Point(417, 21);
             this.gainloss1_label.Name = "gainloss1_label";
-            this.gainloss1_label.Size = new System.Drawing.Size(76, 34);
+            this.gainloss1_label.Size = new System.Drawing.Size(65, 30);
             this.gainloss1_label.TabIndex = 5;
             this.gainloss1_label.Tag = "initial_label";
             this.gainloss1_label.Text = "Gain/Loss \r\n      ($)";
@@ -148,10 +154,11 @@
             // buyprice_label
             // 
             this.buyprice_label.AutoSize = true;
-            this.buyprice_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buyprice_label.Location = new System.Drawing.Point(328, 16);
+            this.buyprice_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.buyprice_label.ForeColor = System.Drawing.Color.White;
+            this.buyprice_label.Location = new System.Drawing.Point(329, 21);
             this.buyprice_label.Name = "buyprice_label";
-            this.buyprice_label.Size = new System.Drawing.Size(67, 17);
+            this.buyprice_label.Size = new System.Drawing.Size(57, 15);
             this.buyprice_label.TabIndex = 4;
             this.buyprice_label.Tag = "initial_label";
             this.buyprice_label.Text = "Buy price";
@@ -159,10 +166,11 @@
             // Cost_label
             // 
             this.Cost_label.AutoSize = true;
-            this.Cost_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Cost_label.Location = new System.Drawing.Point(244, 16);
+            this.Cost_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.Cost_label.ForeColor = System.Drawing.Color.White;
+            this.Cost_label.Location = new System.Drawing.Point(251, 21);
             this.Cost_label.Name = "Cost_label";
-            this.Cost_label.Size = new System.Drawing.Size(36, 17);
+            this.Cost_label.Size = new System.Drawing.Size(31, 15);
             this.Cost_label.TabIndex = 3;
             this.Cost_label.Tag = "initial_label";
             this.Cost_label.Text = "Cost";
@@ -170,10 +178,11 @@
             // price_label
             // 
             this.price_label.AutoSize = true;
-            this.price_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.price_label.Location = new System.Drawing.Point(165, 16);
+            this.price_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.price_label.ForeColor = System.Drawing.Color.White;
+            this.price_label.Location = new System.Drawing.Point(172, 21);
             this.price_label.Name = "price_label";
-            this.price_label.Size = new System.Drawing.Size(55, 34);
+            this.price_label.Size = new System.Drawing.Size(47, 30);
             this.price_label.TabIndex = 2;
             this.price_label.Tag = "initial_label";
             this.price_label.Text = "Current\r\nprice";
@@ -181,10 +190,11 @@
             // Shares_label
             // 
             this.Shares_label.AutoSize = true;
-            this.Shares_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Shares_label.Location = new System.Drawing.Point(87, 16);
+            this.Shares_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.Shares_label.ForeColor = System.Drawing.Color.White;
+            this.Shares_label.Location = new System.Drawing.Point(94, 21);
             this.Shares_label.Name = "Shares_label";
-            this.Shares_label.Size = new System.Drawing.Size(53, 17);
+            this.Shares_label.Size = new System.Drawing.Size(46, 15);
             this.Shares_label.TabIndex = 1;
             this.Shares_label.Tag = "initial_label";
             this.Shares_label.Text = "Shares";
@@ -192,10 +202,11 @@
             // symbol_label
             // 
             this.symbol_label.AutoSize = true;
-            this.symbol_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.symbol_label.Location = new System.Drawing.Point(13, 16);
+            this.symbol_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.symbol_label.ForeColor = System.Drawing.Color.White;
+            this.symbol_label.Location = new System.Drawing.Point(20, 21);
             this.symbol_label.Name = "symbol_label";
-            this.symbol_label.Size = new System.Drawing.Size(54, 17);
+            this.symbol_label.Size = new System.Drawing.Size(48, 15);
             this.symbol_label.TabIndex = 0;
             this.symbol_label.Tag = "initial_label";
             this.symbol_label.Text = "Symbol";
@@ -203,7 +214,7 @@
             // panel_buyOrders
             // 
             this.panel_buyOrders.AutoScroll = true;
-            this.panel_buyOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.panel_buyOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.panel_buyOrders.Location = new System.Drawing.Point(54, 192);
             this.panel_buyOrders.Name = "panel_buyOrders";
             this.panel_buyOrders.Size = new System.Drawing.Size(259, 167);
@@ -227,7 +238,7 @@
             this.total_balance.AutoSize = true;
             this.total_balance.Depth = 0;
             this.total_balance.Font = new System.Drawing.Font("Roboto", 11F);
-            this.total_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.total_balance.ForeColor = System.Drawing.Color.White;
             this.total_balance.Location = new System.Drawing.Point(68, 113);
             this.total_balance.MouseState = MaterialSkin.MouseState.HOVER;
             this.total_balance.Name = "total_balance";
@@ -240,7 +251,7 @@
             this.Balance_label.AutoSize = true;
             this.Balance_label.Depth = 0;
             this.Balance_label.Font = new System.Drawing.Font("Roboto", 11F);
-            this.Balance_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Balance_label.ForeColor = System.Drawing.Color.White;
             this.Balance_label.Location = new System.Drawing.Point(51, 18);
             this.Balance_label.MouseState = MaterialSkin.MouseState.HOVER;
             this.Balance_label.Name = "Balance_label";
@@ -253,7 +264,7 @@
             this.stocks_balance.AutoSize = true;
             this.stocks_balance.Depth = 0;
             this.stocks_balance.Font = new System.Drawing.Font("Roboto", 11F);
-            this.stocks_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.stocks_balance.ForeColor = System.Drawing.Color.White;
             this.stocks_balance.Location = new System.Drawing.Point(66, 84);
             this.stocks_balance.MouseState = MaterialSkin.MouseState.HOVER;
             this.stocks_balance.Name = "stocks_balance";
@@ -266,7 +277,7 @@
             this.account_money.AutoSize = true;
             this.account_money.Depth = 0;
             this.account_money.Font = new System.Drawing.Font("Roboto", 11F);
-            this.account_money.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.account_money.ForeColor = System.Drawing.Color.White;
             this.account_money.Location = new System.Drawing.Point(66, 54);
             this.account_money.MouseState = MaterialSkin.MouseState.HOVER;
             this.account_money.Name = "account_money";
@@ -278,6 +289,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.ClientSize = new System.Drawing.Size(975, 600);
             this.Controls.Add(this.total_balance);
             this.Controls.Add(this.Balance_label);
