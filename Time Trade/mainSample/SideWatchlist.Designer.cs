@@ -67,16 +67,15 @@
             this.watchlist2 = new System.Windows.Forms.Label();
             this.watchlist1 = new System.Windows.Forms.Label();
             this.watchlist0 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.DayMonth = new System.Windows.Forms.Label();
             this.Year = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label1.Location = new System.Drawing.Point(65, 205);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
@@ -98,8 +97,9 @@
             // 
             // close8
             // 
-            this.close8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close8.Location = new System.Drawing.Point(194, 513);
             this.close8.Name = "close8";
             this.close8.Size = new System.Drawing.Size(24, 26);
@@ -111,8 +111,9 @@
             // 
             // close7
             // 
-            this.close7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close7.Location = new System.Drawing.Point(194, 481);
             this.close7.Name = "close7";
             this.close7.Size = new System.Drawing.Size(25, 25);
@@ -124,8 +125,9 @@
             // 
             // close6
             // 
-            this.close6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close6.Location = new System.Drawing.Point(194, 446);
             this.close6.Name = "close6";
             this.close6.Size = new System.Drawing.Size(25, 25);
@@ -137,8 +139,9 @@
             // 
             // close5
             // 
-            this.close5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close5.Location = new System.Drawing.Point(194, 411);
             this.close5.Name = "close5";
             this.close5.Size = new System.Drawing.Size(25, 25);
@@ -150,8 +153,9 @@
             // 
             // close4
             // 
-            this.close4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close4.Location = new System.Drawing.Point(194, 376);
             this.close4.Name = "close4";
             this.close4.Size = new System.Drawing.Size(25, 25);
@@ -163,8 +167,9 @@
             // 
             // close3
             // 
-            this.close3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close3.Location = new System.Drawing.Point(194, 341);
             this.close3.Name = "close3";
             this.close3.Size = new System.Drawing.Size(25, 25);
@@ -176,8 +181,9 @@
             // 
             // close2
             // 
-            this.close2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close2.Location = new System.Drawing.Point(194, 306);
             this.close2.Name = "close2";
             this.close2.Size = new System.Drawing.Size(25, 25);
@@ -189,8 +195,9 @@
             // 
             // close1
             // 
-            this.close1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close1.Location = new System.Drawing.Point(194, 271);
             this.close1.Name = "close1";
             this.close1.Size = new System.Drawing.Size(25, 25);
@@ -213,7 +220,8 @@
             // 
             // down8
             // 
-            this.down8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down8.Location = new System.Drawing.Point(0, 526);
             this.down8.Name = "down8";
             this.down8.Size = new System.Drawing.Size(38, 12);
@@ -224,7 +232,8 @@
             // 
             // up8
             // 
-            this.up8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.up8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.up8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.up8.Location = new System.Drawing.Point(0, 513);
             this.up8.Name = "up8";
             this.up8.Size = new System.Drawing.Size(38, 12);
@@ -235,7 +244,8 @@
             // 
             // down7
             // 
-            this.down7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down7.Location = new System.Drawing.Point(0, 494);
             this.down7.Name = "down7";
             this.down7.Size = new System.Drawing.Size(38, 12);
@@ -246,7 +256,8 @@
             // 
             // up7
             // 
-            this.up7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.up7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.up7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.up7.Location = new System.Drawing.Point(0, 481);
             this.up7.Name = "up7";
             this.up7.Size = new System.Drawing.Size(38, 12);
@@ -257,7 +268,8 @@
             // 
             // down6
             // 
-            this.down6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down6.Location = new System.Drawing.Point(0, 459);
             this.down6.Name = "down6";
             this.down6.Size = new System.Drawing.Size(38, 12);
@@ -268,7 +280,8 @@
             // 
             // up6
             // 
-            this.up6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.up6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.up6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.up6.Location = new System.Drawing.Point(0, 446);
             this.up6.Name = "up6";
             this.up6.Size = new System.Drawing.Size(38, 12);
@@ -279,7 +292,8 @@
             // 
             // down5
             // 
-            this.down5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down5.Location = new System.Drawing.Point(0, 424);
             this.down5.Name = "down5";
             this.down5.Size = new System.Drawing.Size(38, 12);
@@ -290,7 +304,8 @@
             // 
             // up5
             // 
-            this.up5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.up5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.up5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.up5.Location = new System.Drawing.Point(0, 411);
             this.up5.Name = "up5";
             this.up5.Size = new System.Drawing.Size(38, 12);
@@ -301,7 +316,8 @@
             // 
             // down4
             // 
-            this.down4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down4.Location = new System.Drawing.Point(0, 389);
             this.down4.Name = "down4";
             this.down4.Size = new System.Drawing.Size(38, 12);
@@ -312,7 +328,8 @@
             // 
             // up4
             // 
-            this.up4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.up4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.up4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.up4.Location = new System.Drawing.Point(0, 376);
             this.up4.Name = "up4";
             this.up4.Size = new System.Drawing.Size(38, 12);
@@ -323,7 +340,8 @@
             // 
             // down3
             // 
-            this.down3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down3.Location = new System.Drawing.Point(0, 354);
             this.down3.Name = "down3";
             this.down3.Size = new System.Drawing.Size(38, 12);
@@ -334,7 +352,8 @@
             // 
             // up3
             // 
-            this.up3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.up3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.up3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.up3.Location = new System.Drawing.Point(0, 342);
             this.up3.Name = "up3";
             this.up3.Size = new System.Drawing.Size(38, 12);
@@ -345,7 +364,8 @@
             // 
             // down2
             // 
-            this.down2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down2.Location = new System.Drawing.Point(0, 319);
             this.down2.Name = "down2";
             this.down2.Size = new System.Drawing.Size(38, 12);
@@ -356,7 +376,8 @@
             // 
             // up2
             // 
-            this.up2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.up2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.up2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.up2.Location = new System.Drawing.Point(0, 306);
             this.up2.Name = "up2";
             this.up2.Size = new System.Drawing.Size(38, 12);
@@ -367,7 +388,8 @@
             // 
             // down1
             // 
-            this.down1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down1.Location = new System.Drawing.Point(0, 284);
             this.down1.Name = "down1";
             this.down1.Size = new System.Drawing.Size(38, 12);
@@ -378,7 +400,8 @@
             // 
             // up1
             // 
-            this.up1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.up1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.up1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.up1.Location = new System.Drawing.Point(0, 271);
             this.up1.Name = "up1";
             this.up1.Size = new System.Drawing.Size(38, 12);
@@ -389,8 +412,9 @@
             // 
             // close0
             // 
-            this.close0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.close0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.close0.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.close0.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.close0.Location = new System.Drawing.Point(194, 236);
             this.close0.Name = "close0";
             this.close0.Size = new System.Drawing.Size(25, 25);
@@ -402,7 +426,8 @@
             // 
             // down0
             // 
-            this.down0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.down0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.down0.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.down0.Location = new System.Drawing.Point(0, 249);
             this.down0.Name = "down0";
             this.down0.Size = new System.Drawing.Size(38, 12);
@@ -427,8 +452,9 @@
             // 
             // watchlist8
             // 
-            this.watchlist8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist8.Location = new System.Drawing.Point(38, 513);
             this.watchlist8.Name = "watchlist8";
             this.watchlist8.Size = new System.Drawing.Size(151, 25);
@@ -441,8 +467,9 @@
             // 
             // watchlist7
             // 
-            this.watchlist7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist7.Location = new System.Drawing.Point(38, 481);
             this.watchlist7.Name = "watchlist7";
             this.watchlist7.Size = new System.Drawing.Size(151, 25);
@@ -455,8 +482,9 @@
             // 
             // watchlist6
             // 
-            this.watchlist6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist6.Location = new System.Drawing.Point(38, 446);
             this.watchlist6.Name = "watchlist6";
             this.watchlist6.Size = new System.Drawing.Size(151, 25);
@@ -469,8 +497,9 @@
             // 
             // watchlist5
             // 
-            this.watchlist5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist5.Location = new System.Drawing.Point(38, 411);
             this.watchlist5.Name = "watchlist5";
             this.watchlist5.Size = new System.Drawing.Size(151, 25);
@@ -483,8 +512,9 @@
             // 
             // watchlist4
             // 
-            this.watchlist4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist4.Location = new System.Drawing.Point(38, 376);
             this.watchlist4.Name = "watchlist4";
             this.watchlist4.Size = new System.Drawing.Size(151, 25);
@@ -497,8 +527,9 @@
             // 
             // watchlist3
             // 
-            this.watchlist3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist3.Location = new System.Drawing.Point(38, 341);
             this.watchlist3.Name = "watchlist3";
             this.watchlist3.Size = new System.Drawing.Size(151, 25);
@@ -511,8 +542,9 @@
             // 
             // watchlist2
             // 
-            this.watchlist2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist2.Location = new System.Drawing.Point(38, 306);
             this.watchlist2.Name = "watchlist2";
             this.watchlist2.Size = new System.Drawing.Size(151, 25);
@@ -525,8 +557,9 @@
             // 
             // watchlist1
             // 
-            this.watchlist1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist1.Location = new System.Drawing.Point(38, 271);
             this.watchlist1.Name = "watchlist1";
             this.watchlist1.Size = new System.Drawing.Size(151, 25);
@@ -539,8 +572,9 @@
             // 
             // watchlist0
             // 
-            this.watchlist0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.watchlist0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.watchlist0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.watchlist0.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.watchlist0.Location = new System.Drawing.Point(38, 236);
             this.watchlist0.Name = "watchlist0";
             this.watchlist0.Size = new System.Drawing.Size(151, 25);
@@ -551,20 +585,12 @@
             this.watchlist0.Click += new System.EventHandler(this.RequestAdditionIntoWatchlist);
             this.watchlist0.DoubleClick += new System.EventHandler(this.RedirectToTrade);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(225, 600);
-            this.pictureBox1.TabIndex = 50;
-            this.pictureBox1.TabStop = false;
-            // 
             // DayMonth
             // 
             this.DayMonth.AutoSize = true;
-            this.DayMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.DayMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.DayMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.DayMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.DayMonth.Location = new System.Drawing.Point(31, 50);
             this.DayMonth.Name = "DayMonth";
             this.DayMonth.Size = new System.Drawing.Size(162, 63);
@@ -574,8 +600,9 @@
             // Year
             // 
             this.Year.AutoSize = true;
-            this.Year.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.Year.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.Year.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.Year.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.Year.Location = new System.Drawing.Point(38, 113);
             this.Year.Name = "Year";
             this.Year.Size = new System.Drawing.Size(147, 63);
@@ -586,7 +613,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.ClientSize = new System.Drawing.Size(225, 600);
             this.Controls.Add(this.Year);
             this.Controls.Add(this.DayMonth);
@@ -629,7 +656,6 @@
             this.Controls.Add(this.watchlist2);
             this.Controls.Add(this.watchlist1);
             this.Controls.Add(this.watchlist0);
-            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "SideWatchlist";
@@ -637,7 +663,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Watchlist";
             this.Load += new System.EventHandler(this.OnLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -684,7 +709,6 @@
         private System.Windows.Forms.Label watchlist2;
         private System.Windows.Forms.Label watchlist1;
         private System.Windows.Forms.Label watchlist0;
-        private System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.Label DayMonth;
         public System.Windows.Forms.Label Year;
     }
