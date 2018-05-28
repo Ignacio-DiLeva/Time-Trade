@@ -321,12 +321,12 @@ namespace mainSample //Namespace
             });
         }
 
-        private void TemporalMin(object sender, EventArgs e)
+        private void TempMinimize(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
 
-        private void TemporalClose(object sender, EventArgs e)
+        private void TempClose(object sender, EventArgs e)
         {
             Close();
         }

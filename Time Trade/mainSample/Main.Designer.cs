@@ -34,17 +34,23 @@
             this.AccountBtn = new System.Windows.Forms.Button();
             this.WatchlistBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.showLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // showLogo
             // 
             this.showLogo.BackColor = System.Drawing.Color.Blue;
             this.showLogo.Image = global::mainSample.Properties.Resources.Time_Trade_Logo;
-            this.showLogo.Location = new System.Drawing.Point(0, 10);
+            this.showLogo.Location = new System.Drawing.Point(0, 20);
             this.showLogo.Name = "showLogo";
-            this.showLogo.Size = new System.Drawing.Size(80, 80);
+            this.showLogo.Size = new System.Drawing.Size(80, 70);
             this.showLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.showLogo.TabIndex = 0;
             this.showLogo.TabStop = false;
@@ -57,9 +63,9 @@
             this.TradeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TradeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
             this.TradeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.TradeBtn.Location = new System.Drawing.Point(80, 10);
+            this.TradeBtn.Location = new System.Drawing.Point(80, 20);
             this.TradeBtn.Name = "TradeBtn";
-            this.TradeBtn.Size = new System.Drawing.Size(165, 80);
+            this.TradeBtn.Size = new System.Drawing.Size(165, 70);
             this.TradeBtn.TabIndex = 1;
             this.TradeBtn.Tag = "Trade";
             this.TradeBtn.Text = "Trade";
@@ -73,9 +79,9 @@
             this.StockBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StockBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
             this.StockBtn.ForeColor = System.Drawing.Color.Black;
-            this.StockBtn.Location = new System.Drawing.Point(245, 10);
+            this.StockBtn.Location = new System.Drawing.Point(245, 20);
             this.StockBtn.Name = "StockBtn";
-            this.StockBtn.Size = new System.Drawing.Size(165, 80);
+            this.StockBtn.Size = new System.Drawing.Size(165, 70);
             this.StockBtn.TabIndex = 2;
             this.StockBtn.Tag = "Stock";
             this.StockBtn.Text = "Stock";
@@ -89,9 +95,9 @@
             this.AccountBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AccountBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
             this.AccountBtn.ForeColor = System.Drawing.Color.Black;
-            this.AccountBtn.Location = new System.Drawing.Point(410, 10);
+            this.AccountBtn.Location = new System.Drawing.Point(410, 20);
             this.AccountBtn.Name = "AccountBtn";
-            this.AccountBtn.Size = new System.Drawing.Size(165, 80);
+            this.AccountBtn.Size = new System.Drawing.Size(165, 70);
             this.AccountBtn.TabIndex = 3;
             this.AccountBtn.Tag = "Account";
             this.AccountBtn.Text = "Account";
@@ -105,9 +111,9 @@
             this.WatchlistBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WatchlistBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.WatchlistBtn.ForeColor = System.Drawing.Color.Black;
-            this.WatchlistBtn.Location = new System.Drawing.Point(575, 10);
+            this.WatchlistBtn.Location = new System.Drawing.Point(575, 20);
             this.WatchlistBtn.Name = "WatchlistBtn";
-            this.WatchlistBtn.Size = new System.Drawing.Size(165, 80);
+            this.WatchlistBtn.Size = new System.Drawing.Size(165, 70);
             this.WatchlistBtn.TabIndex = 4;
             this.WatchlistBtn.Tag = "Watchlist";
             this.WatchlistBtn.Text = "Watchlist";
@@ -117,18 +123,50 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.pictureBox1.Location = new System.Drawing.Point(740, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(740, 20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(235, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(235, 70);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Red;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.TempClose);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Red;
+            this.pictureBox3.Location = new System.Drawing.Point(30, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.TempMinimize);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.pictureBox4.Location = new System.Drawing.Point(20, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(10, 20);
+            this.pictureBox4.TabIndex = 8;
+            this.pictureBox4.TabStop = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.ClientSize = new System.Drawing.Size(1200, 675);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.WatchlistBtn);
             this.Controls.Add(this.AccountBtn);
@@ -147,6 +185,9 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AllowMove);
             ((System.ComponentModel.ISupportInitialize)(this.showLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -158,6 +199,9 @@
         private System.Windows.Forms.Button AccountBtn;
         private System.Windows.Forms.Button WatchlistBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
 
