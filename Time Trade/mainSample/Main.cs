@@ -56,10 +56,10 @@ namespace mainSample //Namespace
                     FlatStyle = FlatStyle.Flat
                 };
                 b.FlatAppearance.BorderColor = Color.FromArgb(0,238,255);
-                if (i == 0) { b.Text = "Trade"; b.Click += ShowForm; b.Tag = b.Text; b.BackgroundImage = Properties.Resources.BOTON_APRETADO_2; } //Trade section (DEFAULT)
-                if (i == 1) { b.Text = "Stock"; b.Click += ShowForm; b.Tag = b.Text; b.BackgroundImage = Properties.Resources.BOTON_APRETADO_2; } //Stock section
-                if (i == 2) { b.Text = "Account"; b.Click += ShowForm; b.Tag = b.Text; b.BackgroundImage = Properties.Resources.BOTON_APRETADO_2; } //Portfolio
-                if (i == 3) { b.Text = "Watchlist"; b.Click += ShowForm; b.Tag = b.Text; b.BackgroundImage = Properties.Resources.BOTON_APRETADO_2; } //WatchList
+                if (i == 0) { b.Text = "Trade"; b.Click += ShowForm; b.Tag = b.Text;} //Trade section (DEFAULT)
+                if (i == 1) { b.Text = "Stock"; b.Click += ShowForm; b.Tag = b.Text;} //Stock section
+                if (i == 2) { b.Text = "Account"; b.Click += ShowForm; b.Tag = b.Text;} //Portfolio
+                if (i == 3) { b.Text = "Watchlist"; b.Click += ShowForm; b.Tag = b.Text;} //WatchList
                 Controls.Add(b); //We add it to Controls
                 b.BringToFront();
             }
