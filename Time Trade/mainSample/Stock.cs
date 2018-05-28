@@ -54,8 +54,8 @@ namespace mainSample
 
         private void RedirectToTrade(object sender, EventArgs e)
         {
-            Globals.trade.Searcher.Text = companyData.Tag.ToString();
-            Globals.main.ShowForm("Trade");
+            Globals.sideWatchlist.Searcher.SelectedIndex = Utilities.GetIndexOfCompany(companyData.Tag.ToString());
+            Globals.main.ShowForm(Globals.main.TradeBtn,null);
             Hide();
             Globals.main.currentForm = "Trade";
             Globals.main.showLogo.Tag = Globals.main.currentForm;

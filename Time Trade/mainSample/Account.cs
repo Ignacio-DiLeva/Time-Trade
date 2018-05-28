@@ -80,8 +80,8 @@ namespace mainSample
         //when you click the label, you are redirected to trade
         private void RedirectToTrade(object sender, EventArgs e)
         {
-            Globals.trade.Searcher.Text = ((Control)sender).Text;
-            Globals.main.ShowForm("Trade");
+            Globals.sideWatchlist.Searcher.SelectedIndex = Utilities.GetIndexOfCompany(((Control)sender).Text);
+            Globals.main.ShowForm(Globals.main.TradeBtn,null);
             Hide();
             Globals.main.currentForm = "Trade";
             Globals.main.showLogo.Tag = Globals.main.currentForm;

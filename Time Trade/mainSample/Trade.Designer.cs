@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Trade));
             this.canvas = new System.Windows.Forms.Panel();
-            this.Searcher = new System.Windows.Forms.ComboBox();
-            this.displayedCompany = new MaterialSkin.Controls.MaterialLabel();
             this.companyPrices = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuySelected = new System.Windows.Forms.Button();
             this.orderLimit = new System.Windows.Forms.NumericUpDown();
@@ -57,38 +55,6 @@
             this.canvas.Size = new System.Drawing.Size(975, 400);
             this.canvas.TabIndex = 5;
             this.canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.CanvasPaint);
-            // 
-            // Searcher
-            // 
-            this.Searcher.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.Searcher.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Searcher.BackColor = System.Drawing.SystemColors.Window;
-            this.Searcher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Searcher.FormattingEnabled = true;
-            this.Searcher.Location = new System.Drawing.Point(712, 27);
-            this.Searcher.Name = "Searcher";
-            this.Searcher.Size = new System.Drawing.Size(235, 21);
-            this.Searcher.TabIndex = 0;
-            this.Searcher.TabStop = false;
-            this.Searcher.Text = "AAPL (Apple, Inc.)";
-            this.Searcher.SelectedIndexChanged += new System.EventHandler(this.CheckChangeOnSearcher);
-            this.Searcher.SelectedValueChanged += new System.EventHandler(this.CheckChangeOnSearcher);
-            // 
-            // displayedCompany
-            // 
-            this.displayedCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.displayedCompany.Depth = 0;
-            this.displayedCompany.Font = new System.Drawing.Font("Roboto", 11F);
-            this.displayedCompany.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.displayedCompany.Location = new System.Drawing.Point(251, 26);
-            this.displayedCompany.MouseState = MaterialSkin.MouseState.HOVER;
-            this.displayedCompany.Name = "displayedCompany";
-            this.displayedCompany.Size = new System.Drawing.Size(75, 19);
-            this.displayedCompany.TabIndex = 6;
-            this.displayedCompany.Tag = "0";
-            this.displayedCompany.Text = "AAPL";
-            this.displayedCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.displayedCompany.TextChanged += new System.EventHandler(this.ExternalCanvasRefresh);
             // 
             // companyPrices
             // 
@@ -288,8 +254,6 @@
             this.Controls.Add(this.btnBuySelected);
             this.Controls.Add(this.btnSellSelected);
             this.Controls.Add(this.companyPrices);
-            this.Controls.Add(this.displayedCompany);
-            this.Controls.Add(this.Searcher);
             this.Controls.Add(this.canvas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -318,10 +282,8 @@
         private System.Windows.Forms.Button btnLimitSelected;
         private System.Windows.Forms.NumericUpDown orderCount;
         private System.Windows.Forms.Label label_balance;
-        public System.Windows.Forms.ComboBox Searcher;
         private System.Windows.Forms.NumericUpDown WeeksToAdd;
         private System.Windows.Forms.Button btnAdvanceInTime;
-        private MaterialSkin.Controls.MaterialLabel displayedCompany;
         public System.Windows.Forms.Button btnRequestBest;
     }
 }

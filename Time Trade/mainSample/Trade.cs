@@ -26,19 +26,12 @@ namespace mainSample
 
         private void OnLoad(object sender, EventArgs e)
         {
-            for(int i=0;i< Constants.companies.Count;i++)
-            {
-                Searcher.Items.Add(Constants.companies[i]+" ("+ Constants.stockInfo[i,0]+")");
-            }
-            displayedCompany.Text = Globals.displayedCompany;
-            Searcher.Text = Globals.displayedCompany + " ("+ Constants.stockInfo[Utilities.GetIndexOfCompany(Globals.displayedCompany),0]+")";
             label_balance.Text = Globals.moneyBalance.ToString();
         }
 
         void RefreshCanvas(object sender, EventArgs e)
         {
-            ((Control)sender).BackgroundImage = Properties.Resources.BOTON_APRETADO_2;
-            Searcher.Enabled = false;
+            Globals.sideWatchlist.Searcher.Enabled = false;
             btnPlaceOrder.Enabled = false;
             btnAdvanceInTime.Enabled = false;
             Globals.main.AllowInput(false);
@@ -84,7 +77,7 @@ namespace mainSample
                 Invoke((MethodInvoker)delegate //We Invoke UI commands
                 {
                     btnAdvanceInTime.BackgroundImage = Properties.Resources.BOTON_NORMAL_2;
-                    Searcher.Enabled = true;
+                    Globals.sideWatchlist.Searcher.Enabled = true;
                     btnPlaceOrder.Enabled = true;
                     btnAdvanceInTime.Enabled = true;
                     Globals.main.AllowInput(true);
@@ -208,13 +201,11 @@ namespace mainSample
 
         public void ExternalCanvasRefresh(object sender, EventArgs e)
         {
-            Globals.displayedCompany = displayedCompany.Text;
             if (!makingTransition)
             {
                 canvas.Refresh();
                 Globals.account.Update_portfolio();
             }
-            
         }
 
         void AddReferenceToCanvas(int priceReference, double render)
@@ -222,9 +213,9 @@ namespace mainSample
             Invoke((MethodInvoker)delegate 
             {
                 companyPrices.Text = "$" 
-                + Utilities.ReadInfo(displayedCompany.Text, Globals.today) 
-                + "     HIGH: $" + Utilities.ReadInfo(displayedCompany.Text, Globals.today, "HIGH") 
-                + "     LOW: $" + Utilities.ReadInfo(displayedCompany.Text, Globals.today, "LOW");
+                + Utilities.ReadInfo(Globals.displayedCompany, Globals.today) 
+                + "     HIGH: $" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today, "HIGH") 
+                + "     LOW: $" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today, "LOW");
             });
             renderingLabels = true;
             Invoke((MethodInvoker)delegate { canvas.Controls.Clear(); });
@@ -279,7 +270,7 @@ namespace mainSample
                 double[] getValues = new double[Constants.displayedDays];
                 for (int i = 0; i < getValues.Length; i++)
                 {
-                    getValues[i] = Utilities.ReadInfo(displayedCompany.Text, Globals.today.AddDays(-Constants.displayedDays + 1 + i));
+                    getValues[i] = Utilities.ReadInfo(Globals.displayedCompany, Globals.today.AddDays(-Constants.displayedDays + 1 + i));
                 }
                 double tempMin = 400, tempMax = 0;
                 for (int i = 0; i < getValues.Length; i++)
@@ -329,29 +320,23 @@ namespace mainSample
                 int max = 0;
                 for(int i = 0; i < 60; i++)
                 {
-                    if (Utilities.ReadInfo(displayedCompany.Text, Globals.today.AddDays(-60 + i + 1), "VOLUME") > max) 
+                    if (Utilities.ReadInfo(Globals.displayedCompany, Globals.today.AddDays(-60 + i + 1), "VOLUME") > max) 
                     {
-                        max = Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text, Globals.today.AddDays(-60 + i + 1), "VOLUME"))); //We get the volume maximum
+                        max = Convert.ToInt32(Math.Floor(Utilities.ReadInfo(Globals.displayedCompany, Globals.today.AddDays(-60 + i + 1), "VOLUME"))); //We get the volume maximum
                     }
                 }
                 for(int i = 0; i < getValues.Length; i++) //Foreach day
                 {
                     e.Graphics.FillRectangle(new SolidBrush(Color.Gray), new Rectangle(new Point(70 + i * (900 / Constants.displayedDays), //We fill a rectangle
 
-                    400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text,Globals.today.AddDays(-60+i+1),"VOLUME"))) //Location.Y
+                    400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(Globals.displayedCompany,Globals.today.AddDays(-60+i+1),"VOLUME"))) //Location.Y
                     /(max/60)),
 
-                    new Size(10, 400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(displayedCompany.Text, Globals.today.AddDays(-60+i+1), "VOLUME"))) //Size
+                    new Size(10, 400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(Globals.displayedCompany, Globals.today.AddDays(-60+i+1), "VOLUME"))) //Size
                     / (max / 60))));
                 }
             }
             catch(Exception) {  }
-        }
-
-        private void CheckChangeOnSearcher(object sender, EventArgs e)
-        {
-            displayedCompany.Text = ((Control)sender).Text.Split(' ')[0];
-            displayedCompany.Tag = Utilities.GetIndexOfCompany(displayedCompany.Text);
         }
 
         private void OrderSelection(object sender, EventArgs e)
@@ -400,10 +385,10 @@ namespace mainSample
         private void PlaceOrder(object sender, EventArgs e) //For placing orders
         {
             ((Control)sender).BackgroundImage = Properties.Resources.BOTON_APRETADO_2;
-            int Index_Stocks = CheckIndex(displayedCompany.Text, Globals.portfolio_companies); //returns the index of the company selected in portfolio
+            int Index_Stocks = CheckIndex(Globals.displayedCompany, Globals.portfolio_companies); //returns the index of the company selected in portfolio
             if (btnMarketSelected.Enabled == false && CheckConditions())  //Check if you want to do market or place limit
             {
-                double currentValue = Utilities.ReadInfo(displayedCompany.Text, Globals.today);
+                double currentValue = Utilities.ReadInfo(Globals.displayedCompany, Globals.today);
                 if (btnBuySelected.Enabled == false) //check if you want to buy or sell
                 {
                     if (Globals.moneyBalance - Convert.ToInt32(orderCount.Value) * currentValue >= 0) //check if you have the money to buy the amount of holdings
@@ -411,7 +396,7 @@ namespace mainSample
                         if (Index_Stocks == -1) //check if you have stocks of the company you want to buy
                         {
                             //adds a new company since you don't have stocks in it
-                            Globals.portfolio_companies.Add(new Company(displayedCompany.Text, Convert.ToInt32(orderCount.Value), currentValue));
+                            Globals.portfolio_companies.Add(new Company(Globals.displayedCompany, Convert.ToInt32(orderCount.Value), currentValue));
                         }
 
                         else if (Index_Stocks != -1)
@@ -437,7 +422,7 @@ namespace mainSample
                 else if (btnSellSelected.Enabled == false) //when you want to sell
                 {
                     //checks if you have holdings in that company
-                    if (CheckIndex(displayedCompany.Text, Globals.portfolio_companies) != -1)
+                    if (CheckIndex(Globals.displayedCompany, Globals.portfolio_companies) != -1)
                     {
                         //checks if you have enough holdings to sell
                         if (Convert.ToInt32(orderCount.Value) <= Globals.portfolio_companies[Index_Stocks].Holdings)
@@ -470,7 +455,7 @@ namespace mainSample
                 if (btnBuySelected.Enabled == false) //if the buy option for limit is clicked
                 {
                     //check if the company is in the limit orders or not
-                    int Index_BuyOrders = CheckIndex(displayedCompany.Text, Globals.buyOrders); 
+                    int Index_BuyOrders = CheckIndex(Globals.displayedCompany, Globals.buyOrders); 
                     //limited to only 5 orders
                     if (Globals.buyOrders.Count < 5)
                     {
@@ -489,7 +474,7 @@ namespace mainSample
                         else //if the company isn't inside of the limit orders
                         {
                             //adds a new company order
-                            Globals.buyOrders.Add(new Order(displayedCompany.Text, Convert.ToInt32(orderCount.Value), Convert.ToInt32(orderLimit.Value), Globals.today));
+                            Globals.buyOrders.Add(new Order(Globals.displayedCompany, Convert.ToInt32(orderCount.Value), Convert.ToInt32(orderLimit.Value), Globals.today));
                         }
                         MessageBox.Show("Order placed");
                         Globals.account.Reload_buy();
@@ -501,7 +486,7 @@ namespace mainSample
                 else if (btnSellSelected.Enabled == false) 
                 {
                     //check if the company is in the limit orders or not
-                    int IndexSell_Orders = CheckIndex(displayedCompany.Text, Globals.sellOrders); 
+                    int IndexSell_Orders = CheckIndex(Globals.displayedCompany, Globals.sellOrders); 
 
                     //limited to 5 orders
                     if (Globals.sellOrders.Count < 5)
@@ -561,7 +546,7 @@ namespace mainSample
                                     // and the original value it had.
                                     Globals.sellOrders.Add(
                                         new Order(
-                                            displayedCompany.Text, 
+                                            Globals.displayedCompany, 
                                             Convert.ToInt32(orderCount.Value), 
                                             Convert.ToInt32(orderLimit.Value),
                                             Globals.today, 

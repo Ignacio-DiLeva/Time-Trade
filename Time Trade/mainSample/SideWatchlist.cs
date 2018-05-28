@@ -15,6 +15,12 @@ namespace mainSample
         private void OnLoad(object sender, EventArgs e)
         {
             addingToWatchlist = false;
+            for (int i = 0; i < Constants.companies.Count; i++)
+            {
+                Searcher.Items.Add(Constants.companies[i] + " (" + Constants.stockInfo[i, 0] + ")");
+            }
+            //displayedCompany.Text = Globals.displayedCompany; TODO
+            Searcher.Text = Globals.displayedCompany + " (" + Constants.stockInfo[Utilities.GetIndexOfCompany(Globals.displayedCompany), 0] + ")";
             UpdateWatchlistData();
         }
 
@@ -151,8 +157,8 @@ namespace mainSample
         {
             if (!addingToWatchlist && ((Control)sender).Text != "+")
             {
-                Globals.trade.Searcher.Text = Globals.watchlistData[Int32.Parse(((Control)sender).Name[9].ToString()),0];
-                Globals.main.ShowForm("Trade");
+                Globals.sideWatchlist.Searcher.SelectedIndex = Utilities.GetIndexOfCompany(Globals.watchlistData[Int32.Parse(((Control)sender).Name[9].ToString()),0]);
+                Globals.main.ShowForm(Globals.main.TradeBtn,null);
                 if (Globals.main.currentForm != "Trade")
                 {
                     Globals.main.HideForm(Globals.main.currentForm);
@@ -160,6 +166,13 @@ namespace mainSample
                 Globals.main.currentForm = "Trade";
                 Globals.main.showLogo.Tag = Globals.main.currentForm;
             }
+        }
+        private void CheckChangeOnSearcher(object sender, EventArgs e)
+        {
+            Globals.main.displayedCompany.Text = ((Control)sender).Text.Split(' ')[0];
+            Globals.displayedCompany = Globals.main.displayedCompany.Text;
+            Globals.main.displayedCompany.Tag = Utilities.GetIndexOfCompany(Globals.displayedCompany);
+            Globals.trade.ExternalCanvasRefresh(this, null);
         }
     }
 }

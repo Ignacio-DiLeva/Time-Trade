@@ -37,6 +37,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.displayedCompany = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.showLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -158,12 +159,22 @@
             this.pictureBox4.TabIndex = 8;
             this.pictureBox4.TabStop = false;
             // 
+            // displayedCompany
+            // 
+            this.displayedCompany.AutoSize = true;
+            this.displayedCompany.Location = new System.Drawing.Point(794, 53);
+            this.displayedCompany.Name = "displayedCompany";
+            this.displayedCompany.Size = new System.Drawing.Size(35, 13);
+            this.displayedCompany.TabIndex = 9;
+            this.displayedCompany.Text = "label1";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.ClientSize = new System.Drawing.Size(1200, 675);
+            this.Controls.Add(this.displayedCompany);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -189,19 +200,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         public System.Windows.Forms.PictureBox showLogo;
-        private System.Windows.Forms.Button TradeBtn;
-        private System.Windows.Forms.Button StockBtn;
-        private System.Windows.Forms.Button AccountBtn;
-        private System.Windows.Forms.Button WatchlistBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
+        public System.Windows.Forms.Label displayedCompany;
+        public System.Windows.Forms.Button TradeBtn;
+        public System.Windows.Forms.Button StockBtn;
+        public System.Windows.Forms.Button AccountBtn;
+        public System.Windows.Forms.Button WatchlistBtn;
     }
 }
 

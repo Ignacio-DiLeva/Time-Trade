@@ -82,7 +82,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Searcher = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.orangeContainerWatchlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brownContainerWatchlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -770,13 +770,20 @@
             this.label6.Text = "TRADE INDEX";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // Searcher
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(201, 21);
-            this.comboBox1.TabIndex = 105;
+            this.Searcher.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Searcher.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Searcher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Searcher.FormattingEnabled = true;
+            this.Searcher.Location = new System.Drawing.Point(12, 38);
+            this.Searcher.Name = "Searcher";
+            this.Searcher.Size = new System.Drawing.Size(201, 21);
+            this.Searcher.TabIndex = 105;
+            this.Searcher.TabStop = false;
+            this.Searcher.Text = "AAPL (Apple, Inc.)";
+            this.Searcher.SelectedIndexChanged += new System.EventHandler(this.CheckChangeOnSearcher);
+            this.Searcher.SelectedValueChanged += new System.EventHandler(this.CheckChangeOnSearcher);
             // 
             // SideWatchlist
             // 
@@ -784,7 +791,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.ClientSize = new System.Drawing.Size(225, 655);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Searcher);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.Year);
@@ -914,6 +921,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.ComboBox Searcher;
     }
 }

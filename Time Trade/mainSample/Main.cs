@@ -128,7 +128,7 @@ namespace mainSample //Namespace
             sck.Close();
         }
 
-        public void ShowForm(string desired)  //Shows desired form
+        private void ShowForm(string desired)  //Shows desired form
         {
             if (desired == "Trade")
             {

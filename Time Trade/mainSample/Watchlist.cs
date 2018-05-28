@@ -228,8 +228,8 @@ namespace mainSample
 
         private void RedirectToTrade(object sender, EventArgs e)
         {
-            Globals.trade.Searcher.Text = Globals.watchlistData[Int32.Parse(((Control)sender).Name[7].ToString())+9, 0];
-            Globals.main.ShowForm("Trade");
+            Globals.sideWatchlist.Searcher.SelectedIndex = Utilities.GetIndexOfCompany(Globals.watchlistData[Int32.Parse(((Control)sender).Name[7].ToString())+9, 0]);
+            Globals.main.ShowForm(Globals.main.TradeBtn,null);
             Hide();
             Globals.main.currentForm = "Trade";
             Globals.main.showLogo.Tag = Globals.main.currentForm;
