@@ -9,7 +9,7 @@ namespace mainSample
         public SideWatchlist()
         {
             InitializeComponent();
-            Location = new Point(0, 70);
+            Location = new Point(975, 10);
         }
 
         private void OnLoad(object sender, EventArgs e)

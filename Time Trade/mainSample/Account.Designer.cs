@@ -68,7 +68,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(64, 372);
+            this.label3.Location = new System.Drawing.Point(64, 362);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(173, 33);
             this.label3.TabIndex = 13;
@@ -79,7 +79,7 @@
             // 
             this.panel_sellOrders.AutoScroll = true;
             this.panel_sellOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.panel_sellOrders.Location = new System.Drawing.Point(54, 408);
+            this.panel_sellOrders.Location = new System.Drawing.Point(55, 383);
             this.panel_sellOrders.Name = "panel_sellOrders";
             this.panel_sellOrders.Size = new System.Drawing.Size(259, 186);
             this.panel_sellOrders.TabIndex = 9;
@@ -238,7 +238,7 @@
             this.total_balance.AutoSize = true;
             this.total_balance.Depth = 0;
             this.total_balance.Font = new System.Drawing.Font("Roboto", 11F);
-            this.total_balance.ForeColor = System.Drawing.Color.White;
+            this.total_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.total_balance.Location = new System.Drawing.Point(68, 113);
             this.total_balance.MouseState = MaterialSkin.MouseState.HOVER;
             this.total_balance.Name = "total_balance";
@@ -251,7 +251,7 @@
             this.Balance_label.AutoSize = true;
             this.Balance_label.Depth = 0;
             this.Balance_label.Font = new System.Drawing.Font("Roboto", 11F);
-            this.Balance_label.ForeColor = System.Drawing.Color.White;
+            this.Balance_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Balance_label.Location = new System.Drawing.Point(51, 18);
             this.Balance_label.MouseState = MaterialSkin.MouseState.HOVER;
             this.Balance_label.Name = "Balance_label";
@@ -264,7 +264,7 @@
             this.stocks_balance.AutoSize = true;
             this.stocks_balance.Depth = 0;
             this.stocks_balance.Font = new System.Drawing.Font("Roboto", 11F);
-            this.stocks_balance.ForeColor = System.Drawing.Color.White;
+            this.stocks_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.stocks_balance.Location = new System.Drawing.Point(66, 84);
             this.stocks_balance.MouseState = MaterialSkin.MouseState.HOVER;
             this.stocks_balance.Name = "stocks_balance";
@@ -277,7 +277,7 @@
             this.account_money.AutoSize = true;
             this.account_money.Depth = 0;
             this.account_money.Font = new System.Drawing.Font("Roboto", 11F);
-            this.account_money.ForeColor = System.Drawing.Color.White;
+            this.account_money.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.account_money.Location = new System.Drawing.Point(66, 54);
             this.account_money.MouseState = MaterialSkin.MouseState.HOVER;
             this.account_money.Name = "account_money";
@@ -290,7 +290,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.ClientSize = new System.Drawing.Size(975, 600);
+            this.ClientSize = new System.Drawing.Size(975, 585);
             this.Controls.Add(this.total_balance);
             this.Controls.Add(this.Balance_label);
             this.Controls.Add(this.stocks_balance);

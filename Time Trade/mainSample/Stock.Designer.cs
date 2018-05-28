@@ -69,7 +69,7 @@
             this.stockInfoDisplayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.stockInfoDisplayer.Location = new System.Drawing.Point(237, 93);
             this.stockInfoDisplayer.Name = "stockInfoDisplayer";
-            this.stockInfoDisplayer.Size = new System.Drawing.Size(500, 500);
+            this.stockInfoDisplayer.Size = new System.Drawing.Size(500, 490);
             this.stockInfoDisplayer.TabIndex = 9;
             this.stockInfoDisplayer.DoubleClick += new System.EventHandler(this.RedirectToTrade);
             // 
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 600);
+            this.ClientSize = new System.Drawing.Size(975, 585);
             this.Controls.Add(this.companyCompleteName);
             this.Controls.Add(this.stockInfoDisplayer);
             this.Controls.Add(this.Searcher);

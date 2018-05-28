@@ -112,7 +112,7 @@
             this.btnBuySelected.Enabled = false;
             this.btnBuySelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnBuySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuySelected.Location = new System.Drawing.Point(156, 524);
+            this.btnBuySelected.Location = new System.Drawing.Point(156, 499);
             this.btnBuySelected.Name = "btnBuySelected";
             this.btnBuySelected.Size = new System.Drawing.Size(56, 23);
             this.btnBuySelected.TabIndex = 18;
@@ -124,7 +124,7 @@
             // orderLimit
             // 
             this.orderLimit.Enabled = false;
-            this.orderLimit.Location = new System.Drawing.Point(456, 538);
+            this.orderLimit.Location = new System.Drawing.Point(456, 513);
             this.orderLimit.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -138,7 +138,7 @@
             // 
             // orderCount
             // 
-            this.orderCount.Location = new System.Drawing.Point(245, 538);
+            this.orderCount.Location = new System.Drawing.Point(245, 513);
             this.orderCount.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -154,7 +154,7 @@
             // 
             this.label_balance.AutoSize = true;
             this.label_balance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.label_balance.Location = new System.Drawing.Point(58, 545);
+            this.label_balance.Location = new System.Drawing.Point(58, 520);
             this.label_balance.Name = "label_balance";
             this.label_balance.Size = new System.Drawing.Size(37, 13);
             this.label_balance.TabIndex = 57;
@@ -162,7 +162,7 @@
             // 
             // WeeksToAdd
             // 
-            this.WeeksToAdd.Location = new System.Drawing.Point(757, 553);
+            this.WeeksToAdd.Location = new System.Drawing.Point(757, 528);
             this.WeeksToAdd.Maximum = new decimal(new int[] {
             5,
             0,
@@ -190,7 +190,7 @@
             this.btnMarketSelected.Enabled = false;
             this.btnMarketSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnMarketSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarketSelected.Location = new System.Drawing.Point(349, 524);
+            this.btnMarketSelected.Location = new System.Drawing.Point(349, 499);
             this.btnMarketSelected.Name = "btnMarketSelected";
             this.btnMarketSelected.Size = new System.Drawing.Size(68, 23);
             this.btnMarketSelected.TabIndex = 53;
@@ -205,7 +205,7 @@
             this.btnAdvanceInTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdvanceInTime.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnAdvanceInTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdvanceInTime.Location = new System.Drawing.Point(777, 525);
+            this.btnAdvanceInTime.Location = new System.Drawing.Point(777, 500);
             this.btnAdvanceInTime.Name = "btnAdvanceInTime";
             this.btnAdvanceInTime.Size = new System.Drawing.Size(75, 23);
             this.btnAdvanceInTime.TabIndex = 59;
@@ -220,7 +220,7 @@
             this.btnPlaceOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPlaceOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(559, 518);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(559, 493);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(95, 58);
             this.btnPlaceOrder.TabIndex = 55;
@@ -235,7 +235,7 @@
             this.btnLimitSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLimitSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnLimitSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimitSelected.Location = new System.Drawing.Point(349, 546);
+            this.btnLimitSelected.Location = new System.Drawing.Point(349, 521);
             this.btnLimitSelected.Name = "btnLimitSelected";
             this.btnLimitSelected.Size = new System.Drawing.Size(68, 23);
             this.btnLimitSelected.TabIndex = 52;
@@ -250,7 +250,7 @@
             this.btnSellSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSellSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnSellSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSellSelected.Location = new System.Drawing.Point(156, 546);
+            this.btnSellSelected.Location = new System.Drawing.Point(156, 521);
             this.btnSellSelected.Name = "btnSellSelected";
             this.btnSellSelected.Size = new System.Drawing.Size(56, 23);
             this.btnSellSelected.TabIndex = 17;
@@ -275,7 +275,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 600);
+            this.ClientSize = new System.Drawing.Size(975, 585);
             this.Controls.Add(this.btnRequestBest);
             this.Controls.Add(this.btnAdvanceInTime);
             this.Controls.Add(this.WeeksToAdd);

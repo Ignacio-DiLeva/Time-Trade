@@ -33,10 +33,6 @@ namespace mainSample //Namespace
             this.serverIP = serverIP;
             this.ownIP = ownIP;
             showLogo.BringToFront();
-            RestartPB.BringToFront();
-            temporal_min.BringToFront();
-            temporal_close.BringToFront();
-            //Dock = DockStyle.Fill;
         }
         public string username;
         public string sessid;
@@ -46,23 +42,6 @@ namespace mainSample //Namespace
 
         public void OnLoad(object sender, EventArgs e) //Main form loading
         {
-            for (int i = 0; i < 4; i++) //5 buttons (Trade, Stock, Account, Watchlist, Compare)
-            {
-                Button b = new Button //New button
-                {
-                    Size = new Size(225, 60), //Size
-                    Location = new Point(150 + i * 225, 10), //Location
-                    TabStop = false,
-                    FlatStyle = FlatStyle.Flat
-                };
-                b.FlatAppearance.BorderColor = Color.FromArgb(0,238,255);
-                if (i == 0) { b.Text = "Trade"; b.Click += ShowForm; b.Tag = b.Text;} //Trade section (DEFAULT)
-                if (i == 1) { b.Text = "Stock"; b.Click += ShowForm; b.Tag = b.Text;} //Stock section
-                if (i == 2) { b.Text = "Account"; b.Click += ShowForm; b.Tag = b.Text;} //Portfolio
-                if (i == 3) { b.Text = "Watchlist"; b.Click += ShowForm; b.Tag = b.Text;} //WatchList
-                Controls.Add(b); //We add it to Controls
-                b.BringToFront();
-            }
             currentForm = "Trade"; //Default secondaryForm
             showLogo.Tag = currentForm; //That box will return to the current form
             Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - (Width / 2), 0); //Center X, TopScreen
@@ -153,34 +132,34 @@ namespace mainSample //Namespace
         {
             if (desired == "Trade")
             {
+                Globals.main.TradeBtn.BackColor = Constants.orange;
+                Globals.main.TradeBtn.ForeColor = Constants.white;
                 Globals.trade.Show();
-                Globals.sideWatchlist.Show();
-                Globals.sideWatchlist.Focus();
                 Globals.trade.Focus();
                 Globals.trade.ExternalCanvasRefresh(this, null);
                 return;
             }
             if (desired == "Stock")
             {
+                Globals.main.StockBtn.BackColor = Constants.orange;
+                Globals.main.StockBtn.ForeColor = Constants.white;
                 Globals.stock.Show();
-                Globals.sideWatchlist.Show();
-                Globals.sideWatchlist.Focus();
                 Globals.stock.Focus();
                 return;
             }
             if (desired == "Account")
             {
+                Globals.main.AccountBtn.BackColor = Constants.orange;
+                Globals.main.AccountBtn.ForeColor = Constants.white;
                 Globals.account.Show();
-                Globals.sideWatchlist.Show();
-                Globals.sideWatchlist.Focus();
                 Globals.account.Focus();
                 return;
             }
             if (desired == "Watchlist")
             {
+                Globals.main.WatchlistBtn.BackColor = Constants.orange;
+                Globals.main.WatchlistBtn.ForeColor = Constants.white;
                 Globals.watchlist.Show();
-                Globals.sideWatchlist.Show();
-                Globals.sideWatchlist.Focus();
                 Globals.watchlist.Focus();
                 return;
             }
@@ -191,21 +170,29 @@ namespace mainSample //Namespace
             if (unwanted == "Trade")
             {
                 Globals.trade.Hide();
+                Globals.main.TradeBtn.BackColor = Constants.white;
+                Globals.main.TradeBtn.ForeColor = Constants.black;
                 return;
             }
             if (unwanted == "Account")
             {
                 Globals.account.Hide();
+                Globals.main.AccountBtn.BackColor = Constants.white;
+                Globals.main.AccountBtn.ForeColor = Constants.black;
                 return;
             }
             if (unwanted == "Watchlist")
             {
                 Globals.watchlist.Hide();
+                Globals.main.WatchlistBtn.BackColor = Constants.white;
+                Globals.main.WatchlistBtn.ForeColor = Constants.black;
                 return;
             }
             if (unwanted == "Stock")
             {
                 Globals.stock.Hide();
+                Globals.main.StockBtn.BackColor = Constants.white;
+                Globals.main.StockBtn.ForeColor = Constants.black;
                 return;
             }
         }

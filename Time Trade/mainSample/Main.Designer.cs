@@ -29,68 +29,111 @@
         private void InitializeComponent()
         {
             this.showLogo = new System.Windows.Forms.PictureBox();
-            this.RestartPB = new System.Windows.Forms.PictureBox();
-            this.temporal_min = new System.Windows.Forms.Label();
-            this.temporal_close = new System.Windows.Forms.Label();
+            this.TradeBtn = new System.Windows.Forms.Button();
+            this.StockBtn = new System.Windows.Forms.Button();
+            this.AccountBtn = new System.Windows.Forms.Button();
+            this.WatchlistBtn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.showLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RestartPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // showLogo
             // 
             this.showLogo.BackColor = System.Drawing.Color.Blue;
             this.showLogo.Image = global::mainSample.Properties.Resources.Time_Trade_Logo;
-            this.showLogo.Location = new System.Drawing.Point(0, 0);
+            this.showLogo.Location = new System.Drawing.Point(0, 10);
             this.showLogo.Name = "showLogo";
-            this.showLogo.Size = new System.Drawing.Size(150, 70);
+            this.showLogo.Size = new System.Drawing.Size(80, 80);
             this.showLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.showLogo.TabIndex = 0;
             this.showLogo.TabStop = false;
             this.showLogo.Click += new System.EventHandler(this.ShowForm);
             // 
-            // RestartPB
+            // TradeBtn
             // 
-            this.RestartPB.BackColor = System.Drawing.Color.Red;
-            this.RestartPB.Location = new System.Drawing.Point(1050, 0);
-            this.RestartPB.Name = "RestartPB";
-            this.RestartPB.Size = new System.Drawing.Size(150, 70);
-            this.RestartPB.TabIndex = 1;
-            this.RestartPB.TabStop = false;
-            this.RestartPB.Tag = "DeleteSaveData";
-            this.RestartPB.Click += new System.EventHandler(this.ShowForm);
+            this.TradeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.TradeBtn.FlatAppearance.BorderSize = 0;
+            this.TradeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TradeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.TradeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.TradeBtn.Location = new System.Drawing.Point(80, 10);
+            this.TradeBtn.Name = "TradeBtn";
+            this.TradeBtn.Size = new System.Drawing.Size(165, 80);
+            this.TradeBtn.TabIndex = 1;
+            this.TradeBtn.Tag = "Trade";
+            this.TradeBtn.Text = "Trade";
+            this.TradeBtn.UseVisualStyleBackColor = false;
+            this.TradeBtn.Click += new System.EventHandler(this.ShowForm);
             // 
-            // temporal_min
+            // StockBtn
             // 
-            this.temporal_min.BackColor = System.Drawing.Color.Red;
-            this.temporal_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.temporal_min.Location = new System.Drawing.Point(1050, 0);
-            this.temporal_min.Name = "temporal_min";
-            this.temporal_min.Size = new System.Drawing.Size(79, 70);
-            this.temporal_min.TabIndex = 2;
-            this.temporal_min.Text = "-";
-            this.temporal_min.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.temporal_min.Click += new System.EventHandler(this.TemporalMin);
+            this.StockBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.StockBtn.FlatAppearance.BorderSize = 0;
+            this.StockBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StockBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.StockBtn.ForeColor = System.Drawing.Color.Black;
+            this.StockBtn.Location = new System.Drawing.Point(245, 10);
+            this.StockBtn.Name = "StockBtn";
+            this.StockBtn.Size = new System.Drawing.Size(165, 80);
+            this.StockBtn.TabIndex = 2;
+            this.StockBtn.Tag = "Stock";
+            this.StockBtn.Text = "Stock";
+            this.StockBtn.UseVisualStyleBackColor = false;
+            this.StockBtn.Click += new System.EventHandler(this.ShowForm);
             // 
-            // temporal_close
+            // AccountBtn
             // 
-            this.temporal_close.BackColor = System.Drawing.Color.Red;
-            this.temporal_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.temporal_close.Location = new System.Drawing.Point(1121, 0);
-            this.temporal_close.Name = "temporal_close";
-            this.temporal_close.Size = new System.Drawing.Size(79, 70);
-            this.temporal_close.TabIndex = 3;
-            this.temporal_close.Text = "X";
-            this.temporal_close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.temporal_close.Click += new System.EventHandler(this.TemporalClose);
+            this.AccountBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.AccountBtn.FlatAppearance.BorderSize = 0;
+            this.AccountBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AccountBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
+            this.AccountBtn.ForeColor = System.Drawing.Color.Black;
+            this.AccountBtn.Location = new System.Drawing.Point(410, 10);
+            this.AccountBtn.Name = "AccountBtn";
+            this.AccountBtn.Size = new System.Drawing.Size(165, 80);
+            this.AccountBtn.TabIndex = 3;
+            this.AccountBtn.Tag = "Account";
+            this.AccountBtn.Text = "Account";
+            this.AccountBtn.UseVisualStyleBackColor = false;
+            this.AccountBtn.Click += new System.EventHandler(this.ShowForm);
+            // 
+            // WatchlistBtn
+            // 
+            this.WatchlistBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.WatchlistBtn.FlatAppearance.BorderSize = 0;
+            this.WatchlistBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.WatchlistBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
+            this.WatchlistBtn.ForeColor = System.Drawing.Color.Black;
+            this.WatchlistBtn.Location = new System.Drawing.Point(575, 10);
+            this.WatchlistBtn.Name = "WatchlistBtn";
+            this.WatchlistBtn.Size = new System.Drawing.Size(165, 80);
+            this.WatchlistBtn.TabIndex = 4;
+            this.WatchlistBtn.Tag = "Watchlist";
+            this.WatchlistBtn.Text = "Watchlist";
+            this.WatchlistBtn.UseVisualStyleBackColor = false;
+            this.WatchlistBtn.Click += new System.EventHandler(this.ShowForm);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
+            this.pictureBox1.Location = new System.Drawing.Point(740, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(235, 80);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 661);
-            this.Controls.Add(this.temporal_close);
-            this.Controls.Add(this.temporal_min);
-            this.Controls.Add(this.RestartPB);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(1200, 675);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.WatchlistBtn);
+            this.Controls.Add(this.AccountBtn);
+            this.Controls.Add(this.StockBtn);
+            this.Controls.Add(this.TradeBtn);
             this.Controls.Add(this.showLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(500, 200);
@@ -103,16 +146,18 @@
             this.Load += new System.EventHandler(this.OnLoad);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AllowMove);
             ((System.ComponentModel.ISupportInitialize)(this.showLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RestartPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox RestartPB;
         public System.Windows.Forms.PictureBox showLogo;
-        private System.Windows.Forms.Label temporal_min;
-        private System.Windows.Forms.Label temporal_close;
+        private System.Windows.Forms.Button TradeBtn;
+        private System.Windows.Forms.Button StockBtn;
+        private System.Windows.Forms.Button AccountBtn;
+        private System.Windows.Forms.Button WatchlistBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

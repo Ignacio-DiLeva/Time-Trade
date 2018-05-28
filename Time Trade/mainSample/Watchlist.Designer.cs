@@ -60,7 +60,7 @@
             // canvas3
             // 
             this.canvas3.BackColor = System.Drawing.Color.Transparent;
-            this.canvas3.Location = new System.Drawing.Point(0, 442);
+            this.canvas3.Location = new System.Drawing.Point(0, 433);
             this.canvas3.Name = "canvas3";
             this.canvas3.Size = new System.Drawing.Size(975, 150);
             this.canvas3.TabIndex = 2;
@@ -145,7 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 600);
+            this.ClientSize = new System.Drawing.Size(975, 585);
             this.Controls.Add(this.company3);
             this.Controls.Add(this.Watchlist3);
             this.Controls.Add(this.company2);

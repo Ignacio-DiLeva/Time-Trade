@@ -26,5 +26,6 @@ namespace mainSample
         public static readonly Color white = Color.FromArgb(0xEE, 0xEE, 0xEE);
         public static readonly Color lightGray = Color.FromArgb(0xBF, 0xC0, 0xC0);
         public static readonly Color darkGray = Color.FromArgb(0x4F, 0x5D, 0x75);
+        public static readonly Color black = Color.Black;
     }
 }

@@ -11,7 +11,7 @@ namespace mainSample
         //▲ ▼//  Samples
         PictureBox p = new PictureBox
         {
-            Size = new Size(975, 600),
+            Size = new Size(975, 585),
             Location = new Point(0, 0),
             BackColor = Color.FromArgb(0,238,255),
         };
@@ -19,7 +19,7 @@ namespace mainSample
         public Trade()
         {
             InitializeComponent();
-            Location = new Point(225, 70);
+            Location = new Point(0, 90);
             Controls.Add(p);
             p.SendToBack();
         }
