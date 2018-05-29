@@ -179,9 +179,17 @@ namespace mainSample
             }
         }
 
+        PortfolioAccount PA = new PortfolioAccount();
 
         public void OnLoad(object sender, EventArgs e)
         {
+            PA.TopLevel = false;
+            PA.Location = new Point(45, 79);
+            Controls.Add(PA);
+            PA.Show();
+            PA.BringToFront();
+            
+            
 
             //reloads all panels to check changes
             Reload_panel(); 

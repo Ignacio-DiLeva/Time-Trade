@@ -1,6 +1,6 @@
 ﻿namespace mainSample
 {
-    partial class portfolioAccount
+    partial class PortfolioAccount
     {
         /// <summary>
         /// Required designer variable.

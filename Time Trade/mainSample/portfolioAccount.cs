@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace mainSample
 {
-    public partial class portfolioAccount : Form
+    public partial class PortfolioAccount : Form
     {
-        public portfolioAccount()
+        public PortfolioAccount()
         {
             InitializeComponent();
         }
