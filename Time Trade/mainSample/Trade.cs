@@ -50,6 +50,7 @@ namespace mainSample
                 Invoke((MethodInvoker)delegate { EffectivizeOrders(Globals.today); }); //We check the orders
                 for (int i = 0; i < days; i++) //For each day
                 {
+                    Invoke((MethodInvoker)delegate { Globals.sideWatchlist.UpdateBalance(); });
                     Globals.today = Globals.today.AddDays(1); //We add the day
                     Invoke((MethodInvoker)delegate //We invoke UI commands
                     {
@@ -67,7 +68,8 @@ namespace mainSample
                 }
                 makingTransition = false; //We end the transition
                 Invoke((MethodInvoker)delegate { canvas.Refresh(); });
-                
+                Invoke((MethodInvoker)delegate { Globals.sideWatchlist.UpdateBalance(); });
+
                 if (Globals.today == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day
                 {
                     EndGame(); //We end the game, server receives savedata as a newPlay
@@ -569,6 +571,7 @@ namespace mainSample
                     else MessageBox.Show("You have exceeded the amount of orders placeable");
                 }
             }
+            Globals.sideWatchlist.UpdateBalance();
             ((Control)sender).BackgroundImage = Properties.Resources.BOTON_NORMAL_2;
             Focus();
         }

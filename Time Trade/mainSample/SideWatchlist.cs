@@ -10,6 +10,7 @@ namespace mainSample
         {
             InitializeComponent();
             Location = new Point(975, 20);
+            calendarLabel.TextChanged += Globals.main.HandleUpdateInfo;
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -17,11 +18,13 @@ namespace mainSample
             addingToWatchlist = false;
             for (int i = 0; i < Constants.companies.Count; i++)
             {
-                Searcher.Items.Add(Constants.companies[i] + " (" + Constants.stockInfo[i, 0] + ")");
+                Searcher.Items.Add(Constants.companies[i]);
             }
-            //displayedCompany.Text = Globals.displayedCompany; TODO
-            Searcher.Text = Globals.displayedCompany + " (" + Constants.stockInfo[Utilities.GetIndexOfCompany(Globals.displayedCompany), 0] + ")";
+            Globals.main.displayedCompany.Text = Globals.displayedCompany;
+            Searcher.Text = Globals.displayedCompany;
+            UpdateCalendar(Globals.today);
             UpdateWatchlistData();
+            UpdateBalance();
         }
 
         ComboBox cb; //ComboBox to be displayed when adding a company to the watchlist
@@ -177,20 +180,35 @@ namespace mainSample
         }
         private void CheckChangeOnSearcher(object sender, EventArgs e)
         {
+            this.ActiveControl = null;
             Globals.main.displayedCompany.Text = ((Control)sender).Text.Split(' ')[0];
             Globals.displayedCompany = Globals.main.displayedCompany.Text;
             Globals.main.displayedCompany.Tag = Utilities.GetIndexOfCompany(Globals.displayedCompany);
             Globals.trade.ExternalCanvasRefresh(this, null);
         }
 
-        public void UpdateBalance(double money, double stock)
+        public void UpdateBalance()
         {
+            double money = Globals.moneyBalance;
+            double stock = 0;
+
+            //loops through all the stocks and adds the value
+            foreach (Company c in Globals.portfolio_companies)
+            {
+                stock += Utilities.ReadInfo(c.Name, Globals.today) * c.Holdings;
+            }
+
+            //loops through all the orders and adds the value (these are your holdings put on sell)
+            foreach (Order o in Globals.sellOrders)
+            {
+                stock += Utilities.ReadInfo(o.Name, Globals.today) * o.Holdings;
+            }
             money = Math.Round(money, 2);
             stock = Math.Round(stock, 2);
             double total = money + stock;
-            moneyLabel.Text = moneyLabel.Tag.ToString() + money.ToString("0.##");
-            stockLabel.Text = stockLabel.Tag.ToString() + stock.ToString("0.##");
-            TotalLabel.Text = TotalLabel.Tag.ToString() + total.ToString("0.##");
+            moneyLabel.Text = moneyLabel.Tag.ToString() + money.ToString();
+            stockLabel.Text = stockLabel.Tag.ToString() + stock.ToString();
+            TotalLabel.Text = TotalLabel.Tag.ToString() + total.ToString();
         }
 
         private void RedirectToAccount(object sender, EventArgs e)
@@ -208,6 +226,37 @@ namespace mainSample
         {
             Globals.trade.GotFocus -= GetHandler;
             MessageBox.Show("HANDLED");
+        }
+
+        private void ItemDrawing(object sender, DrawItemEventArgs e)
+        {
+            // By using Sender, one method could handle multiple ComboBoxes
+            ComboBox cbx = sender as ComboBox;
+            if (cbx != null)
+            {
+                // Always draw the background
+                e.DrawBackground();
+
+                // Drawing one of the items?
+                if (e.Index >= 0)
+                {
+                    // Set the string alignment.  Choices are Center, Near and Far
+                    StringFormat sf = new StringFormat();
+                    sf.LineAlignment = StringAlignment.Center;
+                    sf.Alignment = StringAlignment.Center;
+
+                    // Set the Brush to ComboBox ForeColor to maintain any ComboBox color settings
+                    // Assumes Brush is solid
+                    Brush brush = new SolidBrush(cbx.ForeColor);
+
+                    // If drawing highlighted selection, change brush
+                    if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                        brush = SystemBrushes.HighlightText;
+
+                    // Draw the string
+                    e.Graphics.DrawString(cbx.Items[e.Index].ToString(), cbx.Font, brush, e.Bounds, sf);
+                }
+            }
         }
     }
 }

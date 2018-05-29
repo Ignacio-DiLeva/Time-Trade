@@ -165,14 +165,15 @@
             // displayedCompany
             // 
             this.displayedCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
-            this.displayedCompany.Font = new System.Drawing.Font("Arial", 16F);
+            this.displayedCompany.Font = new System.Drawing.Font("Arial", 10F);
             this.displayedCompany.ForeColor = System.Drawing.Color.White;
             this.displayedCompany.Location = new System.Drawing.Point(758, 31);
             this.displayedCompany.Name = "displayedCompany";
             this.displayedCompany.Size = new System.Drawing.Size(83, 23);
             this.displayedCompany.TabIndex = 9;
-            this.displayedCompany.Text = "label1";
+            this.displayedCompany.Text = "AAPL";
             this.displayedCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.displayedCompany.TextChanged += new System.EventHandler(this.HandleUpdateInfo);
             // 
             // highPrice
             // 

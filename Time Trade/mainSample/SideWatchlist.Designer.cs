@@ -691,11 +691,11 @@
             // moneyLabel
             // 
             this.moneyLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.moneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.moneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.moneyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.moneyLabel.Location = new System.Drawing.Point(17, 93);
             this.moneyLabel.Name = "moneyLabel";
-            this.moneyLabel.Size = new System.Drawing.Size(100, 20);
+            this.moneyLabel.Size = new System.Drawing.Size(129, 20);
             this.moneyLabel.TabIndex = 99;
             this.moneyLabel.Tag = "MONEY: $";
             this.moneyLabel.Text = "MONEY: $";
@@ -704,11 +704,11 @@
             // stockLabel
             // 
             this.stockLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.stockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.stockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.stockLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.stockLabel.Location = new System.Drawing.Point(17, 113);
             this.stockLabel.Name = "stockLabel";
-            this.stockLabel.Size = new System.Drawing.Size(100, 20);
+            this.stockLabel.Size = new System.Drawing.Size(129, 20);
             this.stockLabel.TabIndex = 100;
             this.stockLabel.Tag = "STOCK: $";
             this.stockLabel.Text = "STOCK: $";
@@ -717,11 +717,11 @@
             // TotalLabel
             // 
             this.TotalLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.TotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.TotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.TotalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.TotalLabel.Location = new System.Drawing.Point(17, 133);
             this.TotalLabel.Name = "TotalLabel";
-            this.TotalLabel.Size = new System.Drawing.Size(100, 20);
+            this.TotalLabel.Size = new System.Drawing.Size(129, 20);
             this.TotalLabel.TabIndex = 101;
             this.TotalLabel.Tag = "TOTAL: $";
             this.TotalLabel.Text = "TOTAL: $";
@@ -766,14 +766,17 @@
             // 
             this.Searcher.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.Searcher.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Searcher.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Searcher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Searcher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Searcher.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Searcher.FormattingEnabled = true;
-            this.Searcher.Location = new System.Drawing.Point(12, 38);
+            this.Searcher.Location = new System.Drawing.Point(53, 34);
             this.Searcher.Name = "Searcher";
-            this.Searcher.Size = new System.Drawing.Size(201, 21);
+            this.Searcher.Size = new System.Drawing.Size(123, 21);
             this.Searcher.TabIndex = 105;
             this.Searcher.TabStop = false;
-            this.Searcher.Text = "AAPL (Apple, Inc.)";
+            this.Searcher.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ItemDrawing);
             this.Searcher.SelectedIndexChanged += new System.EventHandler(this.CheckChangeOnSearcher);
             this.Searcher.SelectedValueChanged += new System.EventHandler(this.CheckChangeOnSearcher);
             // 
