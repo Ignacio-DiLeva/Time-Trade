@@ -184,7 +184,7 @@ namespace mainSample
         public void OnLoad(object sender, EventArgs e)
         {
             PA.TopLevel = false;
-            PA.Location = new Point(45, 79);
+            PA.Location = new Point(45, 128);
             Controls.Add(PA);
             PA.Show();
             PA.BringToFront();
@@ -573,5 +573,58 @@ namespace mainSample
                 Globals.buyOrders.RemoveAt(a);
             }
         }
+
+        private void ShowPortfolio(object sender, EventArgs e)
+        {
+            portfolioLabels.Visible = true;
+            PA.Show();
+            panel_buyOrders.Visible = false;
+            panel_sellOrders.Visible = false;
+
+            HighlightButton(sender);
+            DehighButton(showBuyorders);
+            DehighButton(showSellorders);
+
+
+        }
+
+        private void ShowBuyOrders(object sender, EventArgs e)
+        {
+            portfolioLabels.Visible = false;
+            PA.Hide();
+            panel_buyOrders.Visible = true;
+            panel_sellOrders.Visible = false;
+
+            HighlightButton(sender);
+            DehighButton(showPortfolio);
+            DehighButton(showSellorders);
+        }
+
+        private void ShowSellOrders(object sender, EventArgs e)
+        {
+            portfolioLabels.Visible = false;
+            PA.Hide();
+            panel_buyOrders.Visible = false;
+            panel_sellOrders.Visible = true;
+
+            HighlightButton(sender);
+            DehighButton(showBuyorders);
+            DehighButton(showPortfolio);
+        }
+
+        private void HighlightButton(object sender)
+        {
+            ((Control)sender).ForeColor = Color.White;
+            ((Control)sender).BackColor = Constants.orange;
+        }
+
+        private void DehighButton(object sender)
+        {
+            ((Control)sender).ForeColor = Color.Black;
+            ((Control)sender).BackColor = Constants.white;
+        }
+
+
+
     }
 }
