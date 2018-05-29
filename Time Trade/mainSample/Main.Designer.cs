@@ -38,6 +38,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.displayedCompany = new System.Windows.Forms.Label();
+            this.highPrice = new System.Windows.Forms.Label();
+            this.nowPrice = new System.Windows.Forms.Label();
+            this.lowPrice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.showLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -161,12 +164,51 @@
             // 
             // displayedCompany
             // 
-            this.displayedCompany.AutoSize = true;
-            this.displayedCompany.Location = new System.Drawing.Point(794, 53);
+            this.displayedCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.displayedCompany.Font = new System.Drawing.Font("Arial", 16F);
+            this.displayedCompany.ForeColor = System.Drawing.Color.White;
+            this.displayedCompany.Location = new System.Drawing.Point(758, 31);
             this.displayedCompany.Name = "displayedCompany";
-            this.displayedCompany.Size = new System.Drawing.Size(35, 13);
+            this.displayedCompany.Size = new System.Drawing.Size(83, 23);
             this.displayedCompany.TabIndex = 9;
             this.displayedCompany.Text = "label1";
+            this.displayedCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // highPrice
+            // 
+            this.highPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.highPrice.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.highPrice.ForeColor = System.Drawing.Color.White;
+            this.highPrice.Location = new System.Drawing.Point(863, 28);
+            this.highPrice.Name = "highPrice";
+            this.highPrice.Size = new System.Drawing.Size(95, 26);
+            this.highPrice.TabIndex = 10;
+            this.highPrice.Text = "label1";
+            this.highPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // nowPrice
+            // 
+            this.nowPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.nowPrice.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.nowPrice.ForeColor = System.Drawing.Color.White;
+            this.nowPrice.Location = new System.Drawing.Point(759, 61);
+            this.nowPrice.Name = "nowPrice";
+            this.nowPrice.Size = new System.Drawing.Size(82, 23);
+            this.nowPrice.TabIndex = 11;
+            this.nowPrice.Text = "label2";
+            this.nowPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lowPrice
+            // 
+            this.lowPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.lowPrice.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lowPrice.ForeColor = System.Drawing.Color.White;
+            this.lowPrice.Location = new System.Drawing.Point(863, 61);
+            this.lowPrice.Name = "lowPrice";
+            this.lowPrice.Size = new System.Drawing.Size(95, 23);
+            this.lowPrice.TabIndex = 12;
+            this.lowPrice.Text = "label3";
+            this.lowPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
             // 
@@ -174,6 +216,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.ClientSize = new System.Drawing.Size(1200, 675);
+            this.Controls.Add(this.lowPrice);
+            this.Controls.Add(this.nowPrice);
+            this.Controls.Add(this.highPrice);
             this.Controls.Add(this.displayedCompany);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -200,7 +245,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -215,6 +259,9 @@
         public System.Windows.Forms.Button StockBtn;
         public System.Windows.Forms.Button AccountBtn;
         public System.Windows.Forms.Button WatchlistBtn;
+        private System.Windows.Forms.Label highPrice;
+        private System.Windows.Forms.Label nowPrice;
+        private System.Windows.Forms.Label lowPrice;
     }
 }
 

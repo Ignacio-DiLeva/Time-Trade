@@ -65,7 +65,20 @@ namespace mainSample //Namespace
             Globals.sideWatchlist.UpdateCalendar(Globals.today);
             Globals.sideWatchlist.Show(); //We show the secondary Watchlist
             Globals.trade.Focus(); //We focus this default secondary form
+
+            UpdateInfo();
+
         }
+        
+        public void UpdateInfo()
+        {
+            displayedCompany.Text = "AAPL";
+            nowPrice.Text = "$" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today);
+            highPrice.Text ="High: $" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today, "HIGH");
+            lowPrice.Text = "Low: $" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today, "LOW");
+
+        }
+
 
         public void ShowForm(object sender, EventArgs e) //Secondary Forms displayer
         {
