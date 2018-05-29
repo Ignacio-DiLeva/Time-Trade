@@ -167,9 +167,9 @@
             this.displayedCompany.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
             this.displayedCompany.Font = new System.Drawing.Font("Arial", 10F);
             this.displayedCompany.ForeColor = System.Drawing.Color.White;
-            this.displayedCompany.Location = new System.Drawing.Point(758, 31);
+            this.displayedCompany.Location = new System.Drawing.Point(760, 31);
             this.displayedCompany.Name = "displayedCompany";
-            this.displayedCompany.Size = new System.Drawing.Size(83, 23);
+            this.displayedCompany.Size = new System.Drawing.Size(80, 23);
             this.displayedCompany.TabIndex = 9;
             this.displayedCompany.Text = "AAPL";
             this.displayedCompany.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -192,9 +192,9 @@
             this.nowPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
             this.nowPrice.Font = new System.Drawing.Font("Arial", 9.75F);
             this.nowPrice.ForeColor = System.Drawing.Color.White;
-            this.nowPrice.Location = new System.Drawing.Point(759, 61);
+            this.nowPrice.Location = new System.Drawing.Point(760, 61);
             this.nowPrice.Name = "nowPrice";
-            this.nowPrice.Size = new System.Drawing.Size(82, 23);
+            this.nowPrice.Size = new System.Drawing.Size(80, 23);
             this.nowPrice.TabIndex = 11;
             this.nowPrice.Text = "label2";
             this.nowPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

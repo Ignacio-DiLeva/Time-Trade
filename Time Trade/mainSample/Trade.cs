@@ -42,7 +42,7 @@ namespace mainSample
             Thread transition = new Thread(() => CanvasMovement(Convert.ToInt32(WeeksToAdd.Value)*7)); transition.Start();
         }
 
-        bool makingTransition=false;
+        public bool makingTransition=false;
         void CanvasMovement(int days)
         {
             if (!IsDisposed)
@@ -203,11 +203,7 @@ namespace mainSample
 
         public void ExternalCanvasRefresh(object sender, EventArgs e)
         {
-            if (!makingTransition)
-            {
-                canvas.Refresh();
-                Globals.account.Update_portfolio();
-            }
+            canvas.Refresh();
         }
 
         void AddReferenceToCanvas(int priceReference, double render)

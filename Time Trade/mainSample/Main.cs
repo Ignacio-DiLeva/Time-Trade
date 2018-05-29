@@ -33,6 +33,7 @@ namespace mainSample //Namespace
             this.serverIP = serverIP;
             this.ownIP = ownIP;
             showLogo.BringToFront();
+            AllowTransparency = true;
         }
         public string username;
         public string sessid;
@@ -269,14 +270,20 @@ namespace mainSample //Namespace
             catch (Exception) { Environment.FailFast("TIME TRADE ABORT"); }
         }
 
+        PictureBox p = new PictureBox()
+        {
+            BackColor = Color.Transparent,
+            Location = new Point(0, 0)
+        };
         public void AllowInput(bool status)
         {
+            p.Size = Size;
             if (status)
             {
-                Enabled = true;
+                //Invoke((MethodInvoker)delegate { Controls.Remove(p); });
                 return;
             }
-            Enabled = false;
+            //Invoke((MethodInvoker)delegate { Controls.Add(p); p.BringToFront(); });
         }
 
         public void GetBestPlayers()

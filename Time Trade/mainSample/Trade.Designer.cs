@@ -272,7 +272,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel canvas;
         private MaterialSkin.Controls.MaterialLabel companyPrices;
         private System.Windows.Forms.Button btnBuySelected;
         private System.Windows.Forms.Button btnSellSelected;
@@ -285,5 +284,6 @@
         private System.Windows.Forms.NumericUpDown WeeksToAdd;
         private System.Windows.Forms.Button btnAdvanceInTime;
         public System.Windows.Forms.Button btnRequestBest;
+        public System.Windows.Forms.Panel canvas;
     }
 }

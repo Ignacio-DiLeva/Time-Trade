@@ -82,7 +82,8 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.Searcher = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnWeeks = new System.Windows.Forms.Button();
+            this.WeeksToAdd = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.orangeContainerWatchlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brownContainerWatchlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -90,6 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WeeksToAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -780,15 +782,42 @@
             this.Searcher.SelectedIndexChanged += new System.EventHandler(this.CheckChangeOnSearcher);
             this.Searcher.SelectedValueChanged += new System.EventHandler(this.CheckChangeOnSearcher);
             // 
-            // button1
+            // btnWeeks
             // 
-            this.button1.Location = new System.Drawing.Point(82, 227);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 33);
-            this.button1.TabIndex = 106;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnWeeks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.btnWeeks.FlatAppearance.BorderSize = 0;
+            this.btnWeeks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWeeks.Location = new System.Drawing.Point(53, 235);
+            this.btnWeeks.Name = "btnWeeks";
+            this.btnWeeks.Size = new System.Drawing.Size(120, 21);
+            this.btnWeeks.TabIndex = 106;
+            this.btnWeeks.Text = "+ WEEKS";
+            this.btnWeeks.UseVisualStyleBackColor = false;
+            this.btnWeeks.Click += new System.EventHandler(this.AdvanceInTime);
+            // 
+            // WeeksToAdd
+            // 
+            this.WeeksToAdd.Location = new System.Drawing.Point(53, 213);
+            this.WeeksToAdd.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.WeeksToAdd.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.WeeksToAdd.Name = "WeeksToAdd";
+            this.WeeksToAdd.Size = new System.Drawing.Size(120, 20);
+            this.WeeksToAdd.TabIndex = 107;
+            this.WeeksToAdd.TabStop = false;
+            this.WeeksToAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WeeksToAdd.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // SideWatchlist
             // 
@@ -796,7 +825,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.ClientSize = new System.Drawing.Size(225, 655);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.WeeksToAdd);
+            this.Controls.Add(this.btnWeeks);
             this.Controls.Add(this.Searcher);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox5);
@@ -865,6 +895,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WeeksToAdd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -925,6 +956,7 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.ComboBox Searcher;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnWeeks;
+        private System.Windows.Forms.NumericUpDown WeeksToAdd;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace mainSample
 {
@@ -216,16 +217,64 @@ namespace mainSample
             Globals.main.ShowForm(Globals.main.AccountBtn, null);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void AdvanceInTime(object sender, EventArgs e)
         {
             Globals.trade.GotFocus += GetHandler;
             Globals.main.ShowForm(Globals.main.TradeBtn,null);
         }
 
+        public void Movement()
+        {
+            int days = Convert.ToInt32(WeeksToAdd.Value) * 7;
+            if (!IsDisposed)
+            {
+                Globals.trade.makingTransition = true;
+                Globals.main.AllowInput(false);
+                for (int i = 0; i < days; i++) //For each day
+                {
+                    Globals.today = Globals.today.AddDays(1); //We add the day
+                    Invoke((MethodInvoker)delegate { Globals.trade.EffectivizeOrders(Globals.today); }); //We check the orders
+                    Invoke((MethodInvoker)delegate { Globals.sideWatchlist.UpdateBalance(); });
+                    Invoke((MethodInvoker)delegate //We invoke UI commands
+                    {
+                        Globals.sideWatchlist.UpdateCalendar(Globals.today); //We update the calendar
+                        Globals.trade.ExternalCanvasRefresh(this, null); //We refresh the graphics
+                    });
+                    if (Globals.today == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day we scope out
+                    {
+                        break;
+                    }
+                    if (i != days - 1) //If it is the last day we do not sleep
+                    {
+                        Thread.Sleep(Convert.ToInt32((7.00 / Convert.ToDouble(days)) * 1000)); //Else we sleep
+                    }
+                }
+                Globals.trade.makingTransition = false; //We end the transition
+                //Invoke((MethodInvoker)delegate { Globals.trade.ExternalCanvasRefresh(this,null); });
+                //Invoke((MethodInvoker)delegate { Globals.sideWatchlist.UpdateBalance(); });
+                Globals.main.AllowInput(true);
+                if (Globals.today == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day
+                {
+                    Globals.trade.EndGame(); //We end the game, server receives savedata as a newPlay
+                    return;
+                }
+                //If it is not the last day we refresh UI and allow interaction (we can't allow interaction in the last day)
+                Invoke((MethodInvoker)delegate //We Invoke UI commands
+                {
+                    Globals.watchlist.ExternalCanvasRefresh(this, null); //Refresh graphics
+                    Globals.account.Update_portfolio();
+                    Globals.account.Reload_panel(); //Refresh graphics
+
+                    Globals.stock.UpdateCompanyData(); //Refreshes data
+                    Globals.trade.Focus();
+                });
+            }
+        }
+
         public void GetHandler(object sender, EventArgs e)
         {
             Globals.trade.GotFocus -= GetHandler;
-            MessageBox.Show("HANDLED");
+            Thread mov = new Thread(Movement);mov.Start();
         }
 
         private void ItemDrawing(object sender, DrawItemEventArgs e)
