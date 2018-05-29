@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Account_balance_label = new MaterialSkin.Controls.MaterialLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel_sellOrders = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,25 +41,10 @@
             this.Shares_label = new System.Windows.Forms.Label();
             this.symbol_label = new System.Windows.Forms.Label();
             this.panel_buyOrders = new System.Windows.Forms.Panel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.total_balance = new MaterialSkin.Controls.MaterialLabel();
-            this.Balance_label = new MaterialSkin.Controls.MaterialLabel();
-            this.stocks_balance = new MaterialSkin.Controls.MaterialLabel();
-            this.account_money = new MaterialSkin.Controls.MaterialLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_portfolio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Account_balance_label
-            // 
-            this.Account_balance_label.AutoSize = true;
-            this.Account_balance_label.Depth = 0;
-            this.Account_balance_label.Font = new System.Drawing.Font("Roboto", 11F);
-            this.Account_balance_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Account_balance_label.Location = new System.Drawing.Point(51, 38);
-            this.Account_balance_label.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Account_balance_label.Name = "Account_balance_label";
-            this.Account_balance_label.Size = new System.Drawing.Size(0, 19);
-            this.Account_balance_label.TabIndex = 0;
             // 
             // label3
             // 
@@ -221,69 +205,14 @@
             this.panel_buyOrders.TabIndex = 8;
             this.panel_buyOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.Paint_table);
             // 
-            // materialLabel1
+            // pictureBox1
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(35, 18);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel1.TabIndex = 7;
-            // 
-            // total_balance
-            // 
-            this.total_balance.AutoSize = true;
-            this.total_balance.Depth = 0;
-            this.total_balance.Font = new System.Drawing.Font("Roboto", 11F);
-            this.total_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.total_balance.Location = new System.Drawing.Point(68, 113);
-            this.total_balance.MouseState = MaterialSkin.MouseState.HOVER;
-            this.total_balance.Name = "total_balance";
-            this.total_balance.Size = new System.Drawing.Size(52, 19);
-            this.total_balance.TabIndex = 24;
-            this.total_balance.Text = "Total: ";
-            // 
-            // Balance_label
-            // 
-            this.Balance_label.AutoSize = true;
-            this.Balance_label.Depth = 0;
-            this.Balance_label.Font = new System.Drawing.Font("Roboto", 11F);
-            this.Balance_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Balance_label.Location = new System.Drawing.Point(51, 18);
-            this.Balance_label.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Balance_label.Name = "Balance_label";
-            this.Balance_label.Size = new System.Drawing.Size(62, 19);
-            this.Balance_label.TabIndex = 23;
-            this.Balance_label.Text = "Balance";
-            // 
-            // stocks_balance
-            // 
-            this.stocks_balance.AutoSize = true;
-            this.stocks_balance.Depth = 0;
-            this.stocks_balance.Font = new System.Drawing.Font("Roboto", 11F);
-            this.stocks_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.stocks_balance.Location = new System.Drawing.Point(66, 84);
-            this.stocks_balance.MouseState = MaterialSkin.MouseState.HOVER;
-            this.stocks_balance.Name = "stocks_balance";
-            this.stocks_balance.Size = new System.Drawing.Size(60, 19);
-            this.stocks_balance.TabIndex = 22;
-            this.stocks_balance.Text = "Stocks:";
-            // 
-            // account_money
-            // 
-            this.account_money.AutoSize = true;
-            this.account_money.Depth = 0;
-            this.account_money.Font = new System.Drawing.Font("Roboto", 11F);
-            this.account_money.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.account_money.Location = new System.Drawing.Point(66, 54);
-            this.account_money.MouseState = MaterialSkin.MouseState.HOVER;
-            this.account_money.Name = "account_money";
-            this.account_money.Size = new System.Drawing.Size(110, 19);
-            this.account_money.TabIndex = 21;
-            this.account_money.Text = "Money: $10000";
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.pictureBox1.Location = new System.Drawing.Point(37, 71);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(900, 475);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
             // Account
             // 
@@ -291,18 +220,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.ClientSize = new System.Drawing.Size(975, 585);
-            this.Controls.Add(this.total_balance);
-            this.Controls.Add(this.Balance_label);
-            this.Controls.Add(this.stocks_balance);
-            this.Controls.Add(this.account_money);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel_sellOrders);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel_portfolio);
             this.Controls.Add(this.panel_buyOrders);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.Account_balance_label);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1200, 664);
@@ -315,14 +239,13 @@
             this.Load += new System.EventHandler(this.OnLoad);
             this.panel_portfolio.ResumeLayout(false);
             this.panel_portfolio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel Account_balance_label;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel_sellOrders;
         private System.Windows.Forms.Label label2;
@@ -336,10 +259,6 @@
         private System.Windows.Forms.Label Shares_label;
         private System.Windows.Forms.Label symbol_label;
         private System.Windows.Forms.Panel panel_buyOrders;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel total_balance;
-        private MaterialSkin.Controls.MaterialLabel Balance_label;
-        private MaterialSkin.Controls.MaterialLabel stocks_balance;
-        private MaterialSkin.Controls.MaterialLabel account_money;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

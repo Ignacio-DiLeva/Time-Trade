@@ -46,33 +46,6 @@ namespace mainSample
 
         public void Reload_panel()
         {
-            //label showing balance
-            account_money.Text = "Money: $" + Math.Round(Globals.moneyBalance, 2).ToString(); 
-
-            //Adds the balance value of both stocks and money
-            double stocks_balanceValue = 0;
-
-            //loops through all the stocks and adds the value
-            foreach(Company c in Globals.portfolio_companies)
-            {
-                stocks_balanceValue += Utilities.ReadInfo(c.Name, Globals.today) * c.Holdings;
-            }
-            
-            //loops through all the orders and adds the value (these are your holdings put on sell)
-            foreach(Order o in Globals.sellOrders)
-            {
-                stocks_balanceValue += Utilities.ReadInfo(o.Name, Globals.today) * o.Holdings;
-            }
-
-            //updates the label of your stock values
-            stocks_balance.Text = "Stocks: $" + Math.Round(stocks_balanceValue, 2);
-
-            //adds the total value of your money and your stocks
-            double totalvalue = Math.Round(Globals.moneyBalance, 2) + stocks_balanceValue;
-
-            //updates the label
-            total_balance.Text = "Total: $" + totalvalue;
-
             //puts the portfolio label text changing as secondary task and changes 
             Thread addHoldings = new Thread(Add_holdings); addHoldings.Start(); 
         }
@@ -209,31 +182,13 @@ namespace mainSample
 
         public void OnLoad(object sender, EventArgs e)
         {
-            //defines fonts for the balance labels
-            stocks_balance.Font = balance_font;
-            stocks_balance.BackColor = backcolor;
-            stocks_balance.ForeColor = foreColor;
-
-            total_balance.Font = balance_font;
-            total_balance.BackColor = backcolor;
-            total_balance.ForeColor = foreColor;
-
-            account_money.Font = balance_font;
-            account_money.BackColor = backcolor;
-            account_money.ForeColor = foreColor;
 
             //reloads all panels to check changes
             Reload_panel(); 
             Reload_buy();
             Reload_sell();
 
-            //update the balance label
-            Balance_label.Text = "Balance";
-            Balance_label.Font = general_balance;
-            Balance_label.Location = new Point(68, 81-60);
-            Balance_label.BackColor = backcolor;
-            Balance_label.ForeColor = foreColor;
-
+ 
             //defines the font
             Font fonts = portfolio_fonts;
 
