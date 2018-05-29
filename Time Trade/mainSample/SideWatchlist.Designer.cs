@@ -67,8 +67,7 @@
             this.watchlist2 = new System.Windows.Forms.Label();
             this.watchlist1 = new System.Windows.Forms.Label();
             this.watchlist0 = new System.Windows.Forms.Label();
-            this.DayMonth = new System.Windows.Forms.Label();
-            this.Year = new System.Windows.Forms.Label();
+            this.calendarLabel = new System.Windows.Forms.Label();
             this.orangeContainerWatchlist = new System.Windows.Forms.PictureBox();
             this.brownContainerWatchlist = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -76,13 +75,14 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.moneyLabel = new System.Windows.Forms.Label();
+            this.stockLabel = new System.Windows.Forms.Label();
+            this.TotalLabel = new System.Windows.Forms.Label();
+            this.buttonDetailsBalance = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.Searcher = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.orangeContainerWatchlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brownContainerWatchlist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -610,29 +610,17 @@
             this.watchlist0.Click += new System.EventHandler(this.RequestAdditionIntoWatchlist);
             this.watchlist0.DoubleClick += new System.EventHandler(this.RedirectToTrade);
             // 
-            // DayMonth
+            // calendarLabel
             // 
-            this.DayMonth.AutoSize = true;
-            this.DayMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.DayMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.DayMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.DayMonth.Location = new System.Drawing.Point(12, 182);
-            this.DayMonth.Name = "DayMonth";
-            this.DayMonth.Size = new System.Drawing.Size(162, 63);
-            this.DayMonth.TabIndex = 90;
-            this.DayMonth.Text = "01/06";
-            // 
-            // Year
-            // 
-            this.Year.AutoSize = true;
-            this.Year.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.Year.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
-            this.Year.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.Year.Location = new System.Drawing.Point(58, 188);
-            this.Year.Name = "Year";
-            this.Year.Size = new System.Drawing.Size(147, 63);
-            this.Year.TabIndex = 91;
-            this.Year.Text = "2007";
+            this.calendarLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.calendarLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.calendarLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.calendarLabel.Location = new System.Drawing.Point(12, 180);
+            this.calendarLabel.Name = "calendarLabel";
+            this.calendarLabel.Size = new System.Drawing.Size(201, 63);
+            this.calendarLabel.TabIndex = 90;
+            this.calendarLabel.Text = "01/06";
+            this.calendarLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // orangeContainerWatchlist
             // 
@@ -700,54 +688,58 @@
             this.label2.Text = "BALANCE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // moneyLabel
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label3.Location = new System.Drawing.Point(18, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
-            this.label3.TabIndex = 99;
-            this.label3.Text = "MONEY: $";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.moneyLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.moneyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.moneyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.moneyLabel.Location = new System.Drawing.Point(17, 93);
+            this.moneyLabel.Name = "moneyLabel";
+            this.moneyLabel.Size = new System.Drawing.Size(100, 20);
+            this.moneyLabel.TabIndex = 99;
+            this.moneyLabel.Tag = "MONEY: $";
+            this.moneyLabel.Text = "MONEY: $";
+            this.moneyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
+            // stockLabel
             // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label4.Location = new System.Drawing.Point(18, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 20);
-            this.label4.TabIndex = 100;
-            this.label4.Text = "STOCK: $";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.stockLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.stockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.stockLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.stockLabel.Location = new System.Drawing.Point(17, 113);
+            this.stockLabel.Name = "stockLabel";
+            this.stockLabel.Size = new System.Drawing.Size(100, 20);
+            this.stockLabel.TabIndex = 100;
+            this.stockLabel.Tag = "STOCK: $";
+            this.stockLabel.Text = "STOCK: $";
+            this.stockLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label5
+            // TotalLabel
             // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label5.Location = new System.Drawing.Point(18, 133);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 20);
-            this.label5.TabIndex = 101;
-            this.label5.Text = "TOTAL: $";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TotalLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.TotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.TotalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.TotalLabel.Location = new System.Drawing.Point(17, 133);
+            this.TotalLabel.Name = "TotalLabel";
+            this.TotalLabel.Size = new System.Drawing.Size(100, 20);
+            this.TotalLabel.TabIndex = 101;
+            this.TotalLabel.Tag = "TOTAL: $";
+            this.TotalLabel.Text = "TOTAL: $";
+            this.TotalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // buttonDetailsBalance
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.button1.Location = new System.Drawing.Point(135, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 20);
-            this.button1.TabIndex = 102;
-            this.button1.Text = "DETAILS";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonDetailsBalance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.buttonDetailsBalance.FlatAppearance.BorderSize = 0;
+            this.buttonDetailsBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDetailsBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.buttonDetailsBalance.Location = new System.Drawing.Point(148, 116);
+            this.buttonDetailsBalance.Name = "buttonDetailsBalance";
+            this.buttonDetailsBalance.Size = new System.Drawing.Size(60, 20);
+            this.buttonDetailsBalance.TabIndex = 102;
+            this.buttonDetailsBalance.Text = "DETAILS";
+            this.buttonDetailsBalance.UseVisualStyleBackColor = false;
+            this.buttonDetailsBalance.Click += new System.EventHandler(this.RedirectToAccount);
             // 
             // pictureBox5
             // 
@@ -785,21 +777,31 @@
             this.Searcher.SelectedIndexChanged += new System.EventHandler(this.CheckChangeOnSearcher);
             this.Searcher.SelectedValueChanged += new System.EventHandler(this.CheckChangeOnSearcher);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(82, 227);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 33);
+            this.button1.TabIndex = 106;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SideWatchlist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.ClientSize = new System.Drawing.Size(225, 655);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Searcher);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.Year);
-            this.Controls.Add(this.DayMonth);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.calendarLabel);
+            this.Controls.Add(this.buttonDetailsBalance);
+            this.Controls.Add(this.TotalLabel);
+            this.Controls.Add(this.stockLabel);
+            this.Controls.Add(this.moneyLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
@@ -861,7 +863,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -906,8 +907,7 @@
         private System.Windows.Forms.Label watchlist2;
         private System.Windows.Forms.Label watchlist1;
         private System.Windows.Forms.Label watchlist0;
-        public System.Windows.Forms.Label DayMonth;
-        public System.Windows.Forms.Label Year;
+        public System.Windows.Forms.Label calendarLabel;
         private System.Windows.Forms.PictureBox orangeContainerWatchlist;
         private System.Windows.Forms.PictureBox brownContainerWatchlist;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -915,12 +915,13 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label moneyLabel;
+        private System.Windows.Forms.Label stockLabel;
+        private System.Windows.Forms.Label TotalLabel;
+        private System.Windows.Forms.Button buttonDetailsBalance;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.ComboBox Searcher;
+        private System.Windows.Forms.Button button1;
     }
 }

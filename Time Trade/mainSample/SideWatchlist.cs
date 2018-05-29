@@ -136,6 +136,8 @@ namespace mainSample
 
         public void UpdateCalendar(DateTime date)
         {
+            string text = String.Empty;
+            const bool abbr = true;
             string dm = null;
             int day = date.Day;
             int month = date.Month;
@@ -149,8 +151,16 @@ namespace mainSample
                 dm += "0";
             }
             dm += month.ToString();
-            DayMonth.Text = dm;
-            Year.Text = date.Year.ToString();
+            if (abbr)
+            {
+                text += System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(month)+" ";
+            }
+            else
+            {
+                text += System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(month) + " ";
+            }
+            text += day+", "+date.Year;
+            calendarLabel.Text = text;
         }
 
         private void RedirectToTrade(object sender, EventArgs e)
@@ -163,8 +173,6 @@ namespace mainSample
                 {
                     Globals.main.HideForm(Globals.main.currentForm);
                 }
-                Globals.main.currentForm = "Trade";
-                Globals.main.showLogo.Tag = Globals.main.currentForm;
             }
         }
         private void CheckChangeOnSearcher(object sender, EventArgs e)
@@ -173,6 +181,33 @@ namespace mainSample
             Globals.displayedCompany = Globals.main.displayedCompany.Text;
             Globals.main.displayedCompany.Tag = Utilities.GetIndexOfCompany(Globals.displayedCompany);
             Globals.trade.ExternalCanvasRefresh(this, null);
+        }
+
+        public void UpdateBalance(double money, double stock)
+        {
+            money = Math.Round(money, 2);
+            stock = Math.Round(stock, 2);
+            double total = money + stock;
+            moneyLabel.Text = moneyLabel.Tag.ToString() + money.ToString("0.##");
+            stockLabel.Text = stockLabel.Tag.ToString() + stock.ToString("0.##");
+            TotalLabel.Text = TotalLabel.Tag.ToString() + total.ToString("0.##");
+        }
+
+        private void RedirectToAccount(object sender, EventArgs e)
+        {
+            Globals.main.ShowForm(Globals.main.AccountBtn, null);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Globals.trade.GotFocus += GetHandler;
+            Globals.main.ShowForm(Globals.main.TradeBtn,null);
+        }
+
+        public void GetHandler(object sender, EventArgs e)
+        {
+            Globals.trade.GotFocus -= GetHandler;
+            MessageBox.Show("HANDLED");
         }
     }
 }
