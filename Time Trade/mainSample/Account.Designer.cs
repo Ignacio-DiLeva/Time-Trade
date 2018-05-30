@@ -45,9 +45,14 @@
             this.showPortfolio = new System.Windows.Forms.Button();
             this.showBuyorders = new System.Windows.Forms.Button();
             this.showSellorders = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ordersHead = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.portfolioLabels.SuspendLayout();
+            this.ordersHead.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -67,9 +72,9 @@
             // 
             this.panel_sellOrders.AutoScroll = true;
             this.panel_sellOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.panel_sellOrders.Location = new System.Drawing.Point(0, 0);
+            this.panel_sellOrders.Location = new System.Drawing.Point(45, 128);
             this.panel_sellOrders.Name = "panel_sellOrders";
-            this.panel_sellOrders.Size = new System.Drawing.Size(884, 459);
+            this.panel_sellOrders.Size = new System.Drawing.Size(884, 410);
             this.panel_sellOrders.TabIndex = 9;
             this.panel_sellOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.Paint_table);
             // 
@@ -90,9 +95,9 @@
             // 
             this.panel_buyOrders.AutoScroll = true;
             this.panel_buyOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.panel_buyOrders.Location = new System.Drawing.Point(960, 214);
+            this.panel_buyOrders.Location = new System.Drawing.Point(45, 128);
             this.panel_buyOrders.Name = "panel_buyOrders";
-            this.panel_buyOrders.Size = new System.Drawing.Size(259, 167);
+            this.panel_buyOrders.Size = new System.Drawing.Size(884, 410);
             this.panel_buyOrders.TabIndex = 8;
             this.panel_buyOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.Paint_table);
             // 
@@ -260,22 +265,70 @@
             this.showSellorders.UseVisualStyleBackColor = false;
             this.showSellorders.Click += new System.EventHandler(this.ShowSellOrders);
             // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.label11.Font = new System.Drawing.Font("Arial", 13F);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(12, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 23);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Name";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.label10.Font = new System.Drawing.Font("Arial", 13F);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(302, 14);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 23);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Holdings";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.label9.Font = new System.Drawing.Font("Arial", 13F);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(634, 14);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 23);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Price";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ordersHead
+            // 
+            this.ordersHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.ordersHead.Controls.Add(this.label9);
+            this.ordersHead.Controls.Add(this.label10);
+            this.ordersHead.Controls.Add(this.label11);
+            this.ordersHead.Location = new System.Drawing.Point(45, 79);
+            this.ordersHead.Name = "ordersHead";
+            this.ordersHead.Size = new System.Drawing.Size(884, 49);
+            this.ordersHead.TabIndex = 20;
+            // 
             // Account
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.ClientSize = new System.Drawing.Size(975, 585);
+            this.Controls.Add(this.panel_sellOrders);
+            this.Controls.Add(this.ordersHead);
+            this.Controls.Add(this.panel_buyOrders);
             this.Controls.Add(this.showSellorders);
             this.Controls.Add(this.showBuyorders);
             this.Controls.Add(this.showPortfolio);
             this.Controls.Add(this.portfolioLabels);
-            this.Controls.Add(this.panel_sellOrders);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel_buyOrders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1200, 664);
@@ -289,6 +342,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.portfolioLabels.ResumeLayout(false);
+            this.ordersHead.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,5 +366,9 @@
         private System.Windows.Forms.Button showPortfolio;
         private System.Windows.Forms.Button showBuyorders;
         private System.Windows.Forms.Button showSellorders;
+        private System.Windows.Forms.Panel ordersHead;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

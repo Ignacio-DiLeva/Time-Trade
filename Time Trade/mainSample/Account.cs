@@ -12,9 +12,11 @@ namespace mainSample
         Color foreColor = Color.White;
 
         Color backcolor = Color.FromArgb(79, 93, 117);
-        Font general_balance = new Font("Garamond", 12);
         Font portfolio_fonts = new Font("Times New Roman", 9);
-        Color penColor = Color.White;
+
+
+        Pen pencolor = new Pen(Constants.black, 1);
+
 
 
         PictureBox p = new PictureBox
@@ -33,16 +35,9 @@ namespace mainSample
         }
 
         //labels of buy and sell so we can delete them later when cancelled
-        List<PictureBox> cancel_buy = new List<PictureBox>();
-        List<Label> company_buy = new List<Label>();
-        List<Label> price_buy = new List<Label>();
-        List<Label> amount_buy = new List<Label>();
+
         List<string> buy_labels = new List<string>();
 
-        List<PictureBox> cancel_sell = new List<PictureBox>();
-        List<Label> company_sell = new List<Label>();
-        List<Label> price_sell = new List<Label>();
-        List<Label> amount_sell = new List<Label>();
         List<string> sell_labels = new List<string>();
 
         public void Reload_panel()
@@ -64,10 +59,6 @@ namespace mainSample
         {
             //clears all the labels
             panel_sellOrders.Controls.Clear();
-            cancel_sell.Clear(); 
-            company_sell.Clear();
-            price_sell.Clear();
-            amount_sell.Clear();
             sell_labels.Clear();
 
             //declares cancel picturebox
@@ -77,40 +68,33 @@ namespace mainSample
             //loop to show all the orders you have
             foreach (Order o in Globals.sellOrders) 
             {
-                //creates a label with the order company name
-                company_sell.Add(Return_label(0, i + 1, o.Name, "label_company"));
-                //adds name to panel
-                panel_sellOrders.Controls.Add(company_sell[i]);
-                //this helps to cancel order
-                sell_labels.Add(company_sell[i].Tag.ToString()); 
 
-                //creates a label with the holdings of that order
-                amount_sell.Add(Return_label(60, i + 1, Convert.ToString(o.Holdings), "label_amount"));
+                //adds name to panel
+                panel_sellOrders.Controls.Add(Return_label(i, new Point(12, 30+ i*82), o.Name, "label_company"));
+                //this helps to cancel order
+                sell_labels.Add(Return_label(i, new Point(12, 30+i*82), o.Name, "label_company").Tag.ToString()); 
 
                 //adds the amount of shares you order
-                panel_sellOrders.Controls.Add(amount_sell[i]); 
+                panel_sellOrders.Controls.Add(Return_label(i, new Point(302, 30 + i * 82), Convert.ToString(o.Holdings), "label_amount")); 
 
-                //adds the price of that order
-                price_sell.Add(Return_label(130, i + 1, Convert.ToString(o.Price), "label_price"));
                 //adds the price of shares you order
-                panel_sellOrders.Controls.Add(price_sell[i]);
+                panel_sellOrders.Controls.Add(Return_label(i, new Point(634, 30 + i * 82), "$" + Convert.ToString(o.Price), "label_price"));
 
                 //cancel picturebox
                 cancel = new PictureBox 
                 {
-                    Name = "cancel_" + (i + 1),
-                    Size = new Size(15, 15),
-                    Location = new Point(193, 27 * (i + 1)), //location depending on which line you are
+                    Name = "cancel_" + (i),
+                    Size = new Size(50, 50),
+                    Location = new Point(818, 25 +82*i), //location depending on which line you are
                     Image = Properties.Resources.buttonx_j,
                     SizeMode = PictureBoxSizeMode.StretchImage,
-                    Tag = "object_" + (i + 1),
+                    Tag = "object_" + (i),
                 };
                 //adds the CancelMethod to the click action
                 cancel.Click += CancelMethodSell;
-                //adds top list
-                cancel_sell.Add(cancel);
+
                 //adds to panel
-                panel_sellOrders.Controls.Add(cancel_sell[i]);
+                panel_sellOrders.Controls.Add(cancel);
 
                 i++; //next order
 
@@ -122,10 +106,7 @@ namespace mainSample
         {
             //clears to reload
             panel_buyOrders.Controls.Clear();
-            cancel_buy.Clear(); 
-            company_buy.Clear();
-            price_buy.Clear();
-            amount_buy.Clear();
+
             buy_labels.Clear();
 
             //declares cancel picturebox
@@ -135,45 +116,34 @@ namespace mainSample
             //loop to show all the orders you have
             foreach (Order o in Globals.buyOrders) 
             {
-                //creates a label and adds to a list
-                company_buy.Add(Return_label(0, i + 1, Globals.buyOrders[i].Name, "label_company"));
-
                 //adds name to panel
-                panel_buyOrders.Controls.Add(company_buy[i]);
-
+                //adds name to panel
+                panel_buyOrders.Controls.Add(Return_label(i, new Point(12, 30 + i * 82), o.Name, "label_company"));
                 //this helps to cancel order
-                buy_labels.Add(company_buy[i].Tag.ToString()); 
+                buy_labels.Add(Return_label(i, new Point(12, 30 + i * 82), o.Name, "label_company").Tag.ToString());
 
-                //adds the holdings label to the amount buy list
-                amount_buy.Add(Return_label(60, i + 1, Convert.ToString(o.Holdings), "label_amount"));
+                //adds the amount of shares you order
+                panel_buyOrders.Controls.Add(Return_label(i, new Point(302, 30 + i * 82), Convert.ToString(o.Holdings), "label_amount"));
 
-                //adds the amount of shares you order to the panel
-                panel_buyOrders.Controls.Add(amount_buy[i]); 
-
-                //creates a price label and adds to list
-                price_buy.Add(Return_label(130, i + 1, Convert.ToString(o.Price), "label_price"));
-
-                //adds the price of shares you order to the panel
-                panel_buyOrders.Controls.Add(price_buy[i]); 
-
+                //adds the price of shares you order
+                panel_buyOrders.Controls.Add(Return_label(i, new Point(634, 30 + i * 82),"$"+ Convert.ToString(o.Price), "label_price"));
 
 
                 cancel = new PictureBox //cancel picturebox
                 {
-                    Name = "cancel_" + (i + 1),
-                    Size = new Size(15, 15),
-                    Location = new Point(195, 26 * (i + 1)), //location depending on which line you are
+                    Name = "cancel_" + (i),
+                    Size = new Size(50, 50),
+                    Location = new Point(818, 25 + 82 * i), //location depending on which line you are                    
                     Image = Properties.Resources.buttonx_j,
                     SizeMode = PictureBoxSizeMode.StretchImage,
-                    Tag = "object_" + (i + 1),
+                    Tag = "object_" + (i),
                 };
 
                 //adds the CancelMethod to the click action 
                 cancel.Click += CancelMethodBuy;
-                //adds to list
-                cancel_buy.Add(cancel);
+
                 //adds to panel
-                panel_buyOrders.Controls.Add(cancel_buy[i]);
+                panel_buyOrders.Controls.Add(cancel);
 
                 i++;
             }
@@ -188,6 +158,9 @@ namespace mainSample
             Controls.Add(PA);
             PA.Show();
             PA.BringToFront();
+            panel_buyOrders.Visible = false;
+            panel_sellOrders.Visible = false;
+            ordersHead.Visible = false;
 
             //reloads all panels to check changes
             Update_portfolio();
@@ -207,48 +180,30 @@ namespace mainSample
         //draw the lines of the orders panel
         private void Paint_table(object sender, PaintEventArgs e)
         {
-            Pen bp = new Pen(penColor, 1);
+            Pen bp = pencolor;
             Point p1;
             Point p2;
 
-            for (int i = 0; i < 4; i++)
-            {
-                p1= new Point(10 + 60 * i, 0);
-                p2 = new Point(10 + 60 * i, 25 * 6);
-                e.Graphics.DrawLine(bp,p1, p2);
-            }
-
-            p1 = new Point(10 + 180 + 20, 0);
-            p2 = new Point(10 + 180 + 20, 25 * 6);
-            e.Graphics.DrawLine(bp, p1, p2);
 
             for (int i = 0; i < 6; i++)
             {
-                p1 = new Point(10, 25 * (i + 1));
-                p2 = new Point(210, 25 * (i + 1));
+                p1 = new Point(0, 82+ 82*i);
+                p2 = new Point(884, 82+ 82*i);
                 e.Graphics.DrawLine(bp, p1, p2);
             }
 
-            //adds the lables to the panel
-            panel_buyOrders.Controls.Add(Return_label(0, 0, "Symbol", "company_name")); //shows labels that
-            panel_buyOrders.Controls.Add(Return_label(60, 0, "Shares", "company_name")); //form the chart
-            panel_buyOrders.Controls.Add(Return_label(125, 0, "Price", "company_name"));
-
-            panel_sellOrders.Controls.Add(Return_label(0, 0, "Symbol", "company_name")); //shows labels that
-            panel_sellOrders.Controls.Add(Return_label(60, 0, "Shares", "company_name")); //form the chart
-            panel_sellOrders.Controls.Add(Return_label(125, 0, "Price", "company_name"));
         }
 
         //default label creating method
-        Label Return_label(int locationx, int i, string text, string tag)
+        Label Return_label(int iteration, Point p, string text, string name)
         {
             return new Label
             {
-                Location = new Point(12 + locationx, 27 * (i)),
+                Location = p,
                 Text = text,
-                Font = new Font("Times New Roman", 9),
-                Name = tag + i,
-                Tag = "object_" + i,
+                Font = new Font("Arial", 20),
+                Name = name + iteration,
+                Tag = "object_" + iteration,
                 AutoSize = true,
                 ForeColor = foreColor,
                 BackColor = backcolor
@@ -290,18 +245,10 @@ namespace mainSample
             //if it is in your sell labels
             if (a != -1)
             {
-                //removes from controls all labels related to that oder
-                panel_sellOrders.Controls.Remove(amount_sell[a]);
-                panel_sellOrders.Controls.Remove(company_sell[a]);
-                panel_sellOrders.Controls.Remove(price_sell[a]);
-                panel_sellOrders.Controls.Remove(cancel_sell[a]);
 
                 //removes it from the lists
                 sell_labels.RemoveAt(a);
-                amount_sell.RemoveAt(a);
-                company_sell.RemoveAt(a);
-                price_sell.RemoveAt(a);
-                cancel_sell.RemoveAt(a);
+
 
                 int index = -1;
 
@@ -355,15 +302,8 @@ namespace mainSample
             {
 
                 //removes all orders whose index is the one above.
-                panel_buyOrders.Controls.Remove(amount_buy[a]);
-                panel_buyOrders.Controls.Remove(company_buy[a]);
-                panel_buyOrders.Controls.Remove(price_buy[a]);
-                panel_buyOrders.Controls.Remove(cancel_buy[a]);
+
                 buy_labels.RemoveAt(a);
-                amount_buy.RemoveAt(a);
-                company_buy.RemoveAt(a);
-                price_buy.RemoveAt(a);
-                cancel_buy.RemoveAt(a);
                 Globals.buyOrders.RemoveAt(a);
             }
         }
@@ -374,6 +314,7 @@ namespace mainSample
             PA.Show();
             panel_buyOrders.Visible = false;
             panel_sellOrders.Visible = false;
+            ordersHead.Visible = false;
 
             HighlightButton(sender);
             DehighButton(showBuyorders);
@@ -388,6 +329,7 @@ namespace mainSample
             PA.Hide();
             panel_buyOrders.Visible = true;
             panel_sellOrders.Visible = false;
+            ordersHead.Visible = true;
 
             HighlightButton(sender);
             DehighButton(showPortfolio);
@@ -400,6 +342,7 @@ namespace mainSample
             PA.Hide();
             panel_buyOrders.Visible = false;
             panel_sellOrders.Visible = true;
+            ordersHead.Visible = true;
 
             HighlightButton(sender);
             DehighButton(showBuyorders);
