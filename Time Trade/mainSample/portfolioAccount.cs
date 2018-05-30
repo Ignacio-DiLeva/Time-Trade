@@ -40,6 +40,7 @@ namespace mainSample
                 {
                     Text = "",
                     Font = new Font("Arial", 12),
+                    ForeColor = Color.White,
                     Name = x + "_name",
                     Tag = "tag",
                     AutoSize = false,

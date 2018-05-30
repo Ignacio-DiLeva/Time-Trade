@@ -67,9 +67,9 @@
             // 
             this.panel_sellOrders.AutoScroll = true;
             this.panel_sellOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.panel_sellOrders.Location = new System.Drawing.Point(960, 12);
+            this.panel_sellOrders.Location = new System.Drawing.Point(0, 0);
             this.panel_sellOrders.Name = "panel_sellOrders";
-            this.panel_sellOrders.Size = new System.Drawing.Size(259, 186);
+            this.panel_sellOrders.Size = new System.Drawing.Size(884, 459);
             this.panel_sellOrders.TabIndex = 9;
             this.panel_sellOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.Paint_table);
             // 
