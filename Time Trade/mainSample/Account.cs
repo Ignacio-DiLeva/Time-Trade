@@ -308,7 +308,7 @@ namespace mainSample
             }
         }
 
-        private void ShowPortfolio(object sender, EventArgs e)
+        public void ShowPortfolio(object sender, EventArgs e)
         {
             portfolioLabels.Visible = true;
             PA.Show();
