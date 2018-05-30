@@ -36,11 +36,13 @@
             this.portfolioPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.portfolioPanel.Location = new System.Drawing.Point(0, 0);
             this.portfolioPanel.Name = "portfolioPanel";
-            this.portfolioPanel.Size = new System.Drawing.Size(865, 641);
+            this.portfolioPanel.Size = new System.Drawing.Size(865, 800);
             this.portfolioPanel.TabIndex = 0;
+            this.portfolioPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Paint_portfolio);
             // 
             // PortfolioAccount
             // 
+            this.Load += new System.EventHandler(this.OnLoad);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;

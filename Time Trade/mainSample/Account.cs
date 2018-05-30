@@ -23,6 +23,7 @@ namespace mainSample
             Location = new Point(0, 0),
             BackColor = Color.FromArgb(79, 93, 117)
         };
+
         public Account()
         {
             InitializeComponent();
@@ -46,11 +47,10 @@ namespace mainSample
 
         public void Reload_panel()
         {
-            //puts the portfolio label text changing as secondary task and changes 
-            Thread addHoldings = new Thread(Add_holdings); addHoldings.Start(); 
+            PA.RedrawPanels();
         }
 
-        //when you click the label, you are redirected to trade
+        //TO BE REMOVED
         private void RedirectToTrade(object sender, EventArgs e)
         {
             Globals.sideWatchlist.Searcher.SelectedIndex = Utilities.GetIndexOfCompany(((Control)sender).Text);
@@ -188,178 +188,12 @@ namespace mainSample
             Controls.Add(PA);
             PA.Show();
             PA.BringToFront();
-            
-            
 
             //reloads all panels to check changes
-            Reload_panel(); 
-            Reload_buy();
-            Reload_sell();
+            Update_portfolio();
 
- 
-            //defines the font
-            Font fonts = portfolio_fonts;
-
-            
-            int x = 0;
-            int y = 0;
-
-            //creates once all the labels of the portfolio
-            for (int i = 0; i < 141; i++)
-            {
-                //creates a sample label
-                Label label = new Label
-                {
-                    Text = "",
-                    Font = fonts,
-                    Name = x + "_name",
-                    Tag = "tag",
-                    AutoSize = true
-                };
-
-                switch (x) //depending on which label columnn you are, it creates a different type of label
-                {
-                    case 0: //name of the company
-                        label.Location = new Point(symbol_label.Location.X - 3, (symbol_label.Location.Y + 40) + 22 * y);
-                        label.Name = y + "name";
-                        label.DoubleClick += RedirectToTrade;
-                        break;
-                    case 1: //shares of that company
-                        label.Location = new Point(Shares_label.Location.X, (Shares_label.Location.Y + 40) + 22 * y);
-                        label.Name = y + "shares";
-                        break;
-                    case 2: //current price of that company
-                        label.Location = new Point(price_label.Location.X, (price_label.Location.Y + 40) + 22 * y);
-                        label.Name = y + "current";
-                        break;
-                    case 3: //the cost of each share
-                        label.Location = new Point(Cost_label.Location.X, (Cost_label.Location.Y + 40) + 22 * y);
-                        label.Name = y + "cost";
-                        break;
-                    case 4: //how much you bought that share
-                        label.Location = new Point(buyprice_label.Location.X, (buyprice_label.Location.Y + 40) + 22 * y);
-                        label.Name = y + "bp";
-                        break;
-                    case 5: //the gainloss in raw value
-                        label.Location = new Point(gainloss1_label.Location.X, (gainloss1_label.Location.Y + 40) + 22 * y);
-                        label.Name = y + "glone";
-                        break;
-                    case 6: //gainloss in percentage
-                        label.Location = new Point(gainloss2_label.Location.X, (gainloss2_label.Location.Y + 40) + 22 * y);
-                        label.Name = y + "gltwo";
-                        break;
-                }
-
-                label.Tag = y; //define its tag depending on the line. It will be used later
-                panel_portfolio.Controls.Add(label); //adds the label
-
-                x++; //iterates through the 7 types of labels
-                if (x == 7) //when it creates a line, passes to the next line
-                {
-                    x = 0;
-                    y++;
-                }
-            }
-            //updates the values of each label
-            Add_holdings();
         }
 
-        //method that updates the information of the portfolio
-        private void Add_holdings()
-        {
-            //defines the current day
-            DateTime dates = Globals.today; 
-            //defines fonts
-            Font fonts = portfolio_fonts;
-
-            //clears all labels that are not the ones that are the title
-            foreach (Control ctl in panel_portfolio.Controls)
-            {
-                if (ctl.Tag.ToString() != "initial_label")
-                {
-                    if (ctl.Text == null)
-                    {
-                        break;
-                    }
-                    Invoke((MethodInvoker)delegate { ctl.Text = null; });
-
-                }
-            }
-            //checks if you have any companies
-            if (Globals.portfolio_companies.Count != 0)
-            {
-                int y = 0;
-
-                //iterates through each company
-                foreach (Company cm in Globals.portfolio_companies)
-                {
-                    //defines the value in which the company closes
-                    string close_Value = Utilities.ReadInfo(cm.Name, dates).ToString();
-
-                    //iterates through the controls in the panel, in other words, the labels
-                    foreach (Control ctl in panel_portfolio.Controls)
-                    {
-                        //the tag defines the column of the label. Checks if the control has the iteration of y
-                        if (ctl.Tag.ToString() == y.ToString())
-                        {
-
-                            string name = "";
-
-                            //obtains the column of the label
-                            foreach (char c in ctl.Name)
-                            {
-                                if (!Char.IsDigit(c))
-                                {
-                                    name += c;
-                                }   
-                            }
-
-                            //the cost of all the holdings
-                            double total_Cost = cm.Values * cm.Holdings;
-
-                            //the raw gainloss
-                            double gainloss_Cost = Convert.ToDouble(close_Value) - cm.Values;
-
-                            //depending of which column
-                            switch (name)
-                            {
-                                case "name":
-                                    Invoke((MethodInvoker)delegate { ctl.Text = cm.Name; });
-                                    break;
-                                case "shares":
-                                    Invoke((MethodInvoker)delegate { ctl.Text = cm.Holdings.ToString(); });
-                                    break;
-
-                                case "current":
-                                    Invoke((MethodInvoker)delegate { ctl.Text = close_Value; });
-                                    break;
-
-                                case "cost":
-                                    Invoke((MethodInvoker)delegate { ctl.Text = "$" + Math.Round(total_Cost, 2).ToString(); });
-                                    break;
-
-                                case "bp":
-                                    Invoke((MethodInvoker)delegate { ctl.Text = "$" + Math.Round(cm.Values, 2).ToString(); });
-                                    break;
-
-                                case "glone":
-                                    Invoke((MethodInvoker)delegate {
-
-                                        ctl.Text = ((gainloss_Cost * cm.Holdings) < 0 ? "-1" : "") + "$" + Math.Round(Math.Abs((gainloss_Cost) * cm.Holdings), 2).ToString();
-                                    });
-                                    break;
-
-                                case "gltwo":
-                                    Invoke((MethodInvoker)delegate { ctl.Text = Math.Round((gainloss_Cost) / cm.Values * 100, 2).ToString() + "%"; });
-                                    break;
-                            }
-                        }
-                    }
-                    y++;
-                }
-
-            }
-        }
 
         //method to update the portfolio from another form
         public void Update_portfolio()
@@ -367,46 +201,6 @@ namespace mainSample
             Reload_buy();
             Reload_sell();
             Reload_panel();
-        }
-
-        //draws the lines of the portfolio
-        private void Paint_portfolio(object sender, PaintEventArgs e) //paints the portfolio chart
-        {
-
-            Pen blackPen = new Pen(penColor, 1);
-            Point p1;
-            Point p2;
-
-            foreach (Control ctl in panel_portfolio.Controls) //draws the vertical lines of the chart
-            {
-                if (ctl.Tag.ToString() == "initial_label") //only draws on the initial labels
-                {
-                    p1 = new Point(ctl.Location.X - 5, ctl.Location.Y); //declares point 1
-                    p2 = new Point(ctl.Location.X - 5, (gainloss2_label.Location.Y + 56) + 19 * 22); //declares point 2
-                    e.Graphics.DrawLine(blackPen, p1, p2);
-                }
-
-            }
-
-            //draws the second vertical line
-            p1 = new Point(gainloss2_label.Location.X + 77, gainloss2_label.Location.Y);
-            p2 = new Point(gainloss2_label.Location.X + 77, (gainloss2_label.Location.Y + 56) + 19 * 22);
-            e.Graphics.DrawLine(blackPen, p1, p2);
-            //draws the first horizontal line
-            p1 = new Point(gainloss2_label.Location.X + 77, gainloss2_label.Location.Y + 37);
-            p2 = new Point(symbol_label.Location.X - 5, gainloss2_label.Location.Y + 37);
-            e.Graphics.DrawLine(blackPen, p1, p2);
-
-            p1 = new Point(gainloss2_label.Location.X + 77, gainloss2_label.Location.Y-2);
-            p2 = new Point(symbol_label.Location.X - 5, gainloss2_label.Location.Y-2);
-            e.Graphics.DrawLine(blackPen, p1, p2);
-
-            for (int i = 0; i <= 21; i++) //draws the extra horizontal lines
-            {
-                p1 = new Point(gainloss2_label.Location.X + 77, (gainloss2_label.Location.Y + 56) + i * 22);
-                p2 = new Point(symbol_label.Location.X - 5, (gainloss2_label.Location.Y + 56) + i * 22);
-                e.Graphics.DrawLine(blackPen, p1, p2);
-            }
         }
 
 
