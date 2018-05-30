@@ -28,39 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Account_balance_label = new MaterialSkin.Controls.MaterialLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel_sellOrders = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel_portfolio = new System.Windows.Forms.Panel();
-            this.gainloss2_label = new System.Windows.Forms.Label();
-            this.gainloss1_label = new System.Windows.Forms.Label();
-            this.buyprice_label = new System.Windows.Forms.Label();
-            this.Cost_label = new System.Windows.Forms.Label();
-            this.price_label = new System.Windows.Forms.Label();
-            this.Shares_label = new System.Windows.Forms.Label();
-            this.symbol_label = new System.Windows.Forms.Label();
             this.panel_buyOrders = new System.Windows.Forms.Panel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.total_balance = new MaterialSkin.Controls.MaterialLabel();
-            this.Balance_label = new MaterialSkin.Controls.MaterialLabel();
-            this.stocks_balance = new MaterialSkin.Controls.MaterialLabel();
-            this.account_money = new MaterialSkin.Controls.MaterialLabel();
-            this.panel_portfolio.SuspendLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.portfolioLabels = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buypriceLabel = new System.Windows.Forms.Label();
+            this.costLabel = new System.Windows.Forms.Label();
+            this.priceLabel = new System.Windows.Forms.Label();
+            this.sharesLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.showPortfolio = new System.Windows.Forms.Button();
+            this.showBuyorders = new System.Windows.Forms.Button();
+            this.showSellorders = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ordersHead = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.portfolioLabels.SuspendLayout();
+            this.ordersHead.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Account_balance_label
-            // 
-            this.Account_balance_label.AutoSize = true;
-            this.Account_balance_label.Depth = 0;
-            this.Account_balance_label.Font = new System.Drawing.Font("Roboto", 11F);
-            this.Account_balance_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Account_balance_label.Location = new System.Drawing.Point(51, 38);
-            this.Account_balance_label.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Account_balance_label.Name = "Account_balance_label";
-            this.Account_balance_label.Size = new System.Drawing.Size(0, 19);
-            this.Account_balance_label.TabIndex = 0;
             // 
             // label3
             // 
@@ -79,9 +72,9 @@
             // 
             this.panel_sellOrders.AutoScroll = true;
             this.panel_sellOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.panel_sellOrders.Location = new System.Drawing.Point(55, 383);
+            this.panel_sellOrders.Location = new System.Drawing.Point(45, 128);
             this.panel_sellOrders.Name = "panel_sellOrders";
-            this.panel_sellOrders.Size = new System.Drawing.Size(259, 186);
+            this.panel_sellOrders.Size = new System.Drawing.Size(884, 410);
             this.panel_sellOrders.TabIndex = 9;
             this.panel_sellOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.Paint_table);
             // 
@@ -98,192 +91,226 @@
             this.label2.Text = "Buy Orders";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(548, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 55);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Portfolio";
-            // 
-            // panel_portfolio
-            // 
-            this.panel_portfolio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.panel_portfolio.Controls.Add(this.gainloss2_label);
-            this.panel_portfolio.Controls.Add(this.gainloss1_label);
-            this.panel_portfolio.Controls.Add(this.buyprice_label);
-            this.panel_portfolio.Controls.Add(this.Cost_label);
-            this.panel_portfolio.Controls.Add(this.price_label);
-            this.panel_portfolio.Controls.Add(this.Shares_label);
-            this.panel_portfolio.Controls.Add(this.symbol_label);
-            this.panel_portfolio.ForeColor = System.Drawing.Color.White;
-            this.panel_portfolio.Location = new System.Drawing.Point(339, 71);
-            this.panel_portfolio.Name = "panel_portfolio";
-            this.panel_portfolio.Size = new System.Drawing.Size(598, 498);
-            this.panel_portfolio.TabIndex = 11;
-            this.panel_portfolio.Paint += new System.Windows.Forms.PaintEventHandler(this.Paint_portfolio);
-            // 
-            // gainloss2_label
-            // 
-            this.gainloss2_label.AutoSize = true;
-            this.gainloss2_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.gainloss2_label.ForeColor = System.Drawing.Color.White;
-            this.gainloss2_label.Location = new System.Drawing.Point(509, 21);
-            this.gainloss2_label.Name = "gainloss2_label";
-            this.gainloss2_label.Size = new System.Drawing.Size(62, 30);
-            this.gainloss2_label.TabIndex = 6;
-            this.gainloss2_label.Tag = "initial_label";
-            this.gainloss2_label.Text = "Gain/Loss\r\n      (%)";
-            // 
-            // gainloss1_label
-            // 
-            this.gainloss1_label.AutoSize = true;
-            this.gainloss1_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.gainloss1_label.ForeColor = System.Drawing.Color.White;
-            this.gainloss1_label.Location = new System.Drawing.Point(417, 21);
-            this.gainloss1_label.Name = "gainloss1_label";
-            this.gainloss1_label.Size = new System.Drawing.Size(65, 30);
-            this.gainloss1_label.TabIndex = 5;
-            this.gainloss1_label.Tag = "initial_label";
-            this.gainloss1_label.Text = "Gain/Loss \r\n      ($)";
-            // 
-            // buyprice_label
-            // 
-            this.buyprice_label.AutoSize = true;
-            this.buyprice_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buyprice_label.ForeColor = System.Drawing.Color.White;
-            this.buyprice_label.Location = new System.Drawing.Point(329, 21);
-            this.buyprice_label.Name = "buyprice_label";
-            this.buyprice_label.Size = new System.Drawing.Size(57, 15);
-            this.buyprice_label.TabIndex = 4;
-            this.buyprice_label.Tag = "initial_label";
-            this.buyprice_label.Text = "Buy price";
-            // 
-            // Cost_label
-            // 
-            this.Cost_label.AutoSize = true;
-            this.Cost_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Cost_label.ForeColor = System.Drawing.Color.White;
-            this.Cost_label.Location = new System.Drawing.Point(251, 21);
-            this.Cost_label.Name = "Cost_label";
-            this.Cost_label.Size = new System.Drawing.Size(31, 15);
-            this.Cost_label.TabIndex = 3;
-            this.Cost_label.Tag = "initial_label";
-            this.Cost_label.Text = "Cost";
-            // 
-            // price_label
-            // 
-            this.price_label.AutoSize = true;
-            this.price_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.price_label.ForeColor = System.Drawing.Color.White;
-            this.price_label.Location = new System.Drawing.Point(172, 21);
-            this.price_label.Name = "price_label";
-            this.price_label.Size = new System.Drawing.Size(47, 30);
-            this.price_label.TabIndex = 2;
-            this.price_label.Tag = "initial_label";
-            this.price_label.Text = "Current\r\nprice";
-            // 
-            // Shares_label
-            // 
-            this.Shares_label.AutoSize = true;
-            this.Shares_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.Shares_label.ForeColor = System.Drawing.Color.White;
-            this.Shares_label.Location = new System.Drawing.Point(94, 21);
-            this.Shares_label.Name = "Shares_label";
-            this.Shares_label.Size = new System.Drawing.Size(46, 15);
-            this.Shares_label.TabIndex = 1;
-            this.Shares_label.Tag = "initial_label";
-            this.Shares_label.Text = "Shares";
-            // 
-            // symbol_label
-            // 
-            this.symbol_label.AutoSize = true;
-            this.symbol_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.symbol_label.ForeColor = System.Drawing.Color.White;
-            this.symbol_label.Location = new System.Drawing.Point(20, 21);
-            this.symbol_label.Name = "symbol_label";
-            this.symbol_label.Size = new System.Drawing.Size(48, 15);
-            this.symbol_label.TabIndex = 0;
-            this.symbol_label.Tag = "initial_label";
-            this.symbol_label.Text = "Symbol";
-            // 
             // panel_buyOrders
             // 
             this.panel_buyOrders.AutoScroll = true;
             this.panel_buyOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
-            this.panel_buyOrders.Location = new System.Drawing.Point(54, 192);
+            this.panel_buyOrders.Location = new System.Drawing.Point(45, 128);
             this.panel_buyOrders.Name = "panel_buyOrders";
-            this.panel_buyOrders.Size = new System.Drawing.Size(259, 167);
+            this.panel_buyOrders.Size = new System.Drawing.Size(884, 410);
             this.panel_buyOrders.TabIndex = 8;
             this.panel_buyOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.Paint_table);
             // 
-            // materialLabel1
+            // pictureBox1
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(35, 18);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(0, 19);
-            this.materialLabel1.TabIndex = 7;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.pictureBox1.Location = new System.Drawing.Point(37, 71);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(900, 475);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
-            // total_balance
+            // pictureBox2
             // 
-            this.total_balance.AutoSize = true;
-            this.total_balance.Depth = 0;
-            this.total_balance.Font = new System.Drawing.Font("Roboto", 11F);
-            this.total_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.total_balance.Location = new System.Drawing.Point(68, 113);
-            this.total_balance.MouseState = MaterialSkin.MouseState.HOVER;
-            this.total_balance.Name = "total_balance";
-            this.total_balance.Size = new System.Drawing.Size(52, 19);
-            this.total_balance.TabIndex = 24;
-            this.total_balance.Text = "Total: ";
+            this.pictureBox2.Location = new System.Drawing.Point(45, 79);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(884, 459);
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
             // 
-            // Balance_label
+            // portfolioLabels
             // 
-            this.Balance_label.AutoSize = true;
-            this.Balance_label.Depth = 0;
-            this.Balance_label.Font = new System.Drawing.Font("Roboto", 11F);
-            this.Balance_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Balance_label.Location = new System.Drawing.Point(51, 18);
-            this.Balance_label.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Balance_label.Name = "Balance_label";
-            this.Balance_label.Size = new System.Drawing.Size(62, 19);
-            this.Balance_label.TabIndex = 23;
-            this.Balance_label.Text = "Balance";
+            this.portfolioLabels.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.portfolioLabels.Controls.Add(this.label6);
+            this.portfolioLabels.Controls.Add(this.label5);
+            this.portfolioLabels.Controls.Add(this.buypriceLabel);
+            this.portfolioLabels.Controls.Add(this.costLabel);
+            this.portfolioLabels.Controls.Add(this.priceLabel);
+            this.portfolioLabels.Controls.Add(this.sharesLabel);
+            this.portfolioLabels.Controls.Add(this.nameLabel);
+            this.portfolioLabels.Location = new System.Drawing.Point(45, 79);
+            this.portfolioLabels.Name = "portfolioLabels";
+            this.portfolioLabels.Size = new System.Drawing.Size(884, 49);
+            this.portfolioLabels.TabIndex = 19;
             // 
-            // stocks_balance
+            // label6
             // 
-            this.stocks_balance.AutoSize = true;
-            this.stocks_balance.Depth = 0;
-            this.stocks_balance.Font = new System.Drawing.Font("Roboto", 11F);
-            this.stocks_balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.stocks_balance.Location = new System.Drawing.Point(66, 84);
-            this.stocks_balance.MouseState = MaterialSkin.MouseState.HOVER;
-            this.stocks_balance.Name = "stocks_balance";
-            this.stocks_balance.Size = new System.Drawing.Size(60, 19);
-            this.stocks_balance.TabIndex = 22;
-            this.stocks_balance.Text = "Stocks:";
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.label6.Font = new System.Drawing.Font("Arial", 13F);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(750, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 23);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Gain/Loss(%)";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // account_money
+            // label5
             // 
-            this.account_money.AutoSize = true;
-            this.account_money.Depth = 0;
-            this.account_money.Font = new System.Drawing.Font("Roboto", 11F);
-            this.account_money.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.account_money.Location = new System.Drawing.Point(66, 54);
-            this.account_money.MouseState = MaterialSkin.MouseState.HOVER;
-            this.account_money.Name = "account_money";
-            this.account_money.Size = new System.Drawing.Size(110, 19);
-            this.account_money.TabIndex = 21;
-            this.account_money.Text = "Money: $10000";
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.label5.Font = new System.Drawing.Font("Arial", 13F);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(610, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 23);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Gain/Loss($)";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // buypriceLabel
+            // 
+            this.buypriceLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.buypriceLabel.Font = new System.Drawing.Font("Arial", 13F);
+            this.buypriceLabel.ForeColor = System.Drawing.Color.White;
+            this.buypriceLabel.Location = new System.Drawing.Point(490, 14);
+            this.buypriceLabel.Name = "buypriceLabel";
+            this.buypriceLabel.Size = new System.Drawing.Size(88, 23);
+            this.buypriceLabel.TabIndex = 14;
+            this.buypriceLabel.Text = "Buy Price";
+            this.buypriceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // costLabel
+            // 
+            this.costLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.costLabel.Font = new System.Drawing.Font("Arial", 13F);
+            this.costLabel.ForeColor = System.Drawing.Color.White;
+            this.costLabel.Location = new System.Drawing.Point(405, 14);
+            this.costLabel.Name = "costLabel";
+            this.costLabel.Size = new System.Drawing.Size(49, 23);
+            this.costLabel.TabIndex = 13;
+            this.costLabel.Text = "Cost";
+            this.costLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // priceLabel
+            // 
+            this.priceLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.priceLabel.Font = new System.Drawing.Font("Arial", 13F);
+            this.priceLabel.ForeColor = System.Drawing.Color.White;
+            this.priceLabel.Location = new System.Drawing.Point(315, 14);
+            this.priceLabel.Name = "priceLabel";
+            this.priceLabel.Size = new System.Drawing.Size(52, 23);
+            this.priceLabel.TabIndex = 12;
+            this.priceLabel.Text = "Price";
+            this.priceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // sharesLabel
+            // 
+            this.sharesLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.sharesLabel.Font = new System.Drawing.Font("Arial", 13F);
+            this.sharesLabel.ForeColor = System.Drawing.Color.White;
+            this.sharesLabel.Location = new System.Drawing.Point(175, 14);
+            this.sharesLabel.Name = "sharesLabel";
+            this.sharesLabel.Size = new System.Drawing.Size(80, 23);
+            this.sharesLabel.TabIndex = 11;
+            this.sharesLabel.Text = "Holdings";
+            this.sharesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.nameLabel.Font = new System.Drawing.Font("Arial", 13F);
+            this.nameLabel.ForeColor = System.Drawing.Color.White;
+            this.nameLabel.Location = new System.Drawing.Point(12, 14);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(99, 23);
+            this.nameLabel.TabIndex = 10;
+            this.nameLabel.Text = "Name";
+            this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // showPortfolio
+            // 
+            this.showPortfolio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.showPortfolio.FlatAppearance.BorderSize = 0;
+            this.showPortfolio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showPortfolio.Font = new System.Drawing.Font("Arial", 10F);
+            this.showPortfolio.ForeColor = System.Drawing.Color.White;
+            this.showPortfolio.Location = new System.Drawing.Point(37, 48);
+            this.showPortfolio.Name = "showPortfolio";
+            this.showPortfolio.Size = new System.Drawing.Size(108, 23);
+            this.showPortfolio.TabIndex = 20;
+            this.showPortfolio.Text = "Portfolio";
+            this.showPortfolio.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.showPortfolio.UseVisualStyleBackColor = false;
+            this.showPortfolio.Click += new System.EventHandler(this.ShowPortfolio);
+            // 
+            // showBuyorders
+            // 
+            this.showBuyorders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.showBuyorders.FlatAppearance.BorderSize = 0;
+            this.showBuyorders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showBuyorders.Font = new System.Drawing.Font("Arial", 10F);
+            this.showBuyorders.ForeColor = System.Drawing.Color.Black;
+            this.showBuyorders.Location = new System.Drawing.Point(145, 48);
+            this.showBuyorders.Name = "showBuyorders";
+            this.showBuyorders.Size = new System.Drawing.Size(108, 23);
+            this.showBuyorders.TabIndex = 21;
+            this.showBuyorders.Text = "Buy orders";
+            this.showBuyorders.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.showBuyorders.UseVisualStyleBackColor = false;
+            this.showBuyorders.Click += new System.EventHandler(this.ShowBuyOrders);
+            // 
+            // showSellorders
+            // 
+            this.showSellorders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.showSellorders.FlatAppearance.BorderSize = 0;
+            this.showSellorders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showSellorders.Font = new System.Drawing.Font("Arial", 10F);
+            this.showSellorders.ForeColor = System.Drawing.Color.Black;
+            this.showSellorders.Location = new System.Drawing.Point(253, 48);
+            this.showSellorders.Name = "showSellorders";
+            this.showSellorders.Size = new System.Drawing.Size(108, 23);
+            this.showSellorders.TabIndex = 22;
+            this.showSellorders.Text = "Sell orders";
+            this.showSellorders.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.showSellorders.UseVisualStyleBackColor = false;
+            this.showSellorders.Click += new System.EventHandler(this.ShowSellOrders);
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.label11.Font = new System.Drawing.Font("Arial", 13F);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(12, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 23);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Name";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.label10.Font = new System.Drawing.Font("Arial", 13F);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(302, 14);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 23);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Holdings";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.label9.Font = new System.Drawing.Font("Arial", 13F);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(634, 14);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 23);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Price";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ordersHead
+            // 
+            this.ordersHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.ordersHead.Controls.Add(this.label9);
+            this.ordersHead.Controls.Add(this.label10);
+            this.ordersHead.Controls.Add(this.label11);
+            this.ordersHead.Location = new System.Drawing.Point(45, 79);
+            this.ordersHead.Name = "ordersHead";
+            this.ordersHead.Size = new System.Drawing.Size(884, 49);
+            this.ordersHead.TabIndex = 20;
             // 
             // Account
             // 
@@ -291,18 +318,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(93)))), ((int)(((byte)(117)))));
             this.ClientSize = new System.Drawing.Size(975, 585);
-            this.Controls.Add(this.total_balance);
-            this.Controls.Add(this.Balance_label);
-            this.Controls.Add(this.stocks_balance);
-            this.Controls.Add(this.account_money);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel_sellOrders);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel_portfolio);
+            this.Controls.Add(this.ordersHead);
             this.Controls.Add(this.panel_buyOrders);
-            this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.Account_balance_label);
+            this.Controls.Add(this.showSellorders);
+            this.Controls.Add(this.showBuyorders);
+            this.Controls.Add(this.showPortfolio);
+            this.Controls.Add(this.portfolioLabels);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1200, 664);
@@ -313,33 +339,36 @@
             this.Text = "Account";
             this.TransparencyKey = System.Drawing.Color.Lime;
             this.Load += new System.EventHandler(this.OnLoad);
-            this.panel_portfolio.ResumeLayout(false);
-            this.panel_portfolio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.portfolioLabels.ResumeLayout(false);
+            this.ordersHead.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel Account_balance_label;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel_sellOrders;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel_portfolio;
-        private System.Windows.Forms.Label gainloss2_label;
-        private System.Windows.Forms.Label gainloss1_label;
-        private System.Windows.Forms.Label buyprice_label;
-        private System.Windows.Forms.Label Cost_label;
-        private System.Windows.Forms.Label price_label;
-        private System.Windows.Forms.Label Shares_label;
-        private System.Windows.Forms.Label symbol_label;
         private System.Windows.Forms.Panel panel_buyOrders;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel total_balance;
-        private MaterialSkin.Controls.MaterialLabel Balance_label;
-        private MaterialSkin.Controls.MaterialLabel stocks_balance;
-        private MaterialSkin.Controls.MaterialLabel account_money;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel portfolioLabels;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label buypriceLabel;
+        private System.Windows.Forms.Label costLabel;
+        private System.Windows.Forms.Label priceLabel;
+        private System.Windows.Forms.Label sharesLabel;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Button showPortfolio;
+        private System.Windows.Forms.Button showBuyorders;
+        private System.Windows.Forms.Button showSellorders;
+        private System.Windows.Forms.Panel ordersHead;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

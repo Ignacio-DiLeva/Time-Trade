@@ -69,6 +69,12 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="PortfolioAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PortfolioAccount.Designer.cs">
+      <DependentUpon>PortfolioAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="Watchlist.cs">
       <SubType>Form</SubType>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PortfolioAccount.resx">
+      <DependentUpon>PortfolioAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Watchlist.resx">
       <DependentUpon>Watchlist.cs</DependentUpon>
