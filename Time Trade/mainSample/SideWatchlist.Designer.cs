@@ -617,9 +617,9 @@
             this.calendarLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.calendarLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
             this.calendarLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.calendarLabel.Location = new System.Drawing.Point(12, 180);
+            this.calendarLabel.Location = new System.Drawing.Point(14, 186);
             this.calendarLabel.Name = "calendarLabel";
-            this.calendarLabel.Size = new System.Drawing.Size(201, 63);
+            this.calendarLabel.Size = new System.Drawing.Size(104, 63);
             this.calendarLabel.TabIndex = 90;
             this.calendarLabel.Text = "01/06";
             this.calendarLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -787,9 +787,10 @@
             this.btnWeeks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
             this.btnWeeks.FlatAppearance.BorderSize = 0;
             this.btnWeeks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWeeks.Location = new System.Drawing.Point(53, 235);
+            this.btnWeeks.ForeColor = System.Drawing.Color.White;
+            this.btnWeeks.Location = new System.Drawing.Point(135, 196);
             this.btnWeeks.Name = "btnWeeks";
-            this.btnWeeks.Size = new System.Drawing.Size(120, 21);
+            this.btnWeeks.Size = new System.Drawing.Size(64, 52);
             this.btnWeeks.TabIndex = 106;
             this.btnWeeks.Text = "+ WEEKS";
             this.btnWeeks.UseVisualStyleBackColor = false;
@@ -797,7 +798,7 @@
             // 
             // WeeksToAdd
             // 
-            this.WeeksToAdd.Location = new System.Drawing.Point(53, 213);
+            this.WeeksToAdd.Location = new System.Drawing.Point(20, 228);
             this.WeeksToAdd.Maximum = new decimal(new int[] {
             5,
             0,
@@ -809,7 +810,7 @@
             0,
             0});
             this.WeeksToAdd.Name = "WeeksToAdd";
-            this.WeeksToAdd.Size = new System.Drawing.Size(120, 20);
+            this.WeeksToAdd.Size = new System.Drawing.Size(98, 20);
             this.WeeksToAdd.TabIndex = 107;
             this.WeeksToAdd.TabStop = false;
             this.WeeksToAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

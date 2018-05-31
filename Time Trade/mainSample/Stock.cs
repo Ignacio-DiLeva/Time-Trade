@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace mainSample
 {
     public partial class Stock : Form
     {
+
+        List<Image> logos = new List<Image>();
+        
+
         PictureBox p = new PictureBox
         {
             Size = new Size(975,585),
             Location = new Point(0, 0),
-            BackColor = Color.FromArgb(0, 238, 255),
+            BackColor = Constants.controlGray,
         };
         public Stock()
         {
@@ -24,8 +29,31 @@ namespace mainSample
             stockInfoDisplayer.Parent = p;
         }
 
+
         private void OnLoad(object sender, EventArgs e)
         {
+            logos.Add(Image.FromFile("Logos/Apple.png"));
+            logos.Add(Image.FromFile("Logos/Amazon.png"));
+            logos.Add(Image.FromFile("Logos/Boeing.png"));
+            logos.Add(Image.FromFile("Logos/Blockbuster.png"));
+            logos.Add(Image.FromFile("Logos/Bestbuy.png"));
+            logos.Add(Image.FromFile("Logos/BP.png"));
+            logos.Add(Image.FromFile("Logos/CityGroup.png"));
+            logos.Add(Image.FromFile("Logos/Cat.png"));
+            logos.Add(Image.FromFile("Logos/Daimler.png"));
+            logos.Add(Image.FromFile("Logos/Ford.png"));
+            logos.Add(Image.FromFile("Logos/Intel.png"));
+            logos.Add(Image.FromFile("Logos/JPMorgan.png"));
+            logos.Add(Image.FromFile("Logos/CocaCola.png"));
+            logos.Add(Image.FromFile("Logos/LehmanBros.png"));
+            logos.Add(Image.FromFile("Logos/GeneralMotors.png"));
+            logos.Add(Image.FromFile("Logos/Motorola.png"));
+            logos.Add(Image.FromFile("Logos/Sprint.png"));
+            logos.Add(Image.FromFile("Logos/Starbucks.png"));
+            logos.Add(Image.FromFile("Logos/AT&T.png"));
+            logos.Add(Image.FromFile("Logos/Trump.png"));
+            
+
             for (int i = 0; i < Constants.companies.Count; i++)
             {
                 Searcher.Items.Add(Constants.companies[i] + " (" + Constants.stockInfo[i, 0] + ")");
@@ -33,6 +61,17 @@ namespace mainSample
             Searcher.SelectedItem = 0;
             companyData.Tag = "AAPL";
             UpdateCompanyData();
+            
+            companyData.Font = new Font("Arial", 14);
+            companyCompleteName.Font = new Font("Arial", 20, FontStyle.Bold);
+            companyCompleteName.TextAlign = ContentAlignment.MiddleLeft;
+
+            stockInfoDisplayer.Font = new Font("Arial", 14);
+            stockInfoDisplayer.ForeColor = Color.White;
+            companyData.ForeColor = Color.White;
+            companyCompleteName.ForeColor = Color.White;
+
+           
         }
 
         public void UpdateCompanyData()
@@ -42,8 +81,15 @@ namespace mainSample
                 + Utilities.ReadInfo(company, Globals.today).ToString() +"  HIGH: "
                 + Utilities.ReadInfo(company,Globals.today,"HIGH").ToString() 
                 +"  LOW: "+ Utilities.ReadInfo(company,Globals.today,"LOW").ToString();
+
             companyCompleteName.Text= Constants.stockInfo[Utilities.GetIndexOfCompany(company),0];
+
             stockInfoDisplayer.Text = Constants.stockInfo[Utilities.GetIndexOfCompany(company),1];
+
+
+            Image toDisplay = logos[Utilities.GetIndexOfCompany(company)];
+            DisplayedLogo.Image = toDisplay;
+            //DisplayedLogo.Size
         }
 
         private void ExternalRefreshCompanyData(object sender, EventArgs e)
