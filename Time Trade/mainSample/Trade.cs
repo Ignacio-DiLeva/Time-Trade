@@ -13,7 +13,7 @@ namespace mainSample
         {
             Size = new Size(975, 585),
             Location = new Point(0, 0),
-            BackColor = Color.FromArgb(0,238,255),
+            BackColor = Constants.controlGray,
         };
 
         public Trade()
@@ -26,7 +26,7 @@ namespace mainSample
 
         private void OnLoad(object sender, EventArgs e)
         {
-            label_balance.Text = Globals.moneyBalance.ToString();
+
         }
 
         void RefreshCanvas(object sender, EventArgs e)
@@ -36,7 +36,6 @@ namespace mainSample
             btnAdvanceInTime.Enabled = false;
             Globals.main.AllowInput(false);
             canvas.Controls.Clear();
-            companyPrices.Text = null;
             makingTransition = true;
             //Disable all buttons and form switching
             Thread transition = new Thread(() => CanvasMovement(Convert.ToInt32(WeeksToAdd.Value)*7)); transition.Start();
@@ -151,7 +150,6 @@ namespace mainSample
                         Globals.moneyBalance += Math.Round(currentValue * Globals.sellOrders[i].Holdings, 2); //adds the money you got to your balance multiplying the amount and the current value
 
                         Globals.sellOrders.RemoveAt(i); //removes the order
-                        label_balance.Text = Globals.moneyBalance.ToString(); //changes the money balance
                         Invoke((MethodInvoker)delegate { Globals.account.Reload_sell(); }); //invokes another thread to reload the form
                         i--; //deleted the order, so we have to go back a index
                         continue;
@@ -208,13 +206,6 @@ namespace mainSample
 
         void AddReferenceToCanvas(int priceReference, double render)
         {
-            Invoke((MethodInvoker)delegate 
-            {
-                companyPrices.Text = "$" 
-                + Utilities.ReadInfo(Globals.displayedCompany, Globals.today) 
-                + "     HIGH: $" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today, "HIGH") 
-                + "     LOW: $" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today, "LOW");
-            });
             renderingLabels = true;
             Invoke((MethodInvoker)delegate { canvas.Controls.Clear(); });
             int pixel = 0; //Pixel to be check (needs label or not)
@@ -409,7 +400,6 @@ namespace mainSample
                         //subtract from balance
                         Globals.moneyBalance -= Convert.ToInt32(orderCount.Value) * currentValue; 
                         //update text
-                        label_balance.Text = Convert.ToString(Globals.moneyBalance);
                         MessageBox.Show("Transaction complete");
 
                         Globals.account.Reload_panel(); //reloads the account panel
@@ -427,10 +417,7 @@ namespace mainSample
                         {
                             // adds to balance the value of stocks multiplied by the amount of stocks
                             Globals.moneyBalance += Convert.ToInt32(orderCount.Value) * Convert.ToDouble(currentValue);
-
-                            //changes label
-                            label_balance.Text = Convert.ToString(Globals.moneyBalance);
-
+                            
                             //subtracts amount of holdings
                             Globals.portfolio_companies[Index_Stocks].Holdings -= Convert.ToInt32(orderCount.Value); 
                             MessageBox.Show("Transaction complete");

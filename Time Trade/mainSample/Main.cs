@@ -337,10 +337,7 @@ namespace mainSample //Namespace
                 MessageBox.Show(dataR);
                 recv.Close();
             }
-            Invoke((MethodInvoker)delegate
-            {
-                Globals.trade.btnRequestBest.Enabled = true;
-            });
+
         }
 
         private void TempMinimize(object sender, EventArgs e)

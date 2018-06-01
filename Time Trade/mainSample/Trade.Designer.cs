@@ -30,18 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Trade));
             this.canvas = new System.Windows.Forms.Panel();
-            this.companyPrices = new MaterialSkin.Controls.MaterialLabel();
             this.btnBuySelected = new System.Windows.Forms.Button();
             this.orderLimit = new System.Windows.Forms.NumericUpDown();
             this.orderCount = new System.Windows.Forms.NumericUpDown();
-            this.label_balance = new System.Windows.Forms.Label();
             this.WeeksToAdd = new System.Windows.Forms.NumericUpDown();
             this.btnMarketSelected = new System.Windows.Forms.Button();
             this.btnAdvanceInTime = new System.Windows.Forms.Button();
             this.btnPlaceOrder = new System.Windows.Forms.Button();
             this.btnLimitSelected = new System.Windows.Forms.Button();
             this.btnSellSelected = new System.Windows.Forms.Button();
-            this.btnRequestBest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.orderLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeeksToAdd)).BeginInit();
@@ -50,25 +47,11 @@
             // canvas
             // 
             this.canvas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.canvas.Location = new System.Drawing.Point(0, 90);
+            this.canvas.Location = new System.Drawing.Point(0, 0);
             this.canvas.Name = "canvas";
             this.canvas.Size = new System.Drawing.Size(975, 400);
             this.canvas.TabIndex = 5;
             this.canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.CanvasPaint);
-            // 
-            // companyPrices
-            // 
-            this.companyPrices.AutoSize = true;
-            this.companyPrices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.companyPrices.Depth = 0;
-            this.companyPrices.Font = new System.Drawing.Font("Roboto", 11F);
-            this.companyPrices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.companyPrices.Location = new System.Drawing.Point(330, 26);
-            this.companyPrices.MouseState = MaterialSkin.MouseState.HOVER;
-            this.companyPrices.Name = "companyPrices";
-            this.companyPrices.Size = new System.Drawing.Size(133, 19);
-            this.companyPrices.TabIndex = 8;
-            this.companyPrices.Text = "$PRICE HIGH LOW";
             // 
             // btnBuySelected
             // 
@@ -78,9 +61,9 @@
             this.btnBuySelected.Enabled = false;
             this.btnBuySelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnBuySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuySelected.Location = new System.Drawing.Point(156, 499);
+            this.btnBuySelected.Location = new System.Drawing.Point(65, 521);
             this.btnBuySelected.Name = "btnBuySelected";
-            this.btnBuySelected.Size = new System.Drawing.Size(56, 23);
+            this.btnBuySelected.Size = new System.Drawing.Size(135, 23);
             this.btnBuySelected.TabIndex = 18;
             this.btnBuySelected.TabStop = false;
             this.btnBuySelected.Text = "BUY";
@@ -90,41 +73,31 @@
             // orderLimit
             // 
             this.orderLimit.Enabled = false;
-            this.orderLimit.Location = new System.Drawing.Point(456, 513);
+            this.orderLimit.Location = new System.Drawing.Point(407, 495);
             this.orderLimit.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.orderLimit.Name = "orderLimit";
-            this.orderLimit.Size = new System.Drawing.Size(97, 20);
+            this.orderLimit.Size = new System.Drawing.Size(276, 20);
             this.orderLimit.TabIndex = 54;
             this.orderLimit.TabStop = false;
             this.orderLimit.ThousandsSeparator = true;
             // 
             // orderCount
             // 
-            this.orderCount.Location = new System.Drawing.Point(245, 513);
+            this.orderCount.Location = new System.Drawing.Point(65, 493);
             this.orderCount.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
             this.orderCount.Name = "orderCount";
-            this.orderCount.Size = new System.Drawing.Size(97, 20);
+            this.orderCount.Size = new System.Drawing.Size(278, 20);
             this.orderCount.TabIndex = 51;
             this.orderCount.TabStop = false;
             this.orderCount.ThousandsSeparator = true;
-            // 
-            // label_balance
-            // 
-            this.label_balance.AutoSize = true;
-            this.label_balance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.label_balance.Location = new System.Drawing.Point(58, 520);
-            this.label_balance.Name = "label_balance";
-            this.label_balance.Size = new System.Drawing.Size(37, 13);
-            this.label_balance.TabIndex = 57;
-            this.label_balance.Text = "10000";
             // 
             // WeeksToAdd
             // 
@@ -156,9 +129,9 @@
             this.btnMarketSelected.Enabled = false;
             this.btnMarketSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnMarketSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarketSelected.Location = new System.Drawing.Point(349, 499);
+            this.btnMarketSelected.Location = new System.Drawing.Point(408, 521);
             this.btnMarketSelected.Name = "btnMarketSelected";
-            this.btnMarketSelected.Size = new System.Drawing.Size(68, 23);
+            this.btnMarketSelected.Size = new System.Drawing.Size(133, 23);
             this.btnMarketSelected.TabIndex = 53;
             this.btnMarketSelected.TabStop = false;
             this.btnMarketSelected.Text = "MARKET";
@@ -167,7 +140,6 @@
             // 
             // btnAdvanceInTime
             // 
-            this.btnAdvanceInTime.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdvanceInTime.BackgroundImage")));
             this.btnAdvanceInTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdvanceInTime.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnAdvanceInTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -186,9 +158,9 @@
             this.btnPlaceOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPlaceOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(559, 493);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(709, 443);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
-            this.btnPlaceOrder.Size = new System.Drawing.Size(95, 58);
+            this.btnPlaceOrder.Size = new System.Drawing.Size(134, 117);
             this.btnPlaceOrder.TabIndex = 55;
             this.btnPlaceOrder.TabStop = false;
             this.btnPlaceOrder.Text = "PLACE";
@@ -201,9 +173,9 @@
             this.btnLimitSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLimitSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnLimitSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimitSelected.Location = new System.Drawing.Point(349, 521);
+            this.btnLimitSelected.Location = new System.Drawing.Point(547, 521);
             this.btnLimitSelected.Name = "btnLimitSelected";
-            this.btnLimitSelected.Size = new System.Drawing.Size(68, 23);
+            this.btnLimitSelected.Size = new System.Drawing.Size(136, 23);
             this.btnLimitSelected.TabIndex = 52;
             this.btnLimitSelected.TabStop = false;
             this.btnLimitSelected.Text = "LIMIT";
@@ -216,44 +188,29 @@
             this.btnSellSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSellSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.btnSellSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSellSelected.Location = new System.Drawing.Point(156, 521);
+            this.btnSellSelected.Location = new System.Drawing.Point(208, 521);
             this.btnSellSelected.Name = "btnSellSelected";
-            this.btnSellSelected.Size = new System.Drawing.Size(56, 23);
+            this.btnSellSelected.Size = new System.Drawing.Size(135, 23);
             this.btnSellSelected.TabIndex = 17;
             this.btnSellSelected.TabStop = false;
             this.btnSellSelected.Text = "SELL";
             this.btnSellSelected.UseVisualStyleBackColor = false;
             this.btnSellSelected.Click += new System.EventHandler(this.OrderSelection);
             // 
-            // btnRequestBest
-            // 
-            this.btnRequestBest.Enabled = false;
-            this.btnRequestBest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRequestBest.Location = new System.Drawing.Point(12, 22);
-            this.btnRequestBest.Name = "btnRequestBest";
-            this.btnRequestBest.Size = new System.Drawing.Size(233, 23);
-            this.btnRequestBest.TabIndex = 60;
-            this.btnRequestBest.Text = "BEST 10";
-            this.btnRequestBest.UseVisualStyleBackColor = true;
-            this.btnRequestBest.Click += new System.EventHandler(this.RequestBestPlayers);
-            // 
             // Trade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(975, 585);
-            this.Controls.Add(this.btnRequestBest);
+            this.Controls.Add(this.btnPlaceOrder);
             this.Controls.Add(this.btnAdvanceInTime);
             this.Controls.Add(this.WeeksToAdd);
-            this.Controls.Add(this.label_balance);
-            this.Controls.Add(this.btnPlaceOrder);
             this.Controls.Add(this.orderLimit);
             this.Controls.Add(this.btnMarketSelected);
             this.Controls.Add(this.btnLimitSelected);
             this.Controls.Add(this.orderCount);
             this.Controls.Add(this.btnBuySelected);
             this.Controls.Add(this.btnSellSelected);
-            this.Controls.Add(this.companyPrices);
             this.Controls.Add(this.canvas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -267,12 +224,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.orderCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeeksToAdd)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private MaterialSkin.Controls.MaterialLabel companyPrices;
         private System.Windows.Forms.Button btnBuySelected;
         private System.Windows.Forms.Button btnSellSelected;
         private System.Windows.Forms.Button btnPlaceOrder;
@@ -280,10 +235,8 @@
         private System.Windows.Forms.Button btnMarketSelected;
         private System.Windows.Forms.Button btnLimitSelected;
         private System.Windows.Forms.NumericUpDown orderCount;
-        private System.Windows.Forms.Label label_balance;
         private System.Windows.Forms.NumericUpDown WeeksToAdd;
         private System.Windows.Forms.Button btnAdvanceInTime;
-        public System.Windows.Forms.Button btnRequestBest;
         public System.Windows.Forms.Panel canvas;
     }
 }
