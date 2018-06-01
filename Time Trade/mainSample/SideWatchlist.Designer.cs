@@ -615,14 +615,14 @@
             // calendarLabel
             // 
             this.calendarLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.calendarLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.calendarLabel.Font = new System.Drawing.Font("Arial", 14F);
             this.calendarLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.calendarLabel.Location = new System.Drawing.Point(14, 186);
+            this.calendarLabel.Location = new System.Drawing.Point(14, 180);
             this.calendarLabel.Name = "calendarLabel";
-            this.calendarLabel.Size = new System.Drawing.Size(104, 63);
+            this.calendarLabel.Size = new System.Drawing.Size(115, 63);
             this.calendarLabel.TabIndex = 90;
             this.calendarLabel.Text = "01/06";
-            this.calendarLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.calendarLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // orangeContainerWatchlist
             // 
