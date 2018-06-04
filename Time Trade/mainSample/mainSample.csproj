@@ -164,5 +164,8 @@
   <ItemGroup>
     <None Include="Resources\Time Trade Logo.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

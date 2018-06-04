@@ -46,8 +46,8 @@
             // 
             // canvas
             // 
-            this.canvas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.canvas.Location = new System.Drawing.Point(0, 0);
+            this.canvas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(49)))), ((int)(((byte)(66)))));
+            this.canvas.Location = new System.Drawing.Point(0, 10);
             this.canvas.Name = "canvas";
             this.canvas.Size = new System.Drawing.Size(975, 400);
             this.canvas.TabIndex = 5;
@@ -201,6 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(975, 585);
             this.Controls.Add(this.btnPlaceOrder);
             this.Controls.Add(this.btnAdvanceInTime);

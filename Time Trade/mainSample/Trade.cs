@@ -11,8 +11,8 @@ namespace mainSample
         //▲ ▼//  Samples
         PictureBox p = new PictureBox
         {
-            Size = new Size(975, 585),
-            Location = new Point(0, 0),
+            Size = new Size(975, 165),
+            Location = new Point(0, 420),
             BackColor = Constants.controlGray,
         };
 
@@ -226,7 +226,8 @@ namespace mainSample
                             Size = new Size(75, 20),
                             Text = "$" + priceReference, //Label reference
                             BackColor = canvas.BackColor,
-                            TextAlign = ContentAlignment.MiddleRight
+                            TextAlign = ContentAlignment.MiddleRight,
+                            ForeColor = Constants.lightGray
                         };
                         l.Resize += RefreshCanvas; //We give it a handler so it doesn't get lost
                         Invoke((MethodInvoker)delegate { canvas.Controls.Add(l); }); //We add it
@@ -253,7 +254,7 @@ namespace mainSample
             {
                 Globals.sideWatchlist.UpdateWatchlistData();
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                Pen pen = new Pen(Color.Black, 1);
+                Pen pen = new Pen(Constants.white, 1);
                 //START MATH FOR GRAPH
 
                 double[] getValues = new double[Constants.displayedDays];
@@ -299,7 +300,7 @@ namespace mainSample
                 //We draw the lines obtained at the rendering process
                 foreach (Control ctl in ((Panel)sender).Controls) //Foreach indicator
                 {
-                    Pen gPen = new Pen(Color.Gray, 1);
+                    Pen gPen = new Pen(Constants.lightGray, 1);
                     e.Graphics.DrawLine(gPen, new Point(50, ctl.Location.Y+10), new Point(975, ctl.Location.Y+10)); //We draw a line that indicates the Label location
                 }
                 for (int i = 0; i < getValues.Length - 1; i++) //Foreach value within 60 days
@@ -316,7 +317,7 @@ namespace mainSample
                 }
                 for(int i = 0; i < getValues.Length; i++) //Foreach day
                 {
-                    e.Graphics.FillRectangle(new SolidBrush(Color.Gray), new Rectangle(new Point(70 + i * (900 / Constants.displayedDays), //We fill a rectangle
+                    e.Graphics.FillRectangle(new SolidBrush(Constants.white), new Rectangle(new Point(70 + i * (900 / Constants.displayedDays), //We fill a rectangle
 
                     400-Convert.ToInt32(Math.Floor(Utilities.ReadInfo(Globals.displayedCompany,Globals.today.AddDays(-60+i+1),"VOLUME"))) //Location.Y
                     /(max/60)),
