@@ -7,16 +7,11 @@ namespace mainSample
 {
     public partial class Watchlist : Form
     {
-        PictureBox p = new PictureBox()
-        {
-            Size = new Size(975, 585),
-            Location = new Point(0, 0),
-            BackColor = Color.FromArgb(0, 238, 255),
-        };
         public Watchlist()
         {
             InitializeComponent();
             Location = new Point(0, 90);
+            /*
             Controls.Add(p);
             p.SendToBack();
             company1.Parent = p;
@@ -28,6 +23,7 @@ namespace mainSample
             Watchlist1.Parent = p;
             Watchlist2.Parent = p;
             Watchlist3.Parent = p;
+            */
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -91,10 +87,11 @@ namespace mainSample
                             Name = "R" + priceReference,
                             Location = new Point(0, 115 - pixel),
                             Font = new Font("Microsoft Sans Serif", emSize: 8),
-                            TextAlign=ContentAlignment.MiddleRight,
+                            TextAlign = ContentAlignment.MiddleRight,
                             AutoSize = false,
                             Size = new Size(50, 20),
                             Text = "$" + priceReference,
+                            ForeColor = Constants.lightGray
                         };
                         if (self == 1) { l.BackColor = canvas1.BackColor; }
                         else if (self == 2) { l.BackColor = canvas2.BackColor; }
@@ -139,7 +136,7 @@ namespace mainSample
             }
             catch (Exception) { }
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Pen pen = new Pen(Color.Black, 1);
+            Pen pen = new Pen(Constants.white, 1);
             //START MATH FOR GRAPH
 
             double[] getValues = new double[Constants.displayedDays];
@@ -192,7 +189,7 @@ namespace mainSample
             //We draw the lines obtained at the rendering process
             foreach (Control ctl in ((Panel)sender).Controls)
             {
-                Pen gPen = new Pen(Color.Gray, 1);
+                Pen gPen = new Pen(Constants.lightGray, 1);
                 e.Graphics.DrawLine(gPen, new Point(50, ctl.Location.Y + 10), new Point(975, ctl.Location.Y + 10));
             }
             for (int i = 0; i < getValues.Length - 1; i++)
@@ -203,6 +200,7 @@ namespace mainSample
 
         public void ExternalCanvasRefresh(object sender, EventArgs e)
         {
+            this.ActiveControl = null;
             try
             {
                 try
@@ -233,6 +231,37 @@ namespace mainSample
             Hide();
             Globals.main.currentForm = "Trade";
             Globals.main.showLogo.Tag = Globals.main.currentForm;
+        }
+
+        private void ItemDrawing(object sender, DrawItemEventArgs e)
+        {
+            // By using Sender, one method could handle multiple ComboBoxes
+            ComboBox cbx = sender as ComboBox;
+            if (cbx != null)
+            {
+                // Always draw the background
+                e.DrawBackground();
+
+                // Drawing one of the items?
+                if (e.Index >= 0)
+                {
+                    // Set the string alignment.  Choices are Center, Near and Far
+                    StringFormat sf = new StringFormat();
+                    sf.LineAlignment = StringAlignment.Center;
+                    sf.Alignment = StringAlignment.Center;
+
+                    // Set the Brush to ComboBox ForeColor to maintain any ComboBox color settings
+                    // Assumes Brush is solid
+                    Brush brush = new SolidBrush(cbx.ForeColor);
+
+                    // If drawing highlighted selection, change brush
+                    if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                        brush = SystemBrushes.HighlightText;
+
+                    // Draw the string
+                    e.Graphics.DrawString(cbx.Items[e.Index].ToString(), cbx.Font, brush, e.Bounds, sf);
+                }
+            }
         }
     }
 }
