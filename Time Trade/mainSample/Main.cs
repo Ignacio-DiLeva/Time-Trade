@@ -269,21 +269,26 @@ namespace mainSample //Namespace
             }
             catch (Exception) { Environment.FailFast("TIME TRADE ABORT"); }
         }
-
-        PictureBox p = new PictureBox()
+        TransparentLabel l = new TransparentLabel()
         {
-            BackColor = Color.Transparent,
-            Location = new Point(0, 0)
+            AutoSize = false,
+            Text = String.Empty,
+            Visible = true
         };
         public void AllowInput(bool status)
         {
-            p.Size = Size;
-            if (status)
+            l.Size = Size;
+            Invoke((MethodInvoker)delegate
             {
-                //Invoke((MethodInvoker)delegate { Controls.Remove(p); });
-                return;
-            }
-            //Invoke((MethodInvoker)delegate { Controls.Add(p); p.BringToFront(); });
+                Focus();
+                if (!status)
+                {
+                    Controls.Add(l);
+                    l.BringToFront();
+                    return;
+                }
+                Controls.Remove(l);
+            });
         }
 
         public void GetBestPlayers()
@@ -348,6 +353,24 @@ namespace mainSample //Namespace
         private void TempClose(object sender, EventArgs e)
         {
             Close();
+        }
+    }
+    class TransparentLabel : Label
+    {
+        public TransparentLabel()
+        {
+            this.SetStyle(ControlStyles.Opaque, true);
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, false);
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams parms = base.CreateParams;
+                parms.ExStyle |= 0x20;  // Turn on WS_EX_TRANSPARENT
+                return parms;
+            }
         }
     }
 }

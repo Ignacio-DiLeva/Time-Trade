@@ -236,8 +236,7 @@ namespace mainSample
         private void ItemDrawing(object sender, DrawItemEventArgs e)
         {
             // By using Sender, one method could handle multiple ComboBoxes
-            ComboBox cbx = sender as ComboBox;
-            if (cbx != null)
+            if (sender is ComboBox cbx)
             {
                 // Always draw the background
                 e.DrawBackground();
@@ -246,9 +245,11 @@ namespace mainSample
                 if (e.Index >= 0)
                 {
                     // Set the string alignment.  Choices are Center, Near and Far
-                    StringFormat sf = new StringFormat();
-                    sf.LineAlignment = StringAlignment.Center;
-                    sf.Alignment = StringAlignment.Center;
+                    StringFormat sf = new StringFormat
+                    {
+                        LineAlignment = StringAlignment.Center,
+                        Alignment = StringAlignment.Center
+                    };
 
                     // Set the Brush to ComboBox ForeColor to maintain any ComboBox color settings
                     // Assumes Brush is solid
