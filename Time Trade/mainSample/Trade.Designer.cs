@@ -65,14 +65,14 @@
             0,
             0});
             this.orderLimit.Name = "orderLimit";
-            this.orderLimit.Size = new System.Drawing.Size(276, 20);
+            this.orderLimit.Size = new System.Drawing.Size(278, 20);
             this.orderLimit.TabIndex = 54;
             this.orderLimit.TabStop = false;
             this.orderLimit.ThousandsSeparator = true;
             // 
             // orderCount
             // 
-            this.orderCount.Location = new System.Drawing.Point(65, 494);
+            this.orderCount.Location = new System.Drawing.Point(66, 494);
             this.orderCount.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -92,7 +92,7 @@
             this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnPlaceOrder.ForeColor = System.Drawing.Color.White;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(709, 443);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(751, 444);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(134, 117);
             this.btnPlaceOrder.TabIndex = 55;
@@ -125,9 +125,9 @@
             this.btnLimitSelected.FlatAppearance.BorderSize = 0;
             this.btnLimitSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimitSelected.ForeColor = System.Drawing.Color.White;
-            this.btnLimitSelected.Location = new System.Drawing.Point(547, 521);
+            this.btnLimitSelected.Location = new System.Drawing.Point(550, 521);
             this.btnLimitSelected.Name = "btnLimitSelected";
-            this.btnLimitSelected.Size = new System.Drawing.Size(136, 23);
+            this.btnLimitSelected.Size = new System.Drawing.Size(135, 23);
             this.btnLimitSelected.TabIndex = 52;
             this.btnLimitSelected.TabStop = false;
             this.btnLimitSelected.Text = "LIMIT";
@@ -142,7 +142,7 @@
             this.btnBuySelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
             this.btnBuySelected.FlatAppearance.BorderSize = 0;
             this.btnBuySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuySelected.Location = new System.Drawing.Point(65, 521);
+            this.btnBuySelected.Location = new System.Drawing.Point(66, 521);
             this.btnBuySelected.Name = "btnBuySelected";
             this.btnBuySelected.Size = new System.Drawing.Size(135, 23);
             this.btnBuySelected.TabIndex = 18;
@@ -158,7 +158,7 @@
             this.btnSellSelected.FlatAppearance.BorderSize = 0;
             this.btnSellSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSellSelected.ForeColor = System.Drawing.Color.White;
-            this.btnSellSelected.Location = new System.Drawing.Point(208, 521);
+            this.btnSellSelected.Location = new System.Drawing.Point(209, 521);
             this.btnSellSelected.Name = "btnSellSelected";
             this.btnSellSelected.Size = new System.Drawing.Size(135, 23);
             this.btnSellSelected.TabIndex = 17;
@@ -182,7 +182,7 @@
             // 
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label2.Location = new System.Drawing.Point(411, 466);
+            this.label2.Location = new System.Drawing.Point(410, 466);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(270, 20);
             this.label2.TabIndex = 57;

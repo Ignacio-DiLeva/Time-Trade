@@ -50,9 +50,9 @@ namespace TimeTradeServer
             {
                 con.Open(); //Opens connection to database
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("FAILED TO LOAD DATABASE");
+                MessageBox.Show("FAILED TO LOAD DATABASE:"+Environment.NewLine+ex.Message+Environment.NewLine+ex.StackTrace);
                 Environment.Exit(0);
             }
             Thread returnIP = new Thread(() => ReturnSelfData(serverIP)); returnIP.Start(); //Start receiving connection requests

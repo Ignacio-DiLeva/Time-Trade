@@ -54,3 +54,14 @@ C:\Users\43442476\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\T
 C:\Users\43442476\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.csproj.CopyComplete
 C:\Users\43442476\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.exe
 C:\Users\43442476\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.pdb
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\bin\Debug\TimeTradeServer.exe.config
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\bin\Debug\TimeTradeServer.exe
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\bin\Debug\TimeTradeServer.pdb
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\bin\Debug\MaterialSkin.dll
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.csprojResolveAssemblyReference.cache
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.TimeTradeServer.resources
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.Properties.Resources.resources
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.csproj.GenerateResource.Cache
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.csproj.CoreCompileInputs.cache
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.exe
+C:\Users\43571598\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.pdb
