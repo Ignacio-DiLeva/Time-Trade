@@ -192,7 +192,7 @@
             // showLogo
             // 
             this.showLogo.BackColor = System.Drawing.Color.Blue;
-            this.showLogo.Image = global::mainSample.Properties.Resources.Time_Trade_Logo;
+            this.showLogo.Image = global::mainSample.Properties.Resources.logo;
             this.showLogo.Location = new System.Drawing.Point(0, 20);
             this.showLogo.Name = "showLogo";
             this.showLogo.Size = new System.Drawing.Size(80, 70);
