@@ -35,3 +35,22 @@ C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csp
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CopyComplete
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.exe
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.pdb
+D:\Github repos\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.exe.config
+D:\Github repos\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.exe
+D:\Github repos\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.pdb
+D:\Github repos\Time-Trade\Time Trade\mainSample\bin\Debug\MaterialSkin.dll
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csprojAssemblyReference.cache
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Account.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Login.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Main.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.PortfolioAccount.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Watchlist.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.SideWatchlist.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Properties.Resources.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Stock.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Trade.resources
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.GenerateResource.cache
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CoreCompileInputs.cache
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CopyComplete
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.exe
+D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.pdb

@@ -51,7 +51,7 @@
             this.TradeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
             this.TradeBtn.FlatAppearance.BorderSize = 0;
             this.TradeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TradeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.TradeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.TradeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.TradeBtn.Location = new System.Drawing.Point(80, 20);
             this.TradeBtn.Name = "TradeBtn";
@@ -67,7 +67,7 @@
             this.StockBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.StockBtn.FlatAppearance.BorderSize = 0;
             this.StockBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StockBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F);
+            this.StockBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.StockBtn.ForeColor = System.Drawing.Color.Black;
             this.StockBtn.Location = new System.Drawing.Point(245, 20);
             this.StockBtn.Name = "StockBtn";
@@ -83,7 +83,7 @@
             this.AccountBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.AccountBtn.FlatAppearance.BorderSize = 0;
             this.AccountBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AccountBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F);
+            this.AccountBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
             this.AccountBtn.ForeColor = System.Drawing.Color.Black;
             this.AccountBtn.Location = new System.Drawing.Point(410, 20);
             this.AccountBtn.Name = "AccountBtn";

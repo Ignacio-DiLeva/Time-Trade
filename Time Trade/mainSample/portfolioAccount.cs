@@ -156,7 +156,7 @@ namespace mainSample
                                     break;
 
                                 case "current":
-                                    Invoke((MethodInvoker)delegate { ctl.Text = close_Value; });
+                                    Invoke((MethodInvoker)delegate { ctl.Text = "$"+close_Value; });
                                     break;
 
                                 case "cost":

@@ -294,46 +294,54 @@ namespace mainSample
             if (btn == "BUY")
             {
                 btnBuySelected.Enabled = false;
-                btnBuySelected.BackgroundImage = Properties.Resources.BOTON_APRETADO_2;
                 btnSellSelected.Enabled = true;
-                btnSellSelected.BackgroundImage = Properties.Resources.BOTON_NORMAL_2;
+                btnBuySelected.BackColor = Constants.lightGray;
+                btnSellSelected.BackColor = Constants.orange;
+                btnBuySelected.ForeColor = Color.Black;
+                btnSellSelected.ForeColor = Color.White;
                 Focus();
                 return;
             }
             if (btn == "SELL")
             {
                 btnBuySelected.Enabled = true;
-                btnBuySelected.BackgroundImage = Properties.Resources.BOTON_NORMAL_2;
                 btnSellSelected.Enabled = false;
-                btnSellSelected.BackgroundImage = Properties.Resources.BOTON_APRETADO_2;
+                btnBuySelected.BackColor = Constants.orange; 
+                btnSellSelected.BackColor = Constants.lightGray;
+                btnBuySelected.ForeColor = Color.White; 
+                btnSellSelected.ForeColor = Color.Black;
                 Focus();
                 return;
             }
             if (btn == "MARKET")
             {
                 btnMarketSelected.Enabled = false;
-                btnMarketSelected.BackgroundImage = Properties.Resources.BOTON_APRETADO_2;
                 btnLimitSelected.Enabled = true;
-                btnLimitSelected.BackgroundImage = Properties.Resources.BOTON_NORMAL_2;
                 orderLimit.Value = 0;
                 orderLimit.Enabled = false;
+                btnMarketSelected.BackColor = Constants.lightGray;
+                btnLimitSelected.BackColor = Constants.orange;
+                btnMarketSelected.ForeColor = Color.Black;
+                btnLimitSelected.ForeColor = Color.White;
+
                 Focus();
                 return;
             }
             if (btn == "LIMIT")
             {
                 btnMarketSelected.Enabled = true;
-                btnMarketSelected.BackgroundImage = Properties.Resources.BOTON_NORMAL_2;
                 btnLimitSelected.Enabled = false;
-                btnLimitSelected.BackgroundImage = Properties.Resources.BOTON_APRETADO_2;
                 orderLimit.Enabled = true;
+                btnMarketSelected.BackColor = Constants.orange; 
+                btnLimitSelected.BackColor = Constants.lightGray;
+                btnMarketSelected.ForeColor = Color.White; 
+                btnLimitSelected.ForeColor = Color.Black;
                 Focus();
                 return;
             }
         }
         private void PlaceOrder(object sender, EventArgs e) //For placing orders
         {
-            ((Control)sender).BackgroundImage = Properties.Resources.BOTON_APRETADO_2;
             int Index_Stocks = CheckIndex(Globals.displayedCompany, Globals.portfolio_companies); //returns the index of the company selected in portfolio
             if (btnMarketSelected.Enabled == false && CheckConditions())  //Check if you want to do market or place limit
             {
@@ -515,7 +523,6 @@ namespace mainSample
                 }
             }
             Globals.sideWatchlist.UpdateBalance();
-            ((Control)sender).BackgroundImage = Properties.Resources.BOTON_NORMAL_2;
             Focus();
         }
     
