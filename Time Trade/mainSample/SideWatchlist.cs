@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+using System.Linq;
 
 namespace mainSample
 {
@@ -226,12 +227,17 @@ namespace mainSample
         public void Movement()
         {
             int days = Convert.ToInt32(WeeksToAdd.Value) * 7;
+            Globals.trade.makingTransition = true;
             if (!IsDisposed)
             {
-                Globals.trade.makingTransition = true;
                 Globals.main.AllowInput(false);
+                Invoke((MethodInvoker)delegate { Globals.trade.canvas.Controls.Clear(); });
                 for (int i = 0; i < days; i++) //For each day
                 {
+                    if (i == days - 1)
+                    {
+                        Globals.trade.makingTransition = false; //We end the transition
+                    }
                     Globals.today = Globals.today.AddDays(1); //We add the day
                     Invoke((MethodInvoker)delegate { Globals.trade.EffectivizeOrders(Globals.today); }); //We check the orders
                     Invoke((MethodInvoker)delegate { Globals.sideWatchlist.UpdateBalance(); });
@@ -249,8 +255,6 @@ namespace mainSample
                         Thread.Sleep(Convert.ToInt32((7.00 / Convert.ToDouble(days)) * 1000)); //Else we sleep
                     }
                 }
-                Globals.trade.makingTransition = false; //We end the transition
-                //Invoke((MethodInvoker)delegate { Globals.trade.ExternalCanvasRefresh(this,null); });
                 //Invoke((MethodInvoker)delegate { Globals.sideWatchlist.UpdateBalance(); });
                 Globals.main.AllowInput(true);
                 if (Globals.today == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day
@@ -261,7 +265,6 @@ namespace mainSample
                 //If it is not the last day we refresh UI and allow interaction (we can't allow interaction in the last day)
                 Invoke((MethodInvoker)delegate //We Invoke UI commands
                 {
-                    Globals.watchlist.ExternalCanvasRefresh(this, null); //Refresh graphics
                     Globals.account.Update_portfolio();
                     Globals.account.Reload_panel(); //Refresh graphics
 

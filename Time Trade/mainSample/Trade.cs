@@ -29,6 +29,7 @@ namespace mainSample
 
         }
 
+        /*
         void RefreshCanvas(object sender, EventArgs e)
         {
             Globals.sideWatchlist.Searcher.Enabled = false;
@@ -40,55 +41,7 @@ namespace mainSample
             //Disable all buttons and form switching
             Thread transition = new Thread(() => CanvasMovement(Convert.ToInt32(WeeksToAdd.Value)*7)); transition.Start();
         }
-
-        public bool makingTransition=false;
-        void CanvasMovement(int days)
-        {
-            if (!IsDisposed)
-            {
-                Invoke((MethodInvoker)delegate { EffectivizeOrders(Globals.today); }); //We check the orders
-                for (int i = 0; i < days; i++) //For each day
-                {
-                    Invoke((MethodInvoker)delegate { Globals.sideWatchlist.UpdateBalance(); });
-                    Globals.today = Globals.today.AddDays(1); //We add the day
-                    Invoke((MethodInvoker)delegate //We invoke UI commands
-                    {
-                        Globals.sideWatchlist.UpdateCalendar(Globals.today); //We update the calendar
-                        canvas.Refresh(); //We refresh the graphics
-                    });
-                    if (Globals.today == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day we scope out
-                    {
-                        break;
-                    }
-                    if (i != days - 1) //If it is the last day we do not sleep
-                    {
-                        Thread.Sleep(Convert.ToInt32((7.00 / Convert.ToDouble(days)) * 1000)); //Else we sleep
-                    }
-                }
-                makingTransition = false; //We end the transition
-                Invoke((MethodInvoker)delegate { canvas.Refresh(); });
-                Invoke((MethodInvoker)delegate { Globals.sideWatchlist.UpdateBalance(); });
-
-                if (Globals.today == new DateTime(day: 31, month: 12, year: 2009)) //If it is the last day
-                {
-                    EndGame(); //We end the game, server receives savedata as a newPlay
-                    return;
-                }
-                //If it is not the last day we refresh UI and allow interaction (we can't allow interaction in the last day)
-                Invoke((MethodInvoker)delegate //We Invoke UI commands
-                {
-                    btnAdvanceInTime.BackgroundImage = Properties.Resources.BOTON_NORMAL_2;
-                    Globals.sideWatchlist.Searcher.Enabled = true;
-                    btnPlaceOrder.Enabled = true;
-                    btnAdvanceInTime.Enabled = true;
-                    Globals.main.AllowInput(true);
-                    Globals.watchlist.ExternalCanvasRefresh(this, null); //Refresh graphics
-                    Globals.account.Reload_panel(); //Refresh graphics
-                    Globals.stock.UpdateCompanyData(); //Refreshes data
-                    Focus();
-                });
-            }
-        }
+        */
 
         public void EndGame()
         {
@@ -207,7 +160,6 @@ namespace mainSample
         void AddReferenceToCanvas(int priceReference, double render)
         {
             renderingLabels = true;
-            Invoke((MethodInvoker)delegate { canvas.Controls.Clear(); });
             int pixel = 0; //Pixel to be check (needs label or not)
             double price = 1; //The price between the last pixel and the actual pixel
             int lastPixel = -20; //Last pixel (starts at -20 so first pixel gets labeled)
@@ -229,7 +181,7 @@ namespace mainSample
                             TextAlign = ContentAlignment.MiddleRight,
                             ForeColor = Constants.lightGray
                         };
-                        l.Resize += RefreshCanvas; //We give it a handler so it doesn't get lost
+                        l.Resize += ExternalCanvasRefresh; //We give it a handler so it doesn't get lost
                         Invoke((MethodInvoker)delegate { canvas.Controls.Add(l); }); //We add it
                         Invoke((MethodInvoker)delegate { l.BringToFront(); }); //Weshow it
                         lastPixel = pixel; //We update the last pixel
@@ -248,10 +200,15 @@ namespace mainSample
         }
 
         bool renderingLabels = false;
+        public bool makingTransition = false;
         private void CanvasPaint(object sender, PaintEventArgs e)
         {
             try
             {
+                if(!renderingLabels && !makingTransition)
+                {
+                    canvas.Controls.Clear();
+                }
                 Globals.sideWatchlist.UpdateWatchlistData();
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 Pen pen = new Pen(Constants.white, 1);
@@ -281,7 +238,6 @@ namespace mainSample
                 {
                     Thread references = new Thread(() => AddReferenceToCanvas(minimum, render)); references.Start();
                 }
-
                 int[] rendered = new int[getValues.Length];
                 for (int i = 0; i < rendered.Length; i++) //Foreach value within 60 days
                 {
@@ -301,7 +257,10 @@ namespace mainSample
                 foreach (Control ctl in ((Panel)sender).Controls) //Foreach indicator
                 {
                     Pen gPen = new Pen(Constants.lightGray, 1);
-                    e.Graphics.DrawLine(gPen, new Point(50, ctl.Location.Y+10), new Point(975, ctl.Location.Y+10)); //We draw a line that indicates the Label location
+                    //if(!makingTransition && !renderingLabels)
+                    {
+                        e.Graphics.DrawLine(gPen, new Point(50, ctl.Location.Y + 10), new Point(975, ctl.Location.Y + 10)); //We draw a line that indicates the Label location
+                    }
                 }
                 for (int i = 0; i < getValues.Length - 1; i++) //Foreach value within 60 days
                 { //We connect it with the next one
@@ -326,7 +285,7 @@ namespace mainSample
                     / (max / 60))));
                 }
             }
-            catch(Exception) {  }
+            catch(Exception ex) { MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);}
         }
 
         private void OrderSelection(object sender, EventArgs e)

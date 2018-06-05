@@ -30,18 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Trade));
             this.canvas = new System.Windows.Forms.Panel();
-            this.btnBuySelected = new System.Windows.Forms.Button();
             this.orderLimit = new System.Windows.Forms.NumericUpDown();
             this.orderCount = new System.Windows.Forms.NumericUpDown();
-            this.WeeksToAdd = new System.Windows.Forms.NumericUpDown();
-            this.btnMarketSelected = new System.Windows.Forms.Button();
-            this.btnAdvanceInTime = new System.Windows.Forms.Button();
             this.btnPlaceOrder = new System.Windows.Forms.Button();
+            this.btnMarketSelected = new System.Windows.Forms.Button();
             this.btnLimitSelected = new System.Windows.Forms.Button();
+            this.btnBuySelected = new System.Windows.Forms.Button();
             this.btnSellSelected = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.orderLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderCount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WeeksToAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // canvas
@@ -52,23 +49,6 @@
             this.canvas.Size = new System.Drawing.Size(975, 400);
             this.canvas.TabIndex = 5;
             this.canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.CanvasPaint);
-            // 
-            // btnBuySelected
-            // 
-            this.btnBuySelected.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBuySelected.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuySelected.BackgroundImage")));
-            this.btnBuySelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuySelected.Enabled = false;
-            this.btnBuySelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.btnBuySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuySelected.Location = new System.Drawing.Point(65, 521);
-            this.btnBuySelected.Name = "btnBuySelected";
-            this.btnBuySelected.Size = new System.Drawing.Size(135, 23);
-            this.btnBuySelected.TabIndex = 18;
-            this.btnBuySelected.TabStop = false;
-            this.btnBuySelected.Text = "BUY";
-            this.btnBuySelected.UseVisualStyleBackColor = false;
-            this.btnBuySelected.Click += new System.EventHandler(this.OrderSelection);
             // 
             // orderLimit
             // 
@@ -99,28 +79,20 @@
             this.orderCount.TabStop = false;
             this.orderCount.ThousandsSeparator = true;
             // 
-            // WeeksToAdd
+            // btnPlaceOrder
             // 
-            this.WeeksToAdd.Location = new System.Drawing.Point(757, 528);
-            this.WeeksToAdd.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.WeeksToAdd.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.WeeksToAdd.Name = "WeeksToAdd";
-            this.WeeksToAdd.Size = new System.Drawing.Size(120, 20);
-            this.WeeksToAdd.TabIndex = 58;
-            this.WeeksToAdd.TabStop = false;
-            this.WeeksToAdd.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.btnPlaceOrder.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPlaceOrder.BackgroundImage")));
+            this.btnPlaceOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPlaceOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlaceOrder.Location = new System.Drawing.Point(709, 443);
+            this.btnPlaceOrder.Name = "btnPlaceOrder";
+            this.btnPlaceOrder.Size = new System.Drawing.Size(134, 117);
+            this.btnPlaceOrder.TabIndex = 55;
+            this.btnPlaceOrder.TabStop = false;
+            this.btnPlaceOrder.Text = "PLACE";
+            this.btnPlaceOrder.UseVisualStyleBackColor = false;
+            this.btnPlaceOrder.Click += new System.EventHandler(this.PlaceOrder);
             // 
             // btnMarketSelected
             // 
@@ -138,35 +110,6 @@
             this.btnMarketSelected.UseVisualStyleBackColor = false;
             this.btnMarketSelected.Click += new System.EventHandler(this.OrderSelection);
             // 
-            // btnAdvanceInTime
-            // 
-            this.btnAdvanceInTime.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdvanceInTime.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.btnAdvanceInTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdvanceInTime.Location = new System.Drawing.Point(777, 500);
-            this.btnAdvanceInTime.Name = "btnAdvanceInTime";
-            this.btnAdvanceInTime.Size = new System.Drawing.Size(75, 23);
-            this.btnAdvanceInTime.TabIndex = 59;
-            this.btnAdvanceInTime.TabStop = false;
-            this.btnAdvanceInTime.Text = "+ WEEKS";
-            this.btnAdvanceInTime.UseVisualStyleBackColor = false;
-            this.btnAdvanceInTime.Click += new System.EventHandler(this.RefreshCanvas);
-            // 
-            // btnPlaceOrder
-            // 
-            this.btnPlaceOrder.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPlaceOrder.BackgroundImage")));
-            this.btnPlaceOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPlaceOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlaceOrder.Location = new System.Drawing.Point(709, 443);
-            this.btnPlaceOrder.Name = "btnPlaceOrder";
-            this.btnPlaceOrder.Size = new System.Drawing.Size(134, 117);
-            this.btnPlaceOrder.TabIndex = 55;
-            this.btnPlaceOrder.TabStop = false;
-            this.btnPlaceOrder.Text = "PLACE";
-            this.btnPlaceOrder.UseVisualStyleBackColor = false;
-            this.btnPlaceOrder.Click += new System.EventHandler(this.PlaceOrder);
-            // 
             // btnLimitSelected
             // 
             this.btnLimitSelected.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLimitSelected.BackgroundImage")));
@@ -181,6 +124,23 @@
             this.btnLimitSelected.Text = "LIMIT";
             this.btnLimitSelected.UseVisualStyleBackColor = false;
             this.btnLimitSelected.Click += new System.EventHandler(this.OrderSelection);
+            // 
+            // btnBuySelected
+            // 
+            this.btnBuySelected.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBuySelected.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuySelected.BackgroundImage")));
+            this.btnBuySelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuySelected.Enabled = false;
+            this.btnBuySelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnBuySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuySelected.Location = new System.Drawing.Point(65, 521);
+            this.btnBuySelected.Name = "btnBuySelected";
+            this.btnBuySelected.Size = new System.Drawing.Size(135, 23);
+            this.btnBuySelected.TabIndex = 18;
+            this.btnBuySelected.TabStop = false;
+            this.btnBuySelected.Text = "BUY";
+            this.btnBuySelected.UseVisualStyleBackColor = false;
+            this.btnBuySelected.Click += new System.EventHandler(this.OrderSelection);
             // 
             // btnSellSelected
             // 
@@ -204,8 +164,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(975, 585);
             this.Controls.Add(this.btnPlaceOrder);
-            this.Controls.Add(this.btnAdvanceInTime);
-            this.Controls.Add(this.WeeksToAdd);
             this.Controls.Add(this.orderLimit);
             this.Controls.Add(this.btnMarketSelected);
             this.Controls.Add(this.btnLimitSelected);
@@ -223,7 +181,6 @@
             this.Load += new System.EventHandler(this.OnLoad);
             ((System.ComponentModel.ISupportInitialize)(this.orderLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderCount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WeeksToAdd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -236,8 +193,6 @@
         private System.Windows.Forms.Button btnMarketSelected;
         private System.Windows.Forms.Button btnLimitSelected;
         private System.Windows.Forms.NumericUpDown orderCount;
-        private System.Windows.Forms.NumericUpDown WeeksToAdd;
-        private System.Windows.Forms.Button btnAdvanceInTime;
         public System.Windows.Forms.Panel canvas;
     }
 }
