@@ -619,10 +619,10 @@
             this.calendarLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.calendarLabel.Location = new System.Drawing.Point(14, 180);
             this.calendarLabel.Name = "calendarLabel";
-            this.calendarLabel.Size = new System.Drawing.Size(115, 63);
+            this.calendarLabel.Size = new System.Drawing.Size(200, 63);
             this.calendarLabel.TabIndex = 90;
             this.calendarLabel.Text = "01/06";
-            this.calendarLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.calendarLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // orangeContainerWatchlist
             // 
@@ -788,7 +788,7 @@
             this.btnWeeks.FlatAppearance.BorderSize = 0;
             this.btnWeeks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWeeks.ForeColor = System.Drawing.Color.White;
-            this.btnWeeks.Location = new System.Drawing.Point(135, 196);
+            this.btnWeeks.Location = new System.Drawing.Point(135, 202);
             this.btnWeeks.Name = "btnWeeks";
             this.btnWeeks.Size = new System.Drawing.Size(64, 52);
             this.btnWeeks.TabIndex = 106;
@@ -798,7 +798,7 @@
             // 
             // WeeksToAdd
             // 
-            this.WeeksToAdd.Location = new System.Drawing.Point(20, 228);
+            this.WeeksToAdd.Location = new System.Drawing.Point(20, 220);
             this.WeeksToAdd.Maximum = new decimal(new int[] {
             5,
             0,

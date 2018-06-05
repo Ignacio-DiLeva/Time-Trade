@@ -93,7 +93,7 @@ namespace mainSample //Namespace
                 {
                     string newPlay;
                     {
-                        newPlay = "AAPL:10000:1:6:2007#Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:AAPL:AMZN:BA#AAPL:AMZN:BA:BBI:BBY:BP:C:CAT:DDAIF:F:INTC:JPM:KO:LEHMQ:MOT:MTLQQ.PK:S:SBUX:T:TRMP#############";
+                        newPlay = Constants.newPlay;
                     }
                     Enabled = false;
                     Thread end = new Thread(()=>SendSavedata(newPlay));end.Start();
@@ -337,10 +337,7 @@ namespace mainSample //Namespace
                 MessageBox.Show(dataR);
                 recv.Close();
             }
-            Invoke((MethodInvoker)delegate
-            {
-                Globals.trade.btnRequestBest.Enabled = true;
-            });
+
         }
 
         private void TempMinimize(object sender, EventArgs e)
