@@ -208,6 +208,7 @@ namespace mainSample
                 if(!renderingLabels && !makingTransition)
                 {
                     canvas.Controls.Clear();
+                    Invalidate(new Rectangle(new Point(0, 0), canvas.Size));
                 }
                 Globals.sideWatchlist.UpdateWatchlistData();
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
