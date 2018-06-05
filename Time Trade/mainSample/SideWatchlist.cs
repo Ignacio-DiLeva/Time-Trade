@@ -142,7 +142,6 @@ namespace mainSample
         public void UpdateCalendar(DateTime date)
         {
             string text = String.Empty;
-            const bool abbr = true;
             string dm = null;
             int day = date.Day;
             int month = date.Month;
@@ -156,14 +155,7 @@ namespace mainSample
                 dm += "0";
             }
             dm += month.ToString();
-            if (abbr)
-            {
-                text += System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(month)+" ";
-            }
-            else
-            {
-                text += System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(month) + " ";
-            }
+            text += System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(month) + " ";
             text += day+", "+date.Year;
             calendarLabel.Text = text;
         }
@@ -283,8 +275,7 @@ namespace mainSample
         private void ItemDrawing(object sender, DrawItemEventArgs e)
         {
             // By using Sender, one method could handle multiple ComboBoxes
-            ComboBox cbx = sender as ComboBox;
-            if (cbx != null)
+            if (sender is ComboBox cbx)
             {
                 // Always draw the background
                 e.DrawBackground();
@@ -293,9 +284,11 @@ namespace mainSample
                 if (e.Index >= 0)
                 {
                     // Set the string alignment.  Choices are Center, Near and Far
-                    StringFormat sf = new StringFormat();
-                    sf.LineAlignment = StringAlignment.Center;
-                    sf.Alignment = StringAlignment.Center;
+                    StringFormat sf = new StringFormat
+                    {
+                        LineAlignment = StringAlignment.Center,
+                        Alignment = StringAlignment.Center
+                    };
 
                     // Set the Brush to ComboBox ForeColor to maintain any ComboBox color settings
                     // Assumes Brush is solid

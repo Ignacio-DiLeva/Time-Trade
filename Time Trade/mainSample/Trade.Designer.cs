@@ -72,7 +72,7 @@
             // 
             // orderCount
             // 
-            this.orderCount.Location = new System.Drawing.Point(65, 493);
+            this.orderCount.Location = new System.Drawing.Point(65, 494);
             this.orderCount.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -87,7 +87,8 @@
             // btnPlaceOrder
             // 
             this.btnPlaceOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPlaceOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnPlaceOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.btnPlaceOrder.FlatAppearance.BorderSize = 0;
             this.btnPlaceOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaceOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnPlaceOrder.ForeColor = System.Drawing.Color.White;
@@ -105,7 +106,8 @@
             this.btnMarketSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnMarketSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMarketSelected.Enabled = false;
-            this.btnMarketSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnMarketSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.btnMarketSelected.FlatAppearance.BorderSize = 0;
             this.btnMarketSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMarketSelected.Location = new System.Drawing.Point(408, 521);
             this.btnMarketSelected.Name = "btnMarketSelected";
@@ -119,7 +121,8 @@
             // btnLimitSelected
             // 
             this.btnLimitSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLimitSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnLimitSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.btnLimitSelected.FlatAppearance.BorderSize = 0;
             this.btnLimitSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimitSelected.ForeColor = System.Drawing.Color.White;
             this.btnLimitSelected.Location = new System.Drawing.Point(547, 521);
@@ -136,7 +139,8 @@
             this.btnBuySelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnBuySelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuySelected.Enabled = false;
-            this.btnBuySelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnBuySelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.btnBuySelected.FlatAppearance.BorderSize = 0;
             this.btnBuySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuySelected.Location = new System.Drawing.Point(65, 521);
             this.btnBuySelected.Name = "btnBuySelected";
@@ -150,7 +154,8 @@
             // btnSellSelected
             // 
             this.btnSellSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSellSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.btnSellSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.btnSellSelected.FlatAppearance.BorderSize = 0;
             this.btnSellSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSellSelected.ForeColor = System.Drawing.Color.White;
             this.btnSellSelected.Location = new System.Drawing.Point(208, 521);
@@ -165,26 +170,28 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
-            this.label1.Location = new System.Drawing.Point(70, 463);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.label1.Location = new System.Drawing.Point(70, 466);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 20);
             this.label1.TabIndex = 56;
-            this.label1.Text = "Transactions";
+            this.label1.Text = "TRANSACTIONS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(86)))), ((int)(((byte)(55)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.label2.Location = new System.Drawing.Point(411, 466);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(270, 20);
             this.label2.TabIndex = 57;
-            this.label2.Text = "Orders";
+            this.label2.Text = "ORDERS";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(66, 460);
+            this.pictureBox1.Location = new System.Drawing.Point(66, 462);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(278, 27);
             this.pictureBox1.TabIndex = 58;

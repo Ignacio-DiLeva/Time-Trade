@@ -54,3 +54,22 @@ D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.Cor
 D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CopyComplete
 D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.exe
 D:\Github repos\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.pdb
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.exe.config
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.exe
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.pdb
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\MaterialSkin.dll
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csprojResolveAssemblyReference.cache
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Account.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Login.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Main.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.PortfolioAccount.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Watchlist.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.SideWatchlist.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Properties.Resources.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Stock.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Trade.resources
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.GenerateResource.cache
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CoreCompileInputs.cache
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CopyComplete
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.exe
+C:\Users\43442476\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.pdb

@@ -97,9 +97,9 @@ namespace mainSample
                 getServerIP.Start();
             }
 
-            string nums = File.ReadAllText("..\\..\\numbers.txt");
+            string nums = File.ReadAllText("numbers.txt");
             string[] numbers = nums.Split(new char[] { ' ' });
-            string com = File.ReadAllText("..\\..\\companies.txt");
+            string com = File.ReadAllText("companies.txt");
             string[] companies = com.Split(new char[] { '\n' });
             
             for (int i = 0; i <21920; i++) //For all the rows
