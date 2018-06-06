@@ -141,7 +141,7 @@ namespace TimeTradeServer
                     }
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message + "\r\n" + ex.ToString()+"\r\n"+Encoding.Default.GetString(dataB)); }
+            catch (Exception ex) { MessageBox.Show("PACKET DATA LOSS"); }
         }
 
         private byte[] GetLeaderboard(string key)
