@@ -71,7 +71,7 @@ namespace mainSample //Namespace
         
         public void UpdateInfo()
         {
-            //displayedCompany.Text = Globals.displayedCompany;
+            displayedCompany.Text = Globals.displayedCompany;
             nowPrice.Text = "$" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today);
             highPrice.Text ="High: $" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today, "HIGH");
             lowPrice.Text = "Low: $" + Utilities.ReadInfo(Globals.displayedCompany, Globals.today, "LOW");

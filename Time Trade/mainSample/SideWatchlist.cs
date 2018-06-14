@@ -175,10 +175,13 @@ namespace mainSample
         private void CheckChangeOnSearcher(object sender, EventArgs e)
         {
             this.ActiveControl = null;
-            Globals.main.displayedCompany.Text = ((Control)sender).Text.Split(' ')[0];
-            Globals.displayedCompany = Globals.main.displayedCompany.Text;
-            Globals.main.displayedCompany.Tag = Utilities.GetIndexOfCompany(Globals.displayedCompany);
+            
+            Globals.displayedCompany = ((Control)sender).Text;
+            //     Globals.main.displayedCompany.Tag = Utilities.GetIndexOfCompany(Globals.displayedCompany);
+            Globals.main.UpdateInfo();
             Globals.trade.ExternalCanvasRefresh(this, null);
+            
+           
         }
 
         public void UpdateBalance()
