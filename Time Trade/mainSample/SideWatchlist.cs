@@ -278,7 +278,16 @@ namespace mainSample
         private void ItemDrawing(object sender, DrawItemEventArgs e)
         {
             // By using Sender, one method could handle multiple ComboBoxes
-            if (sender is ComboBox cbx)
+            ComboBox cbx;
+            try
+            {
+                cbx = ((ComboBox)sender);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            if (true)
             {
                 // Always draw the background
                 e.DrawBackground();

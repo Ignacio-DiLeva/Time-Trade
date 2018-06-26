@@ -165,6 +165,7 @@ namespace mainSample //Namespace
             }
             if (desired == "Account")
             {
+                Globals.account.Update_portfolio();
                 Globals.main.AccountBtn.BackColor = Constants.orange;
                 Globals.main.AccountBtn.ForeColor = Constants.white;
                 Globals.account.Show();
