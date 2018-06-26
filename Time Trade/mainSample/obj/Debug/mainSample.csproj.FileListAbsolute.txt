@@ -16,9 +16,6 @@ C:\Users\43571598\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.
 C:\Users\43571598\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CoreCompileInputs.cache
 C:\Users\43571598\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.exe
 C:\Users\43571598\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.pdb
-C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.exe.config
-C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.exe
-C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.pdb
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\MaterialSkin.dll
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csprojResolveAssemblyReference.cache
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Account.resources
@@ -33,8 +30,6 @@ C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Tra
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.GenerateResource.cache
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CoreCompileInputs.cache
 C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.CopyComplete
-C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.exe
-C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.pdb
 D:\Github repos\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.exe.config
 D:\Github repos\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.exe
 D:\Github repos\Time-Trade\Time Trade\mainSample\bin\Debug\mainSample.pdb
@@ -90,3 +85,8 @@ C:\Users\adm\Desktop\Time-Trade-rc3\Time Trade\mainSample\bin\Debug\mainSample.e
 C:\Users\adm\Desktop\Time-Trade-rc3\Time Trade\mainSample\bin\Debug\mainSample.pdb
 C:\Users\adm\Desktop\Time-Trade-rc3\Time Trade\mainSample\bin\Debug\MaterialSkin.dll
 C:\Users\adm\Desktop\Time-Trade-rc3\Time Trade\mainSample\obj\Debug\mainSample.pdb
+C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\Time Trade.exe.config
+C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\Time Trade.exe
+C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\Time Trade.pdb
+C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\Time Trade.exe
+C:\Users\nacho\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\Time Trade.pdb

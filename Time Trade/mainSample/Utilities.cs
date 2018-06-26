@@ -86,57 +86,72 @@ namespace mainSample
 
         public static void LoadData(string str)
         {
-            string[] lists = str.Split(new char[] { Constants.listSeparator },StringSplitOptions.None);
-            for(int i = 0; i < lists.Length; i++)
+            try
             {
-                string[] variables = lists[i].Split(new char[] { Constants.variableSeparator }, StringSplitOptions.RemoveEmptyEntries);
-                if (i == 0)
+                string[] lists = str.Split(new char[] { Constants.listSeparator }, StringSplitOptions.None);
+                for (int i = 0; i < lists.Length; i++)
                 {
-                    Globals.displayedCompany = variables[0];
-                    Globals.moneyBalance = Convert.ToDouble(variables[1], Constants.numberFormat);
-                    Globals.today = Utilities.ToDateTime(variables[2]);
-                    continue;
-                }
-                if (i == 1)
-                {
-                    foreach(string company in variables)
+                    string[] variables = lists[i].Split(new char[] { Constants.variableSeparator }, StringSplitOptions.RemoveEmptyEntries);
+                    if (i == 0)
                     {
-                        Globals.portfolio_companies.Add(Company.FromString(company));
+                        Globals.displayedCompany = variables[0];
+                        Globals.moneyBalance = Convert.ToDouble(variables[1], Constants.numberFormat);
+                        Globals.today = Utilities.ToDateTime(variables[2]);
+                        continue;
                     }
-                    continue;
-                }
-                if (i == 2)
-                {
-                    foreach (string buyOrder in variables)
+                    if (i == 1)
                     {
-                        Globals.buyOrders.Add(Order.FromString(buyOrder));
+                        foreach (string company in variables)
+                        {
+                            Globals.portfolio_companies.Add(Company.FromString(company));
+                        }
+                        continue;
                     }
-                    continue;
-                }
-                if (i == 3)
-                {
-                    foreach (string sellOrder in variables)
+                    if (i == 2)
                     {
-                        Globals.sellOrders.Add(Order.FromString(sellOrder));
+                        foreach (string buyOrder in variables)
+                        {
+                            Globals.buyOrders.Add(Order.FromString(buyOrder));
+                        }
+                        continue;
                     }
-                    continue;
-                }
-                if (i == 4)
-                {
-                    foreach (string company in variables)
+                    if (i == 3)
                     {
-                        Globals.wlAvailableCompanies.Add(company);
+                        foreach (string sellOrder in variables)
+                        {
+                            Globals.sellOrders.Add(Order.FromString(sellOrder));
+                        }
+                        continue;
                     }
-                    continue;
-                }
-                if (i == 5)
-                {
-                    for(int k=0;k<variables.Length;k++)
+                    if (i == 4)
                     {
-                        Globals.watchlistData[k,0]=variables[k];
+                        foreach (string company in variables)
+                        {
+                            Globals.wlAvailableCompanies.Add(company);
+                        }
+                        continue;
                     }
-                    continue;
+                    if (i == 5)
+                    {
+                        for (int k = 0; k < variables.Length; k++)
+                        {
+                            Globals.watchlistData[k, 0] = variables[k];
+                        }
+                        continue;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Globals.portfolio_companies.Clear();
+                Globals.buyOrders.Clear();
+                Globals.sellOrders.Clear();
+                Globals.wlAvailableCompanies.Clear();
+                for(int i = 0; i < Globals.watchlistData.GetLength(0); i++)
+                {
+                    Globals.watchlistData[i, 0] = null;
+                }
+                throw ex;
             }
         }
 

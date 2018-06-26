@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.TradeBtn = new System.Windows.Forms.Button();
             this.StockBtn = new System.Windows.Forms.Button();
             this.AccountBtn = new System.Windows.Forms.Button();
@@ -37,10 +38,10 @@
             this.nowPrice = new System.Windows.Forms.Label();
             this.lowPrice = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.showLogo = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.showLogo)).BeginInit();
@@ -164,7 +165,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Location = new System.Drawing.Point(1180, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 20);
             this.label1.TabIndex = 13;
@@ -172,10 +173,23 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.TempClose);
             // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.label2.Location = new System.Drawing.Point(1150, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "–";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.TempMinimize);
+            // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.pictureBox4.Location = new System.Drawing.Point(20, 0);
+            this.pictureBox4.Location = new System.Drawing.Point(1170, 0);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(10, 20);
             this.pictureBox4.TabIndex = 8;
@@ -202,19 +216,6 @@
             this.showLogo.TabStop = false;
             this.showLogo.Click += new System.EventHandler(this.ShowForm);
             // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.label2.Location = new System.Drawing.Point(30, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 20);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "–";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.TempMinimize);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,6 +236,7 @@
             this.Controls.Add(this.TradeBtn);
             this.Controls.Add(this.showLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(500, 200);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

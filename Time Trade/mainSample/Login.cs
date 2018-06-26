@@ -8,12 +8,11 @@ using System.Security.Cryptography; //For encryption and decryption
 using System.Net; //For IP
 using System.Net.Sockets; //For connections
 using System.IO;
-using MaterialSkin.Controls; //For Form
 using System.Windows.Forms; //For controls
 
 namespace mainSample
 {
-    public partial class Login : MaterialForm
+    public partial class Login : Form
     {
         private void AllowMove(object sender, MouseEventArgs e)
         {
@@ -362,8 +361,9 @@ namespace mainSample
             Application.Exit();
         }
 
-        private void BtnLaunchMain(object sender, EventArgs e)
+        private void BtnNewSimulation(object sender, EventArgs e)
         {
+            AllowInput(false);
             btnMain.Enabled = false;
             if (!Constants.stableBuild)
             {
@@ -371,12 +371,55 @@ namespace mainSample
             }
             btnLogin.Enabled = false;
             btnRegister.Enabled = false;
-            if (!(string.IsNullOrEmpty(SeedField.Text)))
+            Utilities.LoadData(Constants.newPlay);
+            if (Globals.wlAvailableCompanies.Count != 0)
             {
-                Utilities.LoadData(SeedField.Text);
+                Invoke((MethodInvoker)delegate
+                {
+                    Hide();
+                    Globals.main = new Main(username, sessid, serverIP, ip);
+                    Globals.main.Show();
+                });
             }
             else
             {
+                Invoke((MethodInvoker)delegate
+                {
+                    btnLogin.Enabled = true;
+                    btnRegister.Enabled = true;
+                    btnMain.Enabled = true;
+                    AllowInput(true);
+                });
+            }
+        }
+
+        private void TempMinimize(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void TempClose(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnClipboard(object sender, EventArgs e)
+        {
+            AllowInput(false);
+            btnMain.Enabled = false;
+            if (!Constants.stableBuild)
+            {
+                if (getServerIP.IsAlive) { recv.Close(); } //We need to kill the thread so the app terminates properly
+            }
+            btnLogin.Enabled = false;
+            btnRegister.Enabled = false;
+            try
+            {
+                Utilities.LoadData(Clipboard.GetText());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Invalid seed, starting a new simulation");
                 Utilities.LoadData(Constants.newPlay);
             }
             if (Globals.wlAvailableCompanies.Count != 0)
@@ -388,15 +431,37 @@ namespace mainSample
                     Globals.main.Show();
                 });
             }
-            else //TODO UNDERSTAND WHY I WRITE THIS
+            else
             {
                 Invoke((MethodInvoker)delegate
                 {
                     btnLogin.Enabled = true;
                     btnRegister.Enabled = true;
                     btnMain.Enabled = true;
+                    AllowInput(true);
                 });
             }
+        }
+        TransparentLabel l = new TransparentLabel()
+        {
+            AutoSize = false,
+            Text = String.Empty,
+            Visible = true
+        };
+        public void AllowInput(bool status)
+        {
+            l.Size = Size;
+            Invoke((MethodInvoker)delegate
+            {
+                Focus();
+                if (!status)
+                {
+                    Controls.Add(l);
+                    l.BringToFront();
+                    return;
+                }
+                Controls.Remove(l);
+            });
         }
     }
 }

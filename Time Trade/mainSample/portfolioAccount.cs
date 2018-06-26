@@ -16,14 +16,12 @@ namespace mainSample
         public PortfolioAccount()
         {
             InitializeComponent();
-
         }
 
         private void RedirectToTrade(object sender, EventArgs e)
         {
             Globals.sideWatchlist.Searcher.SelectedIndex = Utilities.GetIndexOfCompany(((Control)sender).Text);
             Globals.main.ShowForm(Globals.main.TradeBtn, null);
-            Hide();
             Globals.main.currentForm = "Trade";
             Globals.main.showLogo.Tag = Globals.main.currentForm;
         }

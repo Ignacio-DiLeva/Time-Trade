@@ -63,39 +63,9 @@ namespace mainSample.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BackgroundImage {
+        internal static System.Drawing.Bitmap buttonx {
             get {
-                object obj = ResourceManager.GetObject("BackgroundImage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap BOTON_APRETADO_2 {
-            get {
-                object obj = ResourceManager.GetObject("BOTON APRETADO 2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap BOTON_NORMAL_2 {
-            get {
-                object obj = ResourceManager.GetObject("BOTON NORMAL 2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap buttonx_j {
-            get {
-                object obj = ResourceManager.GetObject("buttonx.j", resourceCulture);
+                object obj = ResourceManager.GetObject("buttonx", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,16 +76,6 @@ namespace mainSample.Properties {
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Time_Trade_Logo {
-            get {
-                object obj = ResourceManager.GetObject("Time Trade Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

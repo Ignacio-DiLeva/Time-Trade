@@ -86,7 +86,7 @@ namespace mainSample
                     Name = "cancel_" + (i),
                     Size = new Size(50, 50),
                     Location = new Point(818, 25 +82*i), //location depending on which line you are
-                    Image = Properties.Resources.buttonx_j,
+                    Image = Properties.Resources.buttonx,
                     SizeMode = PictureBoxSizeMode.StretchImage,
                     Tag = "object_" + (i),
                 };
@@ -134,7 +134,7 @@ namespace mainSample
                     Name = "cancel_" + (i),
                     Size = new Size(50, 50),
                     Location = new Point(818, 25 + 82 * i), //location depending on which line you are                    
-                    Image = Properties.Resources.buttonx_j,
+                    Image = Properties.Resources.buttonx,
                     SizeMode = PictureBoxSizeMode.StretchImage,
                     Tag = "object_" + (i),
                 };
