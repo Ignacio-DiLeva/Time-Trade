@@ -213,6 +213,7 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "–";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.TempMinimize);
             // 
             // Main
             // 

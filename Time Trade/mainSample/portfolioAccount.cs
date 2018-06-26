@@ -170,7 +170,7 @@ namespace mainSample
                                 case "glone":
                                     Invoke((MethodInvoker)delegate {
 
-                                        ctl.Text = ((gainloss_Cost * cm.Holdings) < 0 ? "-1" : "") + "$" + Math.Round(Math.Abs((gainloss_Cost) * cm.Holdings), 2).ToString();
+                                        ctl.Text = ((gainloss_Cost * cm.Holdings) < 0 ? "-" : "") + "$" + Math.Round(Math.Abs((gainloss_Cost) * cm.Holdings), 2).ToString();
                                     });
                                     break;
 
