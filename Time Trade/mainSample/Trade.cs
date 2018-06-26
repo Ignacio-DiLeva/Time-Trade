@@ -56,11 +56,16 @@ namespace mainSample
                 SumOfTotal += Globals.sellOrders[i].Holdings * Utilities.ReadInfo(Globals.sellOrders[i].Name, Globals.today);
             }
             MessageBox.Show("Your final Balance is " + SumOfTotal);
+            if (Globals.main.username == "" || Globals.main.username ==null)
+            {
+                Thread endGame = new Thread(() => Globals.main.SendSavedata(Constants.newPlay));
+                endGame.Start();
+                return;
+            }
             Thread sendEndMoney = new Thread(() => Globals.main.SendEndGame(Globals.main.username, Globals.main.sessid,SumOfTotal));
             sendEndMoney.Start(); sendEndMoney.Join();
-            string newPlay = "AAPL:10000:1:6:2007#Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:Empty:AAPL:AMZN:BA#AAPL:AMZN:BA:BBI:BBY:BP:C:CAT:DDAIF:F:INTC:JPM:KO:LEHMQ:MOT:MTLQQ.PK:S:SBUX:T:TRMP#############";
-            Thread endGame = new Thread(() => Globals.main.SendSavedata(newPlay));
-            endGame.Start();
+            Thread endGameUser = new Thread(() => Globals.main.SendSavedata(Constants.newPlay));
+            endGameUser.Start();
         }
 
         public void EffectivizeOrders(DateTime date) //effectivizes every LIMIT ORDER by looping through each list
