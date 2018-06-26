@@ -33,7 +33,9 @@
             this.stockInfoDisplayer = new System.Windows.Forms.Label();
             this.companyCompleteName = new System.Windows.Forms.Label();
             this.DisplayedLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DisplayedLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // companyData
@@ -98,11 +100,21 @@
             this.DisplayedLogo.TabIndex = 11;
             this.DisplayedLogo.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(131)))), ((int)(((byte)(84)))));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(975, 10);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(975, 585);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.DisplayedLogo);
             this.Controls.Add(this.companyCompleteName);
             this.Controls.Add(this.stockInfoDisplayer);
@@ -117,6 +129,7 @@
             this.Text = "Stock";
             this.Load += new System.EventHandler(this.OnLoad);
             ((System.ComponentModel.ISupportInitialize)(this.DisplayedLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,5 +141,6 @@
         private System.Windows.Forms.Label stockInfoDisplayer;
         private System.Windows.Forms.Label companyCompleteName;
         private System.Windows.Forms.PictureBox DisplayedLogo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
