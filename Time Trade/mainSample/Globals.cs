@@ -6,6 +6,8 @@ namespace mainSample
 {
     public static class Globals
     {
+
+        public static List<string> messages = new List<string>();
         /*
         //Portfolio
         public static List<string> company_name = new List<string>();        //Name of the respective company

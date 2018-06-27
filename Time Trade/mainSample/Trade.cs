@@ -68,6 +68,28 @@ namespace mainSample
             endGameUser.Start();
         }
 
+        private string DayCanceledToString(DateTime d)
+        {
+            string text = String.Empty;
+            string dm = null;
+            d = d.AddDays(28);
+            int day = d.Day;
+            int month = d.Month;
+            if (day < 10)
+            {
+                dm += "0";
+            }
+            dm += day.ToString() + "/";
+            if (month < 10)
+            {
+                dm += "0";
+            }
+            dm += month.ToString();
+            text += System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(month) + " ";
+            text += day + ", " + d.Year;
+            return text;
+        }
+
         public void EffectivizeOrders(DateTime date) //effectivizes every LIMIT ORDER by looping through each list
         {
             for (int i = 0; i < Globals.sellOrders.Count; i++) //loop through all the sell orders
@@ -95,8 +117,14 @@ namespace mainSample
                         Company cm = new Company(Globals.sellOrders[i].Name, Globals.sellOrders[i].Holdings, Globals.sellOrders[i].OriginalPrice); //creates a new company with the order's characteristics
                         Globals.portfolio_companies.Add(cm); //adds the company
                     }
+                    DateTime dayCanceled = Globals.sellOrders[i].Date;
+                    Globals.messages.Add("The sell order of " + Globals.sellOrders[i].Name + " has been cancelled on "+DayCanceledToString(dayCanceled));
+                    //MessageBox.Show("The sell order of " + Globals.sellOrders[i].Name + " has been cancelled.");
                     Globals.sellOrders.RemoveAt(i); // removes the order
-                    Invoke((MethodInvoker)delegate { Globals.account.Reload_sell(); }); //reloads the form
+                    Invoke((MethodInvoker)delegate
+                    {
+                        Globals.account.Reload_sell();
+                    }); //reloads the form
                 }
 
                 try
@@ -121,8 +149,9 @@ namespace mainSample
             {
                 if (Globals.buyOrders[i].Date.AddDays(28) <= date) //checks if the order is expired
                 {
+                    DateTime dayCanceled = Globals.buyOrders[i].Date;
+                    Globals.messages.Add("The buy order of " + Globals.buyOrders[i].Name + " has been canceled on " + DayCanceledToString(dayCanceled));
                     Globals.buyOrders.RemoveAt(i); //removes the order
-
                     Invoke((MethodInvoker)delegate { Globals.account.Reload_buy(); }); //updates form
                 }
                 try
@@ -143,9 +172,8 @@ namespace mainSample
                             Globals.portfolio_companies[i].Holdings += Globals.buyOrders[i].Holdings; //adds the order holdings to  the portfolio in that index
                             Globals.portfolio_companies[i].AddValues(Globals.buyOrders[i].Holdings, currentValue); //updates values
                         }
-
                         Globals.buyOrders.RemoveAt(i); //removes the order
-                        Invoke((MethodInvoker)delegate { Globals.account.Reload_buy(); }); //updates form
+                        Invoke((MethodInvoker)delegate { Globals.account.Reload_buy();}); //updates form
 
                     }
                 }

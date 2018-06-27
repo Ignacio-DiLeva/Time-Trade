@@ -261,6 +261,20 @@ namespace mainSample
                 //If it is not the last day we refresh UI and allow interaction (we can't allow interaction in the last day)
                 Invoke((MethodInvoker)delegate //We Invoke UI commands
                 {
+                    string msg=String.Empty;
+                    if (Globals.messages.Count > 0)
+                    {
+                        msg += Globals.messages[0];
+                    }
+                    for (int i = 1; i < Globals.messages.Count; i++)
+                    {
+                        msg += Environment.NewLine + Environment.NewLine + Globals.messages[i];
+                    }
+                    if (msg != String.Empty)
+                    {
+                        MessageBox.Show(msg);
+                    }
+                    Globals.messages.Clear();
                     Globals.account.Update_portfolio();
                     Globals.account.Reload_panel(); //Refresh graphics
 
