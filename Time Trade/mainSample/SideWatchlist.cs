@@ -272,7 +272,7 @@ namespace mainSample
                     }
                     if (msg != String.Empty)
                     {
-                        MessageBox.Show(msg);
+                        MessageBox.Show(msg,"Canceled orders");
                     }
                     Globals.messages.Clear();
                     Globals.account.Update_portfolio();
