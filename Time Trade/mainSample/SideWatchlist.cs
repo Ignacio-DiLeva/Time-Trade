@@ -68,6 +68,7 @@ namespace mainSample
         {
             int pos = Int32.Parse(((Control)sender).Name[5].ToString());
             Globals.wlAvailableCompanies.Add(Globals.watchlistData[pos,0]);
+            Globals.wlAvailableCompanies.Sort();
             Globals.watchlistData[pos,0] = "Empty";
             UpdateWatchlistData();
         }

@@ -140,6 +140,7 @@ namespace mainSample
                         continue;
                     }
                 }
+                Globals.wlAvailableCompanies.Sort();
             }
             catch (Exception ex)
             {
