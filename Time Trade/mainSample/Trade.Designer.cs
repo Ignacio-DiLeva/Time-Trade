@@ -57,6 +57,7 @@
             // 
             // orderLimit
             // 
+            this.orderLimit.DecimalPlaces = 2;
             this.orderLimit.Enabled = false;
             this.orderLimit.Location = new System.Drawing.Point(407, 495);
             this.orderLimit.Maximum = new decimal(new int[] {

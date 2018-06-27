@@ -72,7 +72,6 @@ namespace mainSample
         {
             for (int i = 0; i < Globals.sellOrders.Count; i++) //loop through all the sell orders
             {
-
                 int indice = -1; //default index
 
                 for (int a = 0; a < Globals.portfolio_companies.Count; a++) //loops through companies
@@ -408,7 +407,7 @@ namespace mainSample
 
                 }
             }
-            else if (btnLimitSelected.Enabled == false && CheckConditions(Convert.ToInt32(orderLimit.Value)))
+            else if (btnLimitSelected.Enabled == false && CheckConditions(Convert.ToDouble(orderLimit.Value)))
             {
                 //check if the company is in the
                 if (btnBuySelected.Enabled == false) //if the buy option for limit is clicked
@@ -425,7 +424,7 @@ namespace mainSample
                             Globals.buyOrders[Index_BuyOrders].Holdings = Convert.ToInt32(orderCount.Value);
                             
                             //updates value of holdings
-                            Globals.buyOrders[Index_BuyOrders].Price = Convert.ToInt32(orderLimit.Value);
+                            Globals.buyOrders[Index_BuyOrders].Price = Convert.ToDouble(orderLimit.Value);
 
                             //updates date of order
                             Globals.buyOrders[Index_BuyOrders].Date = Globals.today;
@@ -433,7 +432,7 @@ namespace mainSample
                         else //if the company isn't inside of the limit orders
                         {
                             //adds a new company order
-                            Globals.buyOrders.Add(new Order(Globals.displayedCompany, Convert.ToInt32(orderCount.Value), Convert.ToInt32(orderLimit.Value), Globals.today));
+                            Globals.buyOrders.Add(new Order(Globals.displayedCompany, Convert.ToInt32(orderCount.Value), Convert.ToDouble(orderLimit.Value), Globals.today));
                         }
                         MessageBox.Show("Order placed");
                         Globals.account.Reload_buy();
@@ -472,7 +471,7 @@ namespace mainSample
                                     Globals.sellOrders[IndexSell_Orders].Holdings = Convert.ToInt32(orderCount.Value);
 
                                     //updates prices of each holding
-                                    Globals.sellOrders[IndexSell_Orders].Price = Convert.ToInt32(orderLimit.Value);
+                                    Globals.sellOrders[IndexSell_Orders].Price = Convert.ToDouble(orderLimit.Value);
 
                                     //updates expiring date
                                     Globals.sellOrders[IndexSell_Orders].Date = Globals.today; 
@@ -507,7 +506,7 @@ namespace mainSample
                                         new Order(
                                             Globals.displayedCompany, 
                                             Convert.ToInt32(orderCount.Value), 
-                                            Convert.ToInt32(orderLimit.Value),
+                                            Convert.ToDouble(orderLimit.Value),
                                             Globals.today, 
                                             Globals.portfolio_companies[Index_Stocks].Values)
                                             );
@@ -571,7 +570,7 @@ namespace mainSample
             return -1;
         }
 
-        bool CheckConditions(int b = 1) //Checks if ComboBoxes have non-zero values
+        bool CheckConditions(double b = 1) //Checks if ComboBoxes have non-zero values
         {
             if (Convert.ToInt32(orderCount.Value) != 0 && b != 0)
             {
