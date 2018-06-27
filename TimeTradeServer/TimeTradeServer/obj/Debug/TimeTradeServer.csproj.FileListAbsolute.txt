@@ -77,3 +77,13 @@ C:\Users\nacho\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\Time
 C:\Users\nacho\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.csproj.CopyComplete
 C:\Users\nacho\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.exe
 C:\Users\nacho\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.pdb
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\bin\Debug\TimeTradeServer.exe.config
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.exe
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\bin\Debug\TimeTradeServer.exe
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\bin\Debug\TimeTradeServer.pdb
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\bin\Debug\MaterialSkin.dll
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.csprojResolveAssemblyReference.cache
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.TimeTradeServer.resources
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.Properties.Resources.resources
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.csproj.GenerateResource.Cache
+C:\Users\adm\Desktop\Time-Trade\TimeTradeServer\TimeTradeServer\obj\Debug\TimeTradeServer.pdb

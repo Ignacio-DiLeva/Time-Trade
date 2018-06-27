@@ -110,3 +110,17 @@ C:\Users\adm\Desktop\Time-Trade-master\Time Trade\mainSample\bin\Debug\Time Trad
 C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\Time Trade.exe.config
 C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\Time Trade.exe
 C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\Time Trade.pdb
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\Time Trade.exe
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\Time Trade.pdb
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\bin\Debug\MaterialSkin.dll
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csprojResolveAssemblyReference.cache
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Account.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Login.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Main.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.PortfolioAccount.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Watchlist.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.SideWatchlist.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Properties.Resources.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Stock.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.Trade.resources
+C:\Users\adm\Desktop\Time-Trade\Time Trade\mainSample\obj\Debug\mainSample.csproj.GenerateResource.Cache

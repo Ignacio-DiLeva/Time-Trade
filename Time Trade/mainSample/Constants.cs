@@ -19,7 +19,7 @@ namespace mainSample
         public static readonly double[,,] values = new double[20, 1096, 5];      //Values obtained from database
         public static readonly string[,] stockInfo = new string[20, 2]; //Information of the companies
         public static readonly bool stableBuild = true;
-        public static readonly string newPlay = "AAPL;10000;2007-6-1####AAPL;AMZN;BA;BBI;BBY;BP;C;CAT;DDAIF;F;INTC;JPM;KO;LEHMQ;MOT;MTLQQ.PK;S;SBUX;T;TRMP#Empty;Empty;Empty;Empty;Empty;Empty;Empty;Empty;Empty;Empty;AAPL;AMZN;BA";
+        public static readonly string newPlay = "AAPL;5000;2007-6-1####AAPL;AMZN;BA;BBI;BBY;BP;C;CAT;DDAIF;F;INTC;JPM;KO;LEHMQ;MOT;MTLQQ.PK;S;SBUX;T;TRMP#Empty;Empty;Empty;Empty;Empty;Empty;Empty;Empty;Empty;Empty;AAPL;AMZN;BA";
         public static readonly Color dark = Color.FromArgb(0x2D, 0x31, 0x42);
         public static readonly Color brown = Color.FromArgb(0x9E, 0x56, 0x37);
         public static readonly Color orange = Color.FromArgb(0xEF, 0x83, 0x54);
